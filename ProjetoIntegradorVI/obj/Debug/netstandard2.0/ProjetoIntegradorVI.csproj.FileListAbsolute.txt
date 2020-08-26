@@ -12,3 +12,17 @@ C:\Xamarin\ProjetoIntegradorVI\ProjetoIntegradorVI\obj\Debug\netstandard2.0\Xaml
 C:\Xamarin\ProjetoIntegradorVI\ProjetoIntegradorVI\obj\Debug\netstandard2.0\ProjetoIntegradorVI.dll
 C:\Xamarin\ProjetoIntegradorVI\ProjetoIntegradorVI\obj\Debug\netstandard2.0\ref\ProjetoIntegradorVI.dll
 C:\Xamarin\ProjetoIntegradorVI\ProjetoIntegradorVI\obj\Debug\netstandard2.0\ProjetoIntegradorVI.pdb
+C:\Users\renna\Source\Repos\IvoEngenhariaUnivesp\projetoIntegradorVI\ProjetoIntegradorVI\bin\Debug\netstandard2.0\ProjetoIntegradorVI.deps.json
+C:\Users\renna\Source\Repos\IvoEngenhariaUnivesp\projetoIntegradorVI\ProjetoIntegradorVI\bin\Debug\netstandard2.0\ProjetoIntegradorVI.dll
+C:\Users\renna\Source\Repos\IvoEngenhariaUnivesp\projetoIntegradorVI\ProjetoIntegradorVI\bin\Debug\netstandard2.0\ref\ProjetoIntegradorVI.dll
+C:\Users\renna\Source\Repos\IvoEngenhariaUnivesp\projetoIntegradorVI\ProjetoIntegradorVI\bin\Debug\netstandard2.0\ProjetoIntegradorVI.pdb
+C:\Users\renna\Source\Repos\IvoEngenhariaUnivesp\projetoIntegradorVI\ProjetoIntegradorVI\obj\Debug\netstandard2.0\ProjetoIntegradorVI.csprojAssemblyReference.cache
+C:\Users\renna\Source\Repos\IvoEngenhariaUnivesp\projetoIntegradorVI\ProjetoIntegradorVI\obj\Debug\netstandard2.0\App.xaml.g.cs
+C:\Users\renna\Source\Repos\IvoEngenhariaUnivesp\projetoIntegradorVI\ProjetoIntegradorVI\obj\Debug\netstandard2.0\MainPage.xaml.g.cs
+C:\Users\renna\Source\Repos\IvoEngenhariaUnivesp\projetoIntegradorVI\ProjetoIntegradorVI\obj\Debug\netstandard2.0\ProjetoIntegradorVI.AssemblyInfoInputs.cache
+C:\Users\renna\Source\Repos\IvoEngenhariaUnivesp\projetoIntegradorVI\ProjetoIntegradorVI\obj\Debug\netstandard2.0\ProjetoIntegradorVI.AssemblyInfo.cs
+C:\Users\renna\Source\Repos\IvoEngenhariaUnivesp\projetoIntegradorVI\ProjetoIntegradorVI\obj\Debug\netstandard2.0\ProjetoIntegradorVI.csproj.CoreCompileInputs.cache
+C:\Users\renna\Source\Repos\IvoEngenhariaUnivesp\projetoIntegradorVI\ProjetoIntegradorVI\obj\Debug\netstandard2.0\XamlC.stamp
+C:\Users\renna\Source\Repos\IvoEngenhariaUnivesp\projetoIntegradorVI\ProjetoIntegradorVI\obj\Debug\netstandard2.0\ProjetoIntegradorVI.dll
+C:\Users\renna\Source\Repos\IvoEngenhariaUnivesp\projetoIntegradorVI\ProjetoIntegradorVI\obj\Debug\netstandard2.0\ref\ProjetoIntegradorVI.dll
+C:\Users\renna\Source\Repos\IvoEngenhariaUnivesp\projetoIntegradorVI\ProjetoIntegradorVI\obj\Debug\netstandard2.0\ProjetoIntegradorVI.pdb
