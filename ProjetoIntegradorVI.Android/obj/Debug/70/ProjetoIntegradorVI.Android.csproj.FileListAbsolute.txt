@@ -1,0 +1,3 @@
+C:\Xamarin\ProjetoIntegradorVI\ProjetoIntegradorVI.Android\obj\Debug\70\MonoAndroid,Version=v7.0.AssemblyAttributes.cs
+C:\Xamarin\ProjetoIntegradorVI\ProjetoIntegradorVI.Android\obj\Debug\70\build.props
+C:\Xamarin\ProjetoIntegradorVI\ProjetoIntegradorVI.Android\obj\Debug\70\adb.props
