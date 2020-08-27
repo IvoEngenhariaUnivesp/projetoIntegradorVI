@@ -627,23 +627,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\renna\\.nuget\\packages\\": {},
-    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\ivooc\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\renna\\Source\\Repos\\IvoEngenhariaUnivesp\\projetoIntegradorVI\\ProjetoIntegradorVI\\ProjetoIntegradorVI.App.csproj",
-      "projectName": "ProjetoIntegradorVI.App",
-      "projectPath": "C:\\Users\\renna\\Source\\Repos\\IvoEngenhariaUnivesp\\projetoIntegradorVI\\ProjetoIntegradorVI\\ProjetoIntegradorVI.App.csproj",
-      "packagesPath": "C:\\Users\\renna\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\renna\\Source\\Repos\\IvoEngenhariaUnivesp\\projetoIntegradorVI\\ProjetoIntegradorVI\\obj\\",
+      "projectUniqueName": "C:\\Xamarin\\ProjetoIntegradorVI\\ProjetoIntegradorVI\\ProjetoIntegradorVI.csproj",
+      "projectName": "ProjetoIntegradorVI",
+      "projectPath": "C:\\Xamarin\\ProjetoIntegradorVI\\ProjetoIntegradorVI\\ProjetoIntegradorVI.csproj",
+      "packagesPath": "C:\\Users\\ivooc\\.nuget\\packages\\",
+      "outputPath": "C:\\Xamarin\\ProjetoIntegradorVI\\ProjetoIntegradorVI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Microsoft\\Xamarin\\NuGet\\"
+        "C:\\Microsoft\\Xamarin\\NuGet\\",
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\renna\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ivooc\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],

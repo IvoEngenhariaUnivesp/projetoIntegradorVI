@@ -1,12 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "aJKt4U/upGvIXJB2k0uDXWfcMxGAQEy/MneXEQDNJJyYkGa0N8krVk2t6u8vsbKpIRSKiOTP5CRmswi893FmYg==",
+  "dgSpecHash": "nhe+wRLBoI+L1bO347sLTNuJrFE42JMUO68KrSGcPdXs3mHudafP/Gwx9mOqLAMGL+XnwhyZ538ZYBVo1UjH+g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\renna\\Source\\Repos\\IvoEngenhariaUnivesp\\projetoIntegradorVI\\ProjetoIntegradorVI\\ProjetoIntegradorVI.App.csproj",
+  "projectFilePath": "C:\\Xamarin\\ProjetoIntegradorVI\\ProjetoIntegradorVI\\ProjetoIntegradorVI.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\renna\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
-    "C:\\Users\\renna\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
-    "C:\\Users\\renna\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
+    "C:\\Users\\ivooc\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
     "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.essentials\\1.5.3.2\\xamarin.essentials.1.5.3.2.nupkg.sha512",
     "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.forms\\4.6.0.1141\\xamarin.forms.4.6.0.1141.nupkg.sha512"
   ],

@@ -784,7 +784,7 @@
           "buildTransitive/Xamarin.Forms.targets": {}
         }
       },
-      "ProjetoIntegradorVI.App/1.0.0": {
+      "ProjetoIntegradorVI/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
@@ -792,10 +792,10 @@
           "Xamarin.Forms": "4.6.0.1141"
         },
         "compile": {
-          "bin/placeholder/ProjetoIntegradorVI.App.dll": {}
+          "bin/placeholder/ProjetoIntegradorVI.dll": {}
         },
         "runtime": {
-          "bin/placeholder/ProjetoIntegradorVI.App.dll": {}
+          "bin/placeholder/ProjetoIntegradorVI.dll": {}
         }
       }
     }
@@ -1916,38 +1916,38 @@
         "xamarin.forms.nuspec"
       ]
     },
-    "ProjetoIntegradorVI.App/1.0.0": {
+    "ProjetoIntegradorVI/1.0.0": {
       "type": "project",
-      "path": "../ProjetoIntegradorVI/ProjetoIntegradorVI.App.csproj",
-      "msbuildProject": "../ProjetoIntegradorVI/ProjetoIntegradorVI.App.csproj"
+      "path": "../ProjetoIntegradorVI/ProjetoIntegradorVI.csproj",
+      "msbuildProject": "../ProjetoIntegradorVI/ProjetoIntegradorVI.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "MonoAndroid,Version=v9.0": [
-      "ProjetoIntegradorVI.App >= 1.0.0",
+      "ProjetoIntegradorVI >= 1.0.0",
       "Xamarin.Essentials >= 1.5.3.2",
       "Xamarin.Forms >= 4.6.0.1141"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\renna\\.nuget\\packages\\": {},
+    "C:\\Users\\ivooc\\.nuget\\packages\\": {},
     "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\renna\\Source\\Repos\\IvoEngenhariaUnivesp\\projetoIntegradorVI\\ProjetoIntegradorVI.Android\\ProjetoIntegradorVI.Android.csproj",
+      "projectUniqueName": "C:\\Xamarin\\ProjetoIntegradorVI\\ProjetoIntegradorVI.Android\\ProjetoIntegradorVI.Android.csproj",
       "projectName": "ProjetoIntegradorVI.Android",
-      "projectPath": "C:\\Users\\renna\\Source\\Repos\\IvoEngenhariaUnivesp\\projetoIntegradorVI\\ProjetoIntegradorVI.Android\\ProjetoIntegradorVI.Android.csproj",
-      "packagesPath": "C:\\Users\\renna\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\renna\\Source\\Repos\\IvoEngenhariaUnivesp\\projetoIntegradorVI\\ProjetoIntegradorVI.Android\\obj\\",
+      "projectPath": "C:\\Xamarin\\ProjetoIntegradorVI\\ProjetoIntegradorVI.Android\\ProjetoIntegradorVI.Android.csproj",
+      "packagesPath": "C:\\Users\\ivooc\\.nuget\\packages\\",
+      "outputPath": "C:\\Xamarin\\ProjetoIntegradorVI\\ProjetoIntegradorVI.Android\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\renna\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ivooc\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
@@ -1961,8 +1961,8 @@
       "frameworks": {
         "monoandroid90": {
           "projectReferences": {
-            "C:\\Users\\renna\\Source\\Repos\\IvoEngenhariaUnivesp\\projetoIntegradorVI\\ProjetoIntegradorVI\\ProjetoIntegradorVI.App.csproj": {
-              "projectPath": "C:\\Users\\renna\\Source\\Repos\\IvoEngenhariaUnivesp\\projetoIntegradorVI\\ProjetoIntegradorVI\\ProjetoIntegradorVI.App.csproj"
+            "C:\\Xamarin\\ProjetoIntegradorVI\\ProjetoIntegradorVI\\ProjetoIntegradorVI.csproj": {
+              "projectPath": "C:\\Xamarin\\ProjetoIntegradorVI\\ProjetoIntegradorVI\\ProjetoIntegradorVI.csproj"
             }
           }
         }

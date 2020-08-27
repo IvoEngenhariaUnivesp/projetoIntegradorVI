@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "QIEkDBp/12vcmHYkvu1mXOOdsx659KsE7YnQpYHtLUBK8MlHmwkfk20n1XjFXm7oBjdcmjbzDsOjjqpwZwwPIw==",
+  "dgSpecHash": "07L2hrofql+h61eTE04xlKdTT+W1G5YRFyoKR4BEFUFXj2NgUgHp/Zk+4fp0+UIQ26Wk2x1b6OkK1z6Ab2nrLA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\renna\\Source\\Repos\\IvoEngenhariaUnivesp\\projetoIntegradorVI\\ProjetoIntegradorVI.Android\\ProjetoIntegradorVI.Android.csproj",
+  "projectFilePath": "C:\\Xamarin\\ProjetoIntegradorVI\\ProjetoIntegradorVI.Android\\ProjetoIntegradorVI.Android.csproj",
   "expectedPackageFiles": [
     "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.android.arch.core.common\\1.1.1.3\\xamarin.android.arch.core.common.1.1.1.3.nupkg.sha512",
     "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.android.arch.core.runtime\\1.1.1.3\\xamarin.android.arch.core.runtime.1.1.1.3.nupkg.sha512",
