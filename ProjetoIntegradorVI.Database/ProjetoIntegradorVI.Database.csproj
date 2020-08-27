@@ -64,10 +64,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataSchema.cs">
+      <DependentUpon>DataSchema.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSchema.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSchema.xsd</DependentUpon>
+    </Compile>
     <Compile Include="FirebaseConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="DataSchema.xsc">
+      <DependentUpon>DataSchema.xsd</DependentUpon>
+    </None>
+    <None Include="DataSchema.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSchema.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSchema.xss">
+      <DependentUpon>DataSchema.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
