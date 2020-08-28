@@ -2,22 +2,38 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ProjetoIntegradorVI.View.Login">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="primary">#3ec3d5</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout Spacing="50" Padding="20">
+            <Image Source="logo02.svg" WidthRequest="150" HeightRequest="150" />
             <Label Text="BEM VINDO!" FontSize="Title" HorizontalOptions="CenterAndExpand"/>
             
             <StackLayout>
                 <Label Text="Usuário"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+                VerticalOptions="StartAndExpand" 
+                HorizontalOptions="StartAndExpand" FontSize="Medium" />
                 <Entry x:Name="user" Placeholder="Digite seu Usuário"/>
-            </StackLayout>
-            <StackLayout>
+            
                 <Label Text="Senha"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+                VerticalOptions="StartAndExpand" 
+                HorizontalOptions="StartAndExpand" FontSize="Medium" />
                 <Entry IsPassword="True" Keyboard="Numeric" x:Name="senha" Placeholder="******"/>
+                
+                <Button HeightRequest="50" 
+                         TextColor="White" 
+                         Text="Login"  
+                         BackgroundColor="{StaticResource primary}"
+                         HorizontalOptions="FillAndExpand"/>
+
+                <Label  Text="Forgot password" 
+                        HorizontalOptions="Center" 
+                        TextColor="{StaticResource primary}"/>
             </StackLayout>
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
