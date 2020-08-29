@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjetoIntegradorVI", "Proj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjetoIntegradorVI.Database", "ProjetoIntegradorVI.Database\ProjetoIntegradorVI.Database.csproj", "{28953633-3657-4D83-86BB-C7FF9CCE0B0C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseConsoleTest", "ConsoleApp1\DatabaseConsoleTest.csproj", "{9CEE56D0-C55D-4361-91D4-FFE3D9DF709E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseConsoleTest", "DatabaseConsoleTest\DatabaseConsoleTest.csproj", "{9CEE56D0-C55D-4361-91D4-FFE3D9DF709E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
