@@ -10,8 +10,13 @@ using System.Threading;
 
 namespace ProjetoIntegradorVI.Database
 {
-    public class FirebaseConfig
+    public class FirebaseConfig<T>
     {
+        private IFirebaseClient _client;
+
+        /// <summary>
+        /// Configura a Instância do banco
+        /// </summary>
         private static IFirebaseConfig GetConfiguration()
         {
             return new FireSharp.Config.FirebaseConfig
@@ -21,23 +26,56 @@ namespace ProjetoIntegradorVI.Database
             };
         }
 
-        public static IFirebaseClient GetInstanceConnection()
+
+        /// <summary>
+        /// Abre a conexão instanciando a configuração no client do Firebase
+        /// </summary>
+        private void OpenConnection()
         {
-            IFirebaseConfig config = GetConfiguration();
-            IFirebaseClient client;
+            var config = GetConfiguration();
             try
             {
-                client = new FirebaseClient(config);
+                _client = new FirebaseClient(config);
 
-                if (client == null)
+                if (_client == null)
                     throw new Exception("Conexão Rejeitada");
             }
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
+        }
 
-            return client;
+        /// <summary>
+        /// Método de inserção genérico
+        /// </summary>
+        /// <param name="table">Nome da tabela no banco de dados</param>
+        /// <param name="objeto">Objeto a ser inserido</param>
+        /// <param name="objetoID">ID do objeto a ser inserido</param>
+        /// <returns name="T">Retorno do tipo informado na instância do FirebaseConfig</returns>
+        public async Task<T> Insert(string table, T objeto, long objetoID)
+        {
+            // Abre a conexão com o banco
+            OpenConnection();
+
+            try
+            {
+                // Verifica se já existe um objeto com o mesmo ID no banco
+                // O Firebase não faz essa verificação, só edita o objeto direto
+                var objectResponse = await _client.GetAsync(table + "/" + 2);
+
+                // Se o objeto existir, lança exception e retorna null
+                if (objectResponse.Body != "null")
+                    throw new Exception();
+
+                _client.Set(table + "/" + objetoID, objeto);
+            }
+            catch (Exception)
+            {
+                return default(T);
+            }
+
+            return objeto;
         }
     }
 }
