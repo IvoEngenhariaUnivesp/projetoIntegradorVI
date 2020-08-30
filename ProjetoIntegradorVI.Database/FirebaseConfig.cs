@@ -53,7 +53,7 @@ namespace ProjetoIntegradorVI.Database
         /// <param name="objeto">Objeto a ser inserido</param>
         /// <param name="objetoID">ID do objeto a ser inserido</param>
         /// <returns name="T">Retorno do tipo informado na instância do FirebaseConfig</returns>
-        public async Task<T> Insert(string table, T objeto, long objetoID)
+        public async Task<T> InsertAsync(string table, T objeto, long objetoID)
         {
             // Abre a conexão com o banco
             OpenConnection();
@@ -62,7 +62,7 @@ namespace ProjetoIntegradorVI.Database
             {
                 // Verifica se já existe um objeto com o mesmo ID no banco
                 // O Firebase não faz essa verificação, só edita o objeto direto
-                var objectResponse = await _client.GetAsync(table + "/" + 2);
+                var objectResponse = await _client.GetAsync(table + "/" + objetoID);
 
                 // Se o objeto existir, lança exception e retorna null
                 if (objectResponse.Body != "null")
@@ -77,5 +77,75 @@ namespace ProjetoIntegradorVI.Database
 
             return objeto;
         }
+
+        /// <summary>
+        /// Método de edição genérico
+        /// </summary>
+        /// <param name="table">Nome da tabela no banco de dados</param>
+        /// <param name="objeto">Objeto a ser editado</param>
+        /// <param name="objetoID">ID do objeto a ser editado</param>
+        /// <returns name="T">Retorno do tipo informado na instância do FirebaseConfig</returns>
+        public async Task<T> UpdateAsync(string table, T objeto, long objetoID)
+        {
+            // Abre a conexão com o banco
+            OpenConnection();
+
+            try
+            {
+                // Verifica se já existe um objeto com o mesmo ID no banco
+                // O Firebase não faz essa verificação, só edita o objeto direto
+                var objectResponse = await _client.GetAsync(table + "/" + objetoID);
+
+                // Se o objeto não existir, lança exception e retorna null
+                if (objectResponse.Body == "null")
+                    throw new Exception();
+
+                // Edita o objeto no banco
+                _client.Set(table + "/" + objetoID, objeto);
+            }
+            catch (Exception)
+            {
+                // Se tiver errro, retorna null
+                return default(T);
+            }
+
+            // Se não houver problemas, retorna o objeto editado
+            return objeto;
+        }
+
+        /// <summary>
+        /// Método de exclusão genérico
+        /// </summary>
+        /// <param name="table">Nome da tabela no banco de dados</param>
+        /// <param name="objetoID">ID do objeto a ser excluido</param>
+        /// <returns name="bool">Retorno do tipo informado na instância do FirebaseConfig</returns>
+        public async Task<bool> DeleteAsync(string table, long objetoID)
+        {
+            // Abre a conexão com o banco
+            OpenConnection();
+
+            try
+            {
+                // Verifica se já existe um objeto com o mesmo ID no banco
+                // O Firebase não faz essa verificação, só edita o objeto direto
+                var objectResponse = await _client.GetAsync(table + "/" + 1);
+
+                // Se o objeto não existir, lança exception e retorna null
+                if (objectResponse.Body == "null")
+                    throw new Exception();
+
+                // Edita o objeto no banco
+                await _client.DeleteAsync(table + "/" + objetoID);
+            }
+            catch (Exception)
+            {
+                // Se tiver errro, retorna null
+                return false;
+            }
+
+            // Se não houver problemas, retorna o objeto editado
+            return true;
+        }
+
     }
 }

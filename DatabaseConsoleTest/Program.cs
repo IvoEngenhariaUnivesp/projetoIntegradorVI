@@ -28,7 +28,7 @@ namespace DatabaseConsoleTest
 
             var client = new FirebaseConfig<Usuario>();
 
-            var retornoUsuario = await client.Insert("Usuarios", usr, usr.ID);
+            var retornoUsuario = await client.DeleteAsync("Usuarios", usr.ID);
 
             Console.ReadKey();
         }
