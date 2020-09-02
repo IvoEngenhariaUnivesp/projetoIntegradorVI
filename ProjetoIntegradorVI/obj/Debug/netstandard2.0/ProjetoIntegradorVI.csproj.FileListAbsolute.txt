@@ -27,3 +27,4 @@ C:\Xamarin\ProjetoIntegradorVI\ProjetoIntegradorVI\obj\Debug\netstandard2.0\Xaml
 C:\Xamarin\ProjetoIntegradorVI\ProjetoIntegradorVI\obj\Debug\netstandard2.0\ProjetoIntegradorVI.dll
 C:\Xamarin\ProjetoIntegradorVI\ProjetoIntegradorVI\obj\Debug\netstandard2.0\ref\ProjetoIntegradorVI.dll
 C:\Xamarin\ProjetoIntegradorVI\ProjetoIntegradorVI\obj\Debug\netstandard2.0\ProjetoIntegradorVI.pdb
+C:\Xamarin\ProjetoIntegradorVI\ProjetoIntegradorVI\obj\Debug\netstandard2.0\View\CadastroUsuario.xaml.g.cs

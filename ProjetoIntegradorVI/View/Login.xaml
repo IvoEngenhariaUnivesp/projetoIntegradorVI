@@ -32,6 +32,9 @@
                 <Label  Text="Forgot password" 
                         HorizontalOptions="Center" 
                         TextColor="{StaticResource primary}"/>
+                
+                <Button Text="Cadastre-se Aqui"
+                        Clicked="Button_Clicked"/>
             </StackLayout>
             
         </StackLayout>

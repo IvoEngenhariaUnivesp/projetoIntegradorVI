@@ -16,12 +16,16 @@ namespace ProjetoIntegradorVI.View
         public Login()
         {
             InitializeComponent();
-            Usuario usuario = new Usuario();
-            //teste.Text = usuario.Nome;
         }
 
         public void Teste()
         {
+            new NavigationPage(new CadastroUsuario());
+        }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            Teste();
         }
     }
 }
