@@ -34,7 +34,7 @@
                         TextColor="{StaticResource primary}"/>
                 
                 <Button Text="Cadastre-se Aqui"
-                        Clicked="Button_Clicked"/>
+                        Command="{Binding ResultCommand}"/>
             </StackLayout>
             
         </StackLayout>

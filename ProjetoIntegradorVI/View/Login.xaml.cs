@@ -1,4 +1,5 @@
 ﻿using ProjetoIntegradorVI.Model;
+using ProjetoIntegradorVI.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,16 +17,8 @@ namespace ProjetoIntegradorVI.View
         public Login()
         {
             InitializeComponent();
+            BindingContext = new LoginViewModel();
         }
 
-        public void Teste()
-        {
-            new NavigationPage(new CadastroUsuario());
-        }
-
-        private void Button_Clicked(object sender, EventArgs e)
-        {
-            Teste();
-        }
     }
 }

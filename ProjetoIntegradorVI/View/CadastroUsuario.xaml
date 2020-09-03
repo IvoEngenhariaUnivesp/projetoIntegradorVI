@@ -11,14 +11,23 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Spacing="50" Padding="20">
-                <Image Source="logo02.svg" WidthRequest="150" HeightRequest="150" />
-                <Label Text="BEM VINDO!" FontSize="Title" HorizontalOptions="CenterAndExpand"/>
+                <Label Text="Cadastrar" FontSize="Title" HorizontalOptions="CenterAndExpand"/>
 
                 <StackLayout>
-                    <Label Text="Usuário"
-                VerticalOptions="StartAndExpand" 
-                HorizontalOptions="StartAndExpand" FontSize="Medium" />
-                    <Entry x:Name="user" Placeholder="Digite seu Usuário"/>
+                    <Label Text="Nome"
+                    VerticalOptions="StartAndExpand" 
+                    HorizontalOptions="StartAndExpand" FontSize="Medium" />
+                    <Entry x:Name="nome" Placeholder="Digite seu nome"/>
+
+                    <Label Text="E-mail"
+                    VerticalOptions="StartAndExpand" 
+                    HorizontalOptions="StartAndExpand" FontSize="Medium" />
+                    <Entry Keyboard="Email" x:Name="email" Placeholder="Digite seu e-mail"/>
+
+                    <Label Text="Celular"
+                    VerticalOptions="StartAndExpand" 
+                    HorizontalOptions="StartAndExpand" FontSize="Medium" />
+                    <Entry x:Name="fone" Placeholder="Digite seu celular"/>
 
                     <Label Text="Senha"
                 VerticalOptions="StartAndExpand" 
@@ -27,13 +36,10 @@
 
                     <Button HeightRequest="50" 
                          TextColor="White" 
-                         Text="Login"  
+                         Text="Cadastrar"  
                          BackgroundColor="{StaticResource primary}"
                          HorizontalOptions="FillAndExpand"/>
 
-                    <Label  Text="Forgot password" 
-                        HorizontalOptions="Center" 
-                        TextColor="{StaticResource primary}"/>
                 </StackLayout>
 
             </StackLayout>
