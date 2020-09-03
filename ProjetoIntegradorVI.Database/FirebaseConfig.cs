@@ -1,16 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using FireSharp.Interfaces;
-using FireSharp.Config;
 using FireSharp;
-using System.Threading;
+using ProjetoIntegradorVI.Model.Common;
+using System.Collections;
+using System.Collections.Generic;
+using FireSharp.Response;
+using System.Net;
+using System.Linq;
 
 namespace ProjetoIntegradorVI.Database
 {
-    public class FirebaseConfig<T>
+    public class FirebaseConfig<T> where T : EntidadeBase
     {
         private IFirebaseClient _client;
 
@@ -53,26 +54,47 @@ namespace ProjetoIntegradorVI.Database
         /// <param name="objeto">Objeto a ser inserido</param>
         /// <param name="objetoID">ID do objeto a ser inserido</param>
         /// <returns name="T">Retorno do tipo informado na instância do FirebaseConfig</returns>
-        public async Task<T> InsertAsync(string table, T objeto, long objetoID)
+        public async Task<T> InsertAsync(string table, T objeto)
         {
             // Abre a conexão com o banco
             OpenConnection();
 
-            try
+            // Pega o último registro da tabela informada
+            var ultimoRegistro = await _client.GetAsync("Usuarios", QueryBuilder.New().OrderBy("ID").LimitToLast(1));
+
+            // Instancia o ID
+            long ID = 0;
+
+            // Se não existir nenhum objeto, o ID é 1, se não, pega o ID e adiciona +1
+            if (ultimoRegistro.Body == "null")
+                ID = 1;
+            else if (ultimoRegistro.Body.Contains("[null"))
+                ID = ultimoRegistro.ResultAs<T[]>()[1].ID.Value + 1;
+
+            // Verifica se já existe um objeto com o mesmo ID no banco
+            // O Firebase não faz essa verificação, só edita o objeto direto
+            var objectResponse = await _client.GetAsync(table + "/" + ID);
+
+            // Se não existe um objeto com o ID, insere no banco
+            if (objectResponse.Body == "null")
             {
-                // Verifica se já existe um objeto com o mesmo ID no banco
-                // O Firebase não faz essa verificação, só edita o objeto direto
-                var objectResponse = await _client.GetAsync(table + "/" + objetoID);
-
-                // Se o objeto existir, lança exception e retorna null
-                if (objectResponse.Body != "null")
-                    throw new Exception();
-
-                _client.Set(table + "/" + objetoID, objeto);
+                objeto.ID = ID;
+                _client.Set(table + "/" + ID, objeto);
             }
-            catch (Exception)
+            else
             {
-                return default(T);
+                // Para fins de concorrência, se o objeto existir, incrementa o ID e faz uma nova busca
+                while (true)
+                {
+                    ID++;
+                    objectResponse = await _client.GetAsync(table + "/" + ID);
+                    if (objectResponse.Body == "null")
+                    {
+                        objeto.ID = ID;
+                        _client.Set(table + "/" + ID, objeto);
+                        break;
+                    }
+                }
             }
 
             return objeto;
@@ -128,7 +150,7 @@ namespace ProjetoIntegradorVI.Database
             {
                 // Verifica se já existe um objeto com o mesmo ID no banco
                 // O Firebase não faz essa verificação, só edita o objeto direto
-                var objectResponse = await _client.GetAsync(table + "/" + 1);
+                var objectResponse = await _client.GetAsync(table + "/" + objetoID);
 
                 // Se o objeto não existir, lança exception e retorna null
                 if (objectResponse.Body == "null")
@@ -145,6 +167,66 @@ namespace ProjetoIntegradorVI.Database
 
             // Se não houver problemas, retorna o objeto editado
             return true;
+        }
+
+        /// <summary>
+        /// Método de retorno genérico
+        /// </summary>
+        /// <param name="table">Tabela do objeto a ser buscado</param>
+        /// <param name="objetoID"> ID do objeto a ser buscado</param>
+        /// <returns></returns>
+        public async Task<T> GetAsync(string table, long objetoID)
+        {
+            // Abre a conexão com o banco
+            OpenConnection();
+
+            try
+            {
+                // Verifica se já existe um objeto com o mesmo ID no banco
+                // O Firebase não faz essa verificação, só edita o objeto direto
+                var objectResponse = await _client.GetAsync(table + "/" + objetoID);
+
+                // Se o objeto não existir, lança exception e retorna null
+                if (objectResponse.Body == "null")
+                    throw new Exception();
+
+                return objectResponse.ResultAs<T>();
+            }
+            catch (Exception)
+            {
+                // Se tiver errro, retorna null
+                return default(T);
+            }
+        }
+
+        public async Task<List<T>> GetListAsync(string table, QueryBuilder queryBuilder = null)
+        {
+            // Abre a conexão com o banco
+            OpenConnection();
+
+            try
+            {
+                FirebaseResponse objectResponse = new FirebaseResponse("null", HttpStatusCode.OK);
+                // Verifica se já existe um objeto com o mesmo ID no banco
+                // O Firebase não faz essa verificação, só edita o objeto direto
+                if (queryBuilder != null)
+                    objectResponse = await _client.GetAsync(table, queryBuilder);
+                else
+                    objectResponse = await _client.GetAsync(table);
+
+                // Se o objeto não existir, lança exception e retorna null
+                if (objectResponse.Body == "null")
+                    throw new Exception();
+
+                var retorno = objectResponse.ResultAs<List<T>>().Where(x => x != null).ToList();
+
+                return retorno;
+            }
+            catch (Exception)
+            {
+                // Se tiver errro, retorna null
+                return default(List<T>);
+            }
         }
 
     }

@@ -1,4 +1,5 @@
-﻿using ProjetoIntegradorVI.Database;
+﻿using FireSharp;
+using ProjetoIntegradorVI.Database;
 using ProjetoIntegradorVI.Model;
 using System;
 using System.Collections.Generic;
@@ -19,16 +20,18 @@ namespace DatabaseConsoleTest
         {
             Usuario usr = new Usuario
             {
-                ID = 1,
-                Nome = "Ivo",
-                Celular = "958576549",
-                Email = "rennancfra@gmail.com",
-                Senha = "Rennan-jinkk12"
+                ID = null,
+                Nome = "Nome",
+                Celular = "11922222222",
+                Email = "email",
+                Senha = "senha"
             };
 
             var client = new FirebaseConfig<Usuario>();
 
-            var retornoUsuario = await client.DeleteAsync("Usuarios", usr.ID);
+            //var a = await client.GetListAsync("Usuarios");
+
+            //await client.InsertAsync("Usuarios", usr);
 
             Console.ReadKey();
         }

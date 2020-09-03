@@ -6,6 +6,6 @@ namespace ProjetoIntegradorVI.Model.Common
 {
     public class EntidadeBase
     {
-        public long ID { get; set; }
+        public long? ID { get; set; }
     }
 }
