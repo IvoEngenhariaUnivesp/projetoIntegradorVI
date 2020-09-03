@@ -38,7 +38,8 @@
                          TextColor="White" 
                          Text="Cadastrar"  
                          BackgroundColor="{StaticResource primary}"
-                         HorizontalOptions="FillAndExpand"/>
+                         HorizontalOptions="FillAndExpand"
+                         Clicked="Button_Clicked"/>
 
                 </StackLayout>
 

@@ -7,8 +7,9 @@ namespace ProjetoIntegradorVI.Model
 {
     public class EventoItemUsuario : EntidadeBase
     {
+        public long EventoItemID { get; set; }
         public long EventoID { get; set; }
-        public long ItemID { get; set; }
         public long UsuarioID { get; set; }
+        public double Quantidade { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjetoIntegradorVI.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,14 @@ namespace ProjetoIntegradorVI.View
         public CadastroUsuario()
         {
             InitializeComponent();
+        }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            Usuario usr = new Usuario
+            {
+                Nome = nome.Text
+            };
         }
     }
 }
