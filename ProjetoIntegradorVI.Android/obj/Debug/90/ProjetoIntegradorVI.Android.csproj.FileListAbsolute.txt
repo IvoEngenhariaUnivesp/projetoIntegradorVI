@@ -930,3 +930,4 @@ C:\Xamarin\ProjetoIntegradorVI\ProjetoIntegradorVI.Android\obj\Debug\90\stamp\_G
 C:\Xamarin\ProjetoIntegradorVI\ProjetoIntegradorVI.Android\obj\Debug\90\stamp\_ResolveLibraryProjectImports.stamp
 C:\Xamarin\ProjetoIntegradorVI\ProjetoIntegradorVI.Android\obj\Debug\90\res\drawable\logo01.jpg
 C:\Xamarin\ProjetoIntegradorVI\ProjetoIntegradorVI.Android\obj\Debug\90\res\drawable\logo02.svg
+C:\Xamarin\ProjetoIntegradorVI\ProjetoIntegradorVI.Android\obj\Debug\90\res\drawable\logooficial.png

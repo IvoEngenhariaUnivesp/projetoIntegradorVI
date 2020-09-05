@@ -22,22 +22,22 @@
                     <Label Text="E-mail"
                     VerticalOptions="StartAndExpand" 
                     HorizontalOptions="StartAndExpand" FontSize="Medium" />
-                    <Entry Keyboard="Email" x:Name="email" Text="{Binding nome}" Placeholder="Digite seu e-mail"/>
+                    <Entry Keyboard="Email" x:Name="email" Text="{Binding email}" Placeholder="Digite seu e-mail"/>
 
                     <Label Text="Celular"
                     VerticalOptions="StartAndExpand" 
                     HorizontalOptions="StartAndExpand" FontSize="Medium" />
-                    <Entry x:Name="fone" Placeholder="Digite seu celular"/>
+                    <Entry x:Name="fone" Text="{Binding cell}" Placeholder="Digite seu celular"/>
 
                     <Label Text="Senha"
                     VerticalOptions="StartAndExpand" 
                     HorizontalOptions="StartAndExpand" FontSize="Medium" />
-                    <Entry IsPassword="True" Keyboard="Numeric" x:Name="senha" Placeholder="******"/>
+                    <Entry IsPassword="True" Keyboard="Numeric" x:Name="senha" Text="{Binding senha}" Placeholder="******"/>
 
                     <Label Text="Confirmar Senha"
                     VerticalOptions="StartAndExpand" 
                     HorizontalOptions="StartAndExpand" FontSize="Medium" />
-                    <Entry IsPassword="True" Keyboard="Numeric" x:Name="confirmarSenha" Placeholder="******"/>
+                    <Entry IsPassword="True" Keyboard="Numeric" x:Name="confirmarSenha" Text="{Binding confirmaSenha}" Placeholder="******"/>
 
                     <Button HeightRequest="50" 
                          TextColor="White" 

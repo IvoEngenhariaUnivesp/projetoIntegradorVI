@@ -9,7 +9,7 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout Spacing="50" Padding="20">
-            <Image Source="logo02.svg" WidthRequest="150" HeightRequest="150" />
+            <Image Source="LogoOficial.png" WidthRequest="150" HeightRequest="150" />
             <Label Text="BEM VINDO!" FontSize="Title" HorizontalOptions="CenterAndExpand"/>
             
             <StackLayout>
