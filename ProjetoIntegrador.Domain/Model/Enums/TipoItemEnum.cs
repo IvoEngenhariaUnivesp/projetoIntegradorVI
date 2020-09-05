@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ProjetoIntegradorVI.Model.Enums
+namespace ProjetoIntegradorVI.Domain.Model.Enums
 {
     public enum TipoItemEnum
     {

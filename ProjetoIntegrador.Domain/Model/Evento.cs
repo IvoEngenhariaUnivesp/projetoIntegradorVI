@@ -1,13 +1,14 @@
-﻿using ProjetoIntegradorVI.Model.Common;
+﻿using ProjetoIntegradorVI.Domain.Model.Common;
 using System;
 
-namespace ProjetoIntegradorVI.Model
+namespace ProjetoIntegradorVI.Domain.Model
 {
     public class Evento : EntidadeBase
     {
         public long UsuarioCriadorID { get; set; }
         public string ChaveEvento { get; set; }
         public string Nome { get; set; }
+        public string Descricao { get; set; }
         public DateTime DataHoraInicio { get; set; }
         public DateTime DataHoraTermino { get; set; }
         public string Logradouro { get; set; }

@@ -1,10 +1,10 @@
-﻿using ProjetoIntegradorVI.Model.Common;
-using ProjetoIntegradorVI.Model.Enums;
+﻿using ProjetoIntegradorVI.Domain.Model.Common;
+using ProjetoIntegradorVI.Domain.Model.Enums;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace ProjetoIntegradorVI.Model
+namespace ProjetoIntegradorVI.Domain.Model
 {
     public class EventoItem : EntidadeBase
     {

@@ -783,6 +783,8 @@ namespace ProjetoIntegradorVI.Database {
             
             private global::System.Data.DataColumn columnNome;
             
+            private global::System.Data.DataColumn columnDescricao;
+            
             private global::System.Data.DataColumn columnDataHoraInicio;
             
             private global::System.Data.DataColumn columnDataHoraTermino;
@@ -867,6 +869,14 @@ namespace ProjetoIntegradorVI.Database {
             public global::System.Data.DataColumn NomeColumn {
                 get {
                     return this.columnNome;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn DescricaoColumn {
+                get {
+                    return this.columnDescricao;
                 }
             }
             
@@ -995,13 +1005,30 @@ namespace ProjetoIntegradorVI.Database {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public EventoRow AddEventoRow(string ID, string UsuarioCriadorID, string ChaveEvento, string Nome, string DataHoraInicio, string DataHoraTermino, string Logradouro, string Bairro, string Estado, string Cidade, string CEP, string Numero, string Complemento, string Latitude, string Longitude) {
+            public EventoRow AddEventoRow(
+                        string ID, 
+                        string UsuarioCriadorID, 
+                        string ChaveEvento, 
+                        string Nome, 
+                        string Descricao, 
+                        string DataHoraInicio, 
+                        string DataHoraTermino, 
+                        string Logradouro, 
+                        string Bairro, 
+                        string Estado, 
+                        string Cidade, 
+                        string CEP, 
+                        string Numero, 
+                        string Complemento, 
+                        string Latitude, 
+                        string Longitude) {
                 EventoRow rowEventoRow = ((EventoRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ID,
                         UsuarioCriadorID,
                         ChaveEvento,
                         Nome,
+                        Descricao,
                         DataHoraInicio,
                         DataHoraTermino,
                         Logradouro,
@@ -1046,6 +1073,7 @@ namespace ProjetoIntegradorVI.Database {
                 this.columnUsuarioCriadorID = base.Columns["UsuarioCriadorID"];
                 this.columnChaveEvento = base.Columns["ChaveEvento"];
                 this.columnNome = base.Columns["Nome"];
+                this.columnDescricao = base.Columns["Descricao"];
                 this.columnDataHoraInicio = base.Columns["DataHoraInicio"];
                 this.columnDataHoraTermino = base.Columns["DataHoraTermino"];
                 this.columnLogradouro = base.Columns["Logradouro"];
@@ -1070,6 +1098,8 @@ namespace ProjetoIntegradorVI.Database {
                 base.Columns.Add(this.columnChaveEvento);
                 this.columnNome = new global::System.Data.DataColumn("Nome", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNome);
+                this.columnDescricao = new global::System.Data.DataColumn("Descricao", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDescricao);
                 this.columnDataHoraInicio = new global::System.Data.DataColumn("DataHoraInicio", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDataHoraInicio);
                 this.columnDataHoraTermino = new global::System.Data.DataColumn("DataHoraTermino", typeof(string), null, global::System.Data.MappingType.Element);
@@ -1100,6 +1130,7 @@ namespace ProjetoIntegradorVI.Database {
                 this.columnUsuarioCriadorID.Caption = "DataColumn1";
                 this.columnChaveEvento.Caption = "DataColumn1";
                 this.columnNome.Caption = "DataColumn1";
+                this.columnDescricao.Caption = "DataColumn1";
                 this.columnDataHoraInicio.Caption = "DataColumn1";
                 this.columnDataHoraTermino.Caption = "DataColumn1";
                 this.columnLogradouro.Caption = "DataColumn1";
@@ -2397,6 +2428,22 @@ namespace ProjetoIntegradorVI.Database {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Descricao {
+                get {
+                    try {
+                        return ((string)(this[this.tableEvento.DescricaoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Descricao\' in table \'Evento\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableEvento.DescricaoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string DataHoraInicio {
                 get {
                     try {
@@ -2605,6 +2652,18 @@ namespace ProjetoIntegradorVI.Database {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetNomeNull() {
                 this[this.tableEvento.NomeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsDescricaoNull() {
+                return this.IsNull(this.tableEvento.DescricaoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetDescricaoNull() {
+                this[this.tableEvento.DescricaoColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

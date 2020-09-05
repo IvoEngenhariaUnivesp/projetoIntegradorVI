@@ -1,6 +1,6 @@
 ﻿using FireSharp;
 using ProjetoIntegradorVI.Database;
-using ProjetoIntegradorVI.Model;
+using ProjetoIntegradorVI.Domain.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,7 +31,7 @@ namespace DatabaseConsoleTest
 
             //var a = await client.GetListAsync("Usuarios");
 
-            //await client.InsertAsync("Usuarios", usr);
+            await client.InsertAsync("Usuarios", usr);
 
             Console.ReadKey();
         }

@@ -90,9 +90,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ProjetoIntegradorVI\ProjetoIntegradorVI.csproj">
-      <Project>{a4ea3090-f3e0-4f3a-a0b2-aab34f6cf8b4}</Project>
-      <Name>ProjetoIntegradorVI</Name>
+    <ProjectReference Include="..\ProjetoIntegrador.Domain\ProjetoIntegrador.Domain.csproj">
+      <Project>{77b4aad0-1725-44c0-9438-ad5946672f47}</Project>
+      <Name>ProjetoIntegrador.Domain</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

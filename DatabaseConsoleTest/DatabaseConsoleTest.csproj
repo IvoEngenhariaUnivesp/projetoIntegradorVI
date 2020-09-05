@@ -74,6 +74,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ProjetoIntegrador.Domain\ProjetoIntegrador.Domain.csproj">
+      <Project>{77B4AAD0-1725-44C0-9438-AD5946672F47}</Project>
+      <Name>ProjetoIntegrador.Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ProjetoIntegradorVI.Database\ProjetoIntegradorVI.Database.csproj">
       <Project>{28953633-3657-4d83-86bb-c7ff9cce0b0c}</Project>
       <Name>ProjetoIntegradorVI.Database</Name>

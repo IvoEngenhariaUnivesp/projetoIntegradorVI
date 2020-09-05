@@ -1,7 +1,7 @@
-﻿using ProjetoIntegradorVI.Model.Common;
-using ProjetoIntegradorVI.Model.Enums;
+﻿using ProjetoIntegradorVI.Domain.Model.Common;
+using ProjetoIntegradorVI.Domain.Model.Enums;
 
-namespace ProjetoIntegradorVI.Model
+namespace ProjetoIntegradorVI.Domain.Model
 {
     public class EventoUsuario : EntidadeBase
     {

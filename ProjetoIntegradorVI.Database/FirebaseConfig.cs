@@ -2,12 +2,12 @@
 using System.Threading.Tasks;
 using FireSharp.Interfaces;
 using FireSharp;
-using ProjetoIntegradorVI.Model.Common;
 using System.Collections;
 using System.Collections.Generic;
 using FireSharp.Response;
 using System.Net;
 using System.Linq;
+using ProjetoIntegradorVI.Domain.Model.Common;
 
 namespace ProjetoIntegradorVI.Database
 {
