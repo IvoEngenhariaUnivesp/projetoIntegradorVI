@@ -199,6 +199,27 @@ namespace ProjetoIntegradorVI.Database
             }
         }
 
+        public async Task<T> GetAsyncLogin(string table, T objeto, string emailUser, string senhaUser)
+        {
+            OpenConnection();
+
+            try
+            {
+                //var objectResponse = await _client.GetAsync("Usuarios", objeto);
+                var objectResponse = await _client.Get(table + "/" + Email + "/" + Senha);
+
+                if (objectResponse.Body == "null")
+                    throw new Exception();
+
+                return objectResponse.ResultAs<T>();
+            }
+            catch (Exception)
+            {
+                return default(T);
+            }
+
+        }
+
         public async Task<List<T>> GetListAsync(string table, QueryBuilder queryBuilder = null)
         {
             // Abre a conexão com o banco

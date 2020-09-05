@@ -27,7 +27,7 @@
                     <Label Text="Celular"
                     VerticalOptions="StartAndExpand" 
                     HorizontalOptions="StartAndExpand" FontSize="Medium" />
-                    <Entry x:Name="fone" Text="{Binding cell}" Placeholder="Digite seu celular"/>
+                    <Entry Keyboard="Telephone" x:Name="fone" Text="{Binding cell}" Placeholder="Digite seu celular"/>
 
                     <Label Text="Senha"
                     VerticalOptions="StartAndExpand" 
@@ -44,7 +44,7 @@
                          Text="Cadastrar"  
                          BackgroundColor="{StaticResource primary}"
                          HorizontalOptions="FillAndExpand"
-                         Clicked="Button_Clicked"/>
+                         Command="{Binding ResultadoCommand}"/>
 
                 </StackLayout>
 

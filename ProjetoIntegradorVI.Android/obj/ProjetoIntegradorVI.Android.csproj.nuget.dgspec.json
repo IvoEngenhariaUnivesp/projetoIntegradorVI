@@ -4,6 +4,16 @@
     "C:\\Xamarin\\ProjetoIntegradorVI\\ProjetoIntegradorVI.Android\\ProjetoIntegradorVI.Android.csproj": {}
   },
   "projects": {
+    "C:\\Xamarin\\ProjetoIntegradorVI\\ProjetoIntegrador.Domain\\ProjetoIntegrador.Domain.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Xamarin\\ProjetoIntegradorVI\\ProjetoIntegrador.Domain\\ProjetoIntegrador.Domain.csproj",
+        "projectName": "ProjetoIntegrador.Domain",
+        "projectPath": "C:\\Xamarin\\ProjetoIntegradorVI\\ProjetoIntegrador.Domain\\ProjetoIntegrador.Domain.csproj"
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
     "C:\\Xamarin\\ProjetoIntegradorVI\\ProjetoIntegradorVI.Android\\ProjetoIntegradorVI.Android.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -32,6 +42,9 @@
         "frameworks": {
           "monoandroid90": {
             "projectReferences": {
+              "C:\\Xamarin\\ProjetoIntegradorVI\\ProjetoIntegradorVI.Database\\ProjetoIntegradorVI.Database.csproj": {
+                "projectPath": "C:\\Xamarin\\ProjetoIntegradorVI\\ProjetoIntegradorVI.Database\\ProjetoIntegradorVI.Database.csproj"
+              },
               "C:\\Xamarin\\ProjetoIntegradorVI\\ProjetoIntegradorVI\\ProjetoIntegradorVI.csproj": {
                 "projectPath": "C:\\Xamarin\\ProjetoIntegradorVI\\ProjetoIntegradorVI\\ProjetoIntegradorVI.csproj"
               }
@@ -52,6 +65,25 @@
             }
           }
         }
+      }
+    },
+    "C:\\Xamarin\\ProjetoIntegradorVI\\ProjetoIntegradorVI.Database\\ProjetoIntegradorVI.Database.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Xamarin\\ProjetoIntegradorVI\\ProjetoIntegradorVI.Database\\ProjetoIntegradorVI.Database.csproj",
+        "projectName": "ProjetoIntegradorVI.Database",
+        "projectPath": "C:\\Xamarin\\ProjetoIntegradorVI\\ProjetoIntegradorVI.Database\\ProjetoIntegradorVI.Database.csproj",
+        "frameworks": {
+          "net472": {
+            "projectReferences": {
+              "C:\\Xamarin\\ProjetoIntegradorVI\\ProjetoIntegrador.Domain\\ProjetoIntegrador.Domain.csproj": {
+                "projectPath": "C:\\Xamarin\\ProjetoIntegradorVI\\ProjetoIntegrador.Domain\\ProjetoIntegrador.Domain.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {}
       }
     },
     "C:\\Xamarin\\ProjetoIntegradorVI\\ProjetoIntegradorVI\\ProjetoIntegradorVI.csproj": {
@@ -81,7 +113,14 @@
         },
         "frameworks": {
           "netstandard2.0": {
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Xamarin\\ProjetoIntegradorVI\\ProjetoIntegrador.Domain\\ProjetoIntegrador.Domain.csproj": {
+                "projectPath": "C:\\Xamarin\\ProjetoIntegradorVI\\ProjetoIntegrador.Domain\\ProjetoIntegrador.Domain.csproj"
+              },
+              "C:\\Xamarin\\ProjetoIntegradorVI\\ProjetoIntegradorVI.Database\\ProjetoIntegradorVI.Database.csproj": {
+                "projectPath": "C:\\Xamarin\\ProjetoIntegradorVI\\ProjetoIntegradorVI.Database\\ProjetoIntegradorVI.Database.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

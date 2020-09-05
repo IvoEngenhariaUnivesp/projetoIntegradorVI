@@ -42,3 +42,5 @@ C:\Xamarin\ProjetoIntegradorVI\ProjetoIntegradorVI.Database\obj\Debug\ProjetoInt
 C:\Xamarin\ProjetoIntegradorVI\ProjetoIntegradorVI.Database\obj\Debug\ProjetoIntegradorVI.Database.csproj.CopyComplete
 C:\Xamarin\ProjetoIntegradorVI\ProjetoIntegradorVI.Database\obj\Debug\ProjetoIntegradorVI.Database.dll
 C:\Xamarin\ProjetoIntegradorVI\ProjetoIntegradorVI.Database\obj\Debug\ProjetoIntegradorVI.Database.pdb
+C:\Xamarin\ProjetoIntegradorVI\ProjetoIntegradorVI.Database\bin\Debug\ProjetoIntegrador.Domain.dll
+C:\Xamarin\ProjetoIntegradorVI\ProjetoIntegradorVI.Database\bin\Debug\ProjetoIntegrador.Domain.pdb

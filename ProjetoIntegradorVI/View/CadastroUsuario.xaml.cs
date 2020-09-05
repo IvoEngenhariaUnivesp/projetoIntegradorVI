@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjetoIntegradorVI.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,11 +15,8 @@ namespace ProjetoIntegradorVI.View
         public CadastroUsuario()
         {
             InitializeComponent();
+            BindingContext = new CadUserViewModel();
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
-        {
-
-        }
     }
 }

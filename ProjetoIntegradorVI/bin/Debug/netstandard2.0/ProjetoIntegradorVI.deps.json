@@ -10,6 +10,8 @@
       "ProjetoIntegradorVI/1.0.0": {
         "dependencies": {
           "NETStandard.Library": "2.0.3",
+          "ProjetoIntegrador.Domain": "1.0.0",
+          "ProjetoIntegradorVI.Database": "1.0.0",
           "Xamarin.Essentials": "1.5.3.2",
           "Xamarin.Forms": "4.6.0.1141"
         },
@@ -57,6 +59,51 @@
             "fileVersion": "4.6.0.555"
           }
         }
+      },
+      "ProjetoIntegrador.Domain/1.0.0": {
+        "runtime": {
+          "ProjetoIntegrador.Domain.dll": {}
+        }
+      },
+      "ProjetoIntegradorVI.Database/1.0.0": {
+        "dependencies": {
+          "ProjetoIntegrador.Domain": "1.0.0"
+        },
+        "runtime": {
+          "ProjetoIntegradorVI.Database.dll": {}
+        }
+      },
+      "FireSharp/2.0.3.0": {
+        "runtime": {
+          "FireSharp.dll": {
+            "assemblyVersion": "2.0.3.0",
+            "fileVersion": "2.0.3.0"
+          }
+        }
+      },
+      "Microsoft.Threading.Tasks/1.0.12.0": {
+        "runtime": {
+          "Microsoft.Threading.Tasks.dll": {
+            "assemblyVersion": "1.0.12.0",
+            "fileVersion": "1.0.168.0"
+          }
+        }
+      },
+      "Newtonsoft.Json/6.0.0.0": {
+        "runtime": {
+          "Newtonsoft.Json.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.4.17603"
+          }
+        }
+      },
+      "Microsoft.Threading.Tasks.Extensions/1.0.12.0": {
+        "runtime": {
+          "Microsoft.Threading.Tasks.Extensions.dll": {
+            "assemblyVersion": "1.0.12.0",
+            "fileVersion": "1.0.168.0"
+          }
+        }
       }
     }
   },
@@ -100,6 +147,36 @@
       "sha512": "sha512-SltuAt48A9qfC7pEo9zdQ5/IExdLkGttVAtv9bZw4IWA1SBbRpR2xbeduvowW9DQ/PjJD9HM7aSzxt0Spkwrkw==",
       "path": "xamarin.forms/4.6.0.1141",
       "hashPath": "xamarin.forms.4.6.0.1141.nupkg.sha512"
+    },
+    "ProjetoIntegrador.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ProjetoIntegradorVI.Database/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "FireSharp/2.0.3.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.Threading.Tasks/1.0.12.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Newtonsoft.Json/6.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.Threading.Tasks.Extensions/1.0.12.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }

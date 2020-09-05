@@ -31,19 +31,25 @@ namespace ProjetoIntegradorVI.ViewModel
 
         public async void EventosUser()
         {
-            Usuario usuario = new Usuario
-            {
-                Email = email,
-                Senha = senha
-            };
+            Usuario usuario = new Usuario();
 
-            var usuarioResponse = await _clientUsuario.InsertAsync("Usuarios", usuario);
+            var getUser = await _clientUsuario.GetAsyncLogin("Usuarios", email, senha);
 
-            if (usuarioResponse != null)
+
+            //{
+            //    Email = email,
+            //    Senha = senha
+            //};
+
+            //var usuarioResponse = await _clientUsuario.InsertAsync("Usuarios", usuario);
+
+            if (getUser != null)
             {
-                App.Current.MainPage.DisplayAlert("Mensagem", "Login Criado e Aceito", "Voltar");
-                //await App.Current.MainPage.Navigation.PushModalAsync(new View.Eventos());
+                // await App.Current.MainPage.DisplayAlert("Mensagem", "Login Criado e Aceito", "Voltar");
+                await App.Current.MainPage.Navigation.PushModalAsync(new View.Eventos());
             }
+            else
+                await App.Current.MainPage.DisplayAlert("Erro", "Erro", "Cancel");
         }
     }
 }

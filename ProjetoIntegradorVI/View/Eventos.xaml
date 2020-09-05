@@ -5,6 +5,7 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Spacing="50" Padding="20">
+                <Label Text="Deu certo o cadastro!"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

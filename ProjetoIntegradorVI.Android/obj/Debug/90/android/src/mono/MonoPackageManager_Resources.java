@@ -4,6 +4,7 @@ public class MonoPackageManager_Resources {
 		/* We need to ensure that "ProjetoIntegradorVI.Android.dll" comes first in this list. */
 		"ProjetoIntegradorVI.Android.dll",
 		"FormsViewGroup.dll",
+		"ProjetoIntegradorVI.Database.dll",
 		"ProjetoIntegradorVI.dll",
 		"Xamarin.Android.Arch.Core.Common.dll",
 		"Xamarin.Android.Arch.Core.Runtime.dll",
@@ -47,6 +48,11 @@ public class MonoPackageManager_Resources {
 		"Xamarin.Forms.Platform.Android.dll",
 		"Xamarin.Forms.Platform.dll",
 		"Xamarin.Forms.Xaml.dll",
+		"ProjetoIntegrador.Domain.dll",
+		"FireSharp.dll",
+		"Microsoft.Threading.Tasks.dll",
+		"Newtonsoft.Json.dll",
+		"Microsoft.Threading.Tasks.Extensions.dll",
 	};
 	public static String[] Dependencies = new String[]{
 	};

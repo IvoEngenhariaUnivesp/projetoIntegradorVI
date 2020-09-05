@@ -1,29 +1,29 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\rennan.fragozo\\Source\\Repos\\projetoIntegradorVI\\ProjetoIntegradorVI\\ProjetoIntegradorVI.csproj": {}
+    "C:\\Xamarin\\ProjetoIntegradorVI\\ProjetoIntegradorVI\\ProjetoIntegradorVI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\rennan.fragozo\\Source\\Repos\\projetoIntegradorVI\\ProjetoIntegrador.Domain\\ProjetoIntegrador.Domain.csproj": {
+    "C:\\Xamarin\\ProjetoIntegradorVI\\ProjetoIntegrador.Domain\\ProjetoIntegrador.Domain.csproj": {
       "restore": {
-        "projectUniqueName": "C:\\Users\\rennan.fragozo\\Source\\Repos\\projetoIntegradorVI\\ProjetoIntegrador.Domain\\ProjetoIntegrador.Domain.csproj",
+        "projectUniqueName": "C:\\Xamarin\\ProjetoIntegradorVI\\ProjetoIntegrador.Domain\\ProjetoIntegrador.Domain.csproj",
         "projectName": "ProjetoIntegrador.Domain",
-        "projectPath": "C:\\Users\\rennan.fragozo\\Source\\Repos\\projetoIntegradorVI\\ProjetoIntegrador.Domain\\ProjetoIntegrador.Domain.csproj"
+        "projectPath": "C:\\Xamarin\\ProjetoIntegradorVI\\ProjetoIntegrador.Domain\\ProjetoIntegrador.Domain.csproj"
       },
       "frameworks": {
         "net472": {}
       }
     },
-    "C:\\Users\\rennan.fragozo\\Source\\Repos\\projetoIntegradorVI\\ProjetoIntegradorVI.Database\\ProjetoIntegradorVI.Database.csproj": {
+    "C:\\Xamarin\\ProjetoIntegradorVI\\ProjetoIntegradorVI.Database\\ProjetoIntegradorVI.Database.csproj": {
       "restore": {
-        "projectUniqueName": "C:\\Users\\rennan.fragozo\\Source\\Repos\\projetoIntegradorVI\\ProjetoIntegradorVI.Database\\ProjetoIntegradorVI.Database.csproj",
+        "projectUniqueName": "C:\\Xamarin\\ProjetoIntegradorVI\\ProjetoIntegradorVI.Database\\ProjetoIntegradorVI.Database.csproj",
         "projectName": "ProjetoIntegradorVI.Database",
-        "projectPath": "C:\\Users\\rennan.fragozo\\Source\\Repos\\projetoIntegradorVI\\ProjetoIntegradorVI.Database\\ProjetoIntegradorVI.Database.csproj",
+        "projectPath": "C:\\Xamarin\\ProjetoIntegradorVI\\ProjetoIntegradorVI.Database\\ProjetoIntegradorVI.Database.csproj",
         "frameworks": {
           "net472": {
             "projectReferences": {
-              "C:\\Users\\rennan.fragozo\\Source\\Repos\\projetoIntegradorVI\\ProjetoIntegrador.Domain\\ProjetoIntegrador.Domain.csproj": {
-                "projectPath": "C:\\Users\\rennan.fragozo\\Source\\Repos\\projetoIntegradorVI\\ProjetoIntegrador.Domain\\ProjetoIntegrador.Domain.csproj"
+              "C:\\Xamarin\\ProjetoIntegradorVI\\ProjetoIntegrador.Domain\\ProjetoIntegrador.Domain.csproj": {
+                "projectPath": "C:\\Xamarin\\ProjetoIntegradorVI\\ProjetoIntegrador.Domain\\ProjetoIntegrador.Domain.csproj"
               }
             }
           }
@@ -33,21 +33,21 @@
         "net472": {}
       }
     },
-    "C:\\Users\\rennan.fragozo\\Source\\Repos\\projetoIntegradorVI\\ProjetoIntegradorVI\\ProjetoIntegradorVI.csproj": {
+    "C:\\Xamarin\\ProjetoIntegradorVI\\ProjetoIntegradorVI\\ProjetoIntegradorVI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\rennan.fragozo\\Source\\Repos\\projetoIntegradorVI\\ProjetoIntegradorVI\\ProjetoIntegradorVI.csproj",
+        "projectUniqueName": "C:\\Xamarin\\ProjetoIntegradorVI\\ProjetoIntegradorVI\\ProjetoIntegradorVI.csproj",
         "projectName": "ProjetoIntegradorVI",
-        "projectPath": "C:\\Users\\rennan.fragozo\\Source\\Repos\\projetoIntegradorVI\\ProjetoIntegradorVI\\ProjetoIntegradorVI.csproj",
-        "packagesPath": "C:\\Users\\rennan.fragozo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\rennan.fragozo\\Source\\Repos\\projetoIntegradorVI\\ProjetoIntegradorVI\\obj\\",
+        "projectPath": "C:\\Xamarin\\ProjetoIntegradorVI\\ProjetoIntegradorVI\\ProjetoIntegradorVI.csproj",
+        "packagesPath": "C:\\Users\\ivooc\\.nuget\\packages\\",
+        "outputPath": "C:\\Xamarin\\ProjetoIntegradorVI\\ProjetoIntegradorVI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\rennan.fragozo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ivooc\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -56,17 +56,16 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Users\\rennan.fragozo\\Desktop\\Rennan_Teste": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netstandard2.0": {
             "projectReferences": {
-              "C:\\Users\\rennan.fragozo\\Source\\Repos\\projetoIntegradorVI\\ProjetoIntegrador.Domain\\ProjetoIntegrador.Domain.csproj": {
-                "projectPath": "C:\\Users\\rennan.fragozo\\Source\\Repos\\projetoIntegradorVI\\ProjetoIntegrador.Domain\\ProjetoIntegrador.Domain.csproj"
+              "C:\\Xamarin\\ProjetoIntegradorVI\\ProjetoIntegrador.Domain\\ProjetoIntegrador.Domain.csproj": {
+                "projectPath": "C:\\Xamarin\\ProjetoIntegradorVI\\ProjetoIntegrador.Domain\\ProjetoIntegrador.Domain.csproj"
               },
-              "C:\\Users\\rennan.fragozo\\Source\\Repos\\projetoIntegradorVI\\ProjetoIntegradorVI.Database\\ProjetoIntegradorVI.Database.csproj": {
-                "projectPath": "C:\\Users\\rennan.fragozo\\Source\\Repos\\projetoIntegradorVI\\ProjetoIntegradorVI.Database\\ProjetoIntegradorVI.Database.csproj"
+              "C:\\Xamarin\\ProjetoIntegradorVI\\ProjetoIntegradorVI.Database\\ProjetoIntegradorVI.Database.csproj": {
+                "projectPath": "C:\\Xamarin\\ProjetoIntegradorVI\\ProjetoIntegradorVI.Database\\ProjetoIntegradorVI.Database.csproj"
               }
             }
           }

@@ -784,10 +784,21 @@
           "buildTransitive/Xamarin.Forms.targets": {}
         }
       },
+      "ProjetoIntegrador.Domain/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/ProjetoIntegrador.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ProjetoIntegrador.Domain.dll": {}
+        }
+      },
       "ProjetoIntegradorVI/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
+          "ProjetoIntegrador.Domain": "1.0.0",
+          "ProjetoIntegradorVI.Database": "1.0.0",
           "Xamarin.Essentials": "1.5.3.2",
           "Xamarin.Forms": "4.6.0.1141"
         },
@@ -796,6 +807,18 @@
         },
         "runtime": {
           "bin/placeholder/ProjetoIntegradorVI.dll": {}
+        }
+      },
+      "ProjetoIntegradorVI.Database/1.0.0": {
+        "type": "project",
+        "dependencies": {
+          "ProjetoIntegrador.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/ProjetoIntegradorVI.Database.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ProjetoIntegradorVI.Database.dll": {}
         }
       }
     }
@@ -1916,15 +1939,26 @@
         "xamarin.forms.nuspec"
       ]
     },
+    "ProjetoIntegrador.Domain/1.0.0": {
+      "type": "project",
+      "path": "../ProjetoIntegrador.Domain/ProjetoIntegrador.Domain.csproj",
+      "msbuildProject": "../ProjetoIntegrador.Domain/ProjetoIntegrador.Domain.csproj"
+    },
     "ProjetoIntegradorVI/1.0.0": {
       "type": "project",
       "path": "../ProjetoIntegradorVI/ProjetoIntegradorVI.csproj",
       "msbuildProject": "../ProjetoIntegradorVI/ProjetoIntegradorVI.csproj"
+    },
+    "ProjetoIntegradorVI.Database/1.0.0": {
+      "type": "project",
+      "path": "../ProjetoIntegradorVI.Database/ProjetoIntegradorVI.Database.csproj",
+      "msbuildProject": "../ProjetoIntegradorVI.Database/ProjetoIntegradorVI.Database.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "MonoAndroid,Version=v9.0": [
       "ProjetoIntegradorVI >= 1.0.0",
+      "ProjetoIntegradorVI.Database >= 1.0.0",
       "Xamarin.Essentials >= 1.5.3.2",
       "Xamarin.Forms >= 4.6.0.1141"
     ]
@@ -1961,6 +1995,9 @@
       "frameworks": {
         "monoandroid90": {
           "projectReferences": {
+            "C:\\Xamarin\\ProjetoIntegradorVI\\ProjetoIntegradorVI.Database\\ProjetoIntegradorVI.Database.csproj": {
+              "projectPath": "C:\\Xamarin\\ProjetoIntegradorVI\\ProjetoIntegradorVI.Database\\ProjetoIntegradorVI.Database.csproj"
+            },
             "C:\\Xamarin\\ProjetoIntegradorVI\\ProjetoIntegradorVI\\ProjetoIntegradorVI.csproj": {
               "projectPath": "C:\\Xamarin\\ProjetoIntegradorVI\\ProjetoIntegradorVI\\ProjetoIntegradorVI.csproj"
             }

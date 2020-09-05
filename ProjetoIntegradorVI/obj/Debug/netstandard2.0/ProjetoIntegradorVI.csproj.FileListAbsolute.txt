@@ -58,3 +58,17 @@ C:\Users\rennan.fragozo\Source\Repos\projetoIntegradorVI\ProjetoIntegradorVI\obj
 C:\Users\rennan.fragozo\Source\Repos\projetoIntegradorVI\ProjetoIntegradorVI\obj\Debug\netstandard2.0\ref\ProjetoIntegradorVI.dll
 C:\Users\rennan.fragozo\Source\Repos\projetoIntegradorVI\ProjetoIntegradorVI\obj\Debug\netstandard2.0\ProjetoIntegradorVI.pdb
 C:\Users\rennan.fragozo\Source\Repos\projetoIntegradorVI\ProjetoIntegradorVI\obj\Debug\netstandard2.0\View\Eventos.xaml.g.cs
+C:\Xamarin\ProjetoIntegradorVI\ProjetoIntegradorVI\bin\Debug\netstandard2.0\ProjetoIntegrador.Domain.dll
+C:\Xamarin\ProjetoIntegradorVI\ProjetoIntegradorVI\bin\Debug\netstandard2.0\ProjetoIntegradorVI.Database.dll
+C:\Xamarin\ProjetoIntegradorVI\ProjetoIntegradorVI\bin\Debug\netstandard2.0\FireSharp.dll
+C:\Xamarin\ProjetoIntegradorVI\ProjetoIntegradorVI\bin\Debug\netstandard2.0\Microsoft.Threading.Tasks.dll
+C:\Xamarin\ProjetoIntegradorVI\ProjetoIntegradorVI\bin\Debug\netstandard2.0\Newtonsoft.Json.dll
+C:\Xamarin\ProjetoIntegradorVI\ProjetoIntegradorVI\bin\Debug\netstandard2.0\Microsoft.Threading.Tasks.Extensions.dll
+C:\Xamarin\ProjetoIntegradorVI\ProjetoIntegradorVI\bin\Debug\netstandard2.0\ProjetoIntegrador.Domain.pdb
+C:\Xamarin\ProjetoIntegradorVI\ProjetoIntegradorVI\bin\Debug\netstandard2.0\ProjetoIntegradorVI.Database.pdb
+C:\Xamarin\ProjetoIntegradorVI\ProjetoIntegradorVI\bin\Debug\netstandard2.0\ProjetoIntegradorVI.Database.dll.config
+C:\Xamarin\ProjetoIntegradorVI\ProjetoIntegradorVI\bin\Debug\netstandard2.0\Microsoft.Threading.Tasks.xml
+C:\Xamarin\ProjetoIntegradorVI\ProjetoIntegradorVI\bin\Debug\netstandard2.0\Newtonsoft.Json.xml
+C:\Xamarin\ProjetoIntegradorVI\ProjetoIntegradorVI\bin\Debug\netstandard2.0\Microsoft.Threading.Tasks.Extensions.xml
+C:\Xamarin\ProjetoIntegradorVI\ProjetoIntegradorVI\obj\Debug\netstandard2.0\View\Eventos.xaml.g.cs
+C:\Xamarin\ProjetoIntegradorVI\ProjetoIntegradorVI\obj\Debug\netstandard2.0\ProjetoIntegradorVI.csproj.CopyComplete
