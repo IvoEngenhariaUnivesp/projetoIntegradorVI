@@ -63,6 +63,27 @@
           "buildTransitive/Xamarin.Forms.props": {},
           "buildTransitive/Xamarin.Forms.targets": {}
         }
+      },
+      "ProjetoIntegrador.Domain/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/ProjetoIntegrador.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ProjetoIntegrador.Domain.dll": {}
+        }
+      },
+      "ProjetoIntegradorVI.Database/1.0.0": {
+        "type": "project",
+        "dependencies": {
+          "ProjetoIntegrador.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/ProjetoIntegradorVI.Database.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ProjetoIntegradorVI.Database.dll": {}
+        }
       }
     }
   },
@@ -617,35 +638,47 @@
         "xamarin.forms.4.6.0.1141.nupkg.sha512",
         "xamarin.forms.nuspec"
       ]
+    },
+    "ProjetoIntegrador.Domain/1.0.0": {
+      "type": "project",
+      "path": "../ProjetoIntegrador.Domain/ProjetoIntegrador.Domain.csproj",
+      "msbuildProject": "../ProjetoIntegrador.Domain/ProjetoIntegrador.Domain.csproj"
+    },
+    "ProjetoIntegradorVI.Database/1.0.0": {
+      "type": "project",
+      "path": "../ProjetoIntegradorVI.Database/ProjetoIntegradorVI.Database.csproj",
+      "msbuildProject": "../ProjetoIntegradorVI.Database/ProjetoIntegradorVI.Database.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
       "NETStandard.Library >= 2.0.3",
+      "ProjetoIntegrador.Domain >= 1.0.0",
+      "ProjetoIntegradorVI.Database >= 1.0.0",
       "Xamarin.Essentials >= 1.5.3.2",
       "Xamarin.Forms >= 4.6.0.1141"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ivooc\\.nuget\\packages\\": {},
+    "C:\\Users\\rennan.fragozo\\.nuget\\packages\\": {},
     "C:\\Microsoft\\Xamarin\\NuGet\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Xamarin\\ProjetoIntegradorVI\\ProjetoIntegradorVI\\ProjetoIntegradorVI.csproj",
+      "projectUniqueName": "C:\\Users\\rennan.fragozo\\Source\\Repos\\projetoIntegradorVI\\ProjetoIntegradorVI\\ProjetoIntegradorVI.csproj",
       "projectName": "ProjetoIntegradorVI",
-      "projectPath": "C:\\Xamarin\\ProjetoIntegradorVI\\ProjetoIntegradorVI\\ProjetoIntegradorVI.csproj",
-      "packagesPath": "C:\\Users\\ivooc\\.nuget\\packages\\",
-      "outputPath": "C:\\Xamarin\\ProjetoIntegradorVI\\ProjetoIntegradorVI\\obj\\",
+      "projectPath": "C:\\Users\\rennan.fragozo\\Source\\Repos\\projetoIntegradorVI\\ProjetoIntegradorVI\\ProjetoIntegradorVI.csproj",
+      "packagesPath": "C:\\Users\\rennan.fragozo\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\rennan.fragozo\\Source\\Repos\\projetoIntegradorVI\\ProjetoIntegradorVI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\ivooc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\rennan.fragozo\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
@@ -654,11 +687,19 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Users\\rennan.fragozo\\Desktop\\Rennan_Teste": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netstandard2.0": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\rennan.fragozo\\Source\\Repos\\projetoIntegradorVI\\ProjetoIntegrador.Domain\\ProjetoIntegrador.Domain.csproj": {
+              "projectPath": "C:\\Users\\rennan.fragozo\\Source\\Repos\\projetoIntegradorVI\\ProjetoIntegrador.Domain\\ProjetoIntegrador.Domain.csproj"
+            },
+            "C:\\Users\\rennan.fragozo\\Source\\Repos\\projetoIntegradorVI\\ProjetoIntegradorVI.Database\\ProjetoIntegradorVI.Database.csproj": {
+              "projectPath": "C:\\Users\\rennan.fragozo\\Source\\Repos\\projetoIntegradorVI\\ProjetoIntegradorVI.Database\\ProjetoIntegradorVI.Database.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

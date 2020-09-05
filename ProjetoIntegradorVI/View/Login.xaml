@@ -16,18 +16,25 @@
                 <Label Text="Usuário"
                 VerticalOptions="StartAndExpand" 
                 HorizontalOptions="StartAndExpand" FontSize="Medium" />
-                <Entry x:Name="user" Placeholder="Digite seu Usuário"/>
+                <Entry Text="{Binding email}" x:Name="user" Placeholder="Digite seu Usuário"/>
             
                 <Label Text="Senha"
                 VerticalOptions="StartAndExpand" 
                 HorizontalOptions="StartAndExpand" FontSize="Medium" />
-                <Entry IsPassword="True" Keyboard="Numeric" x:Name="senha" Placeholder="******"/>
+                <Entry IsPassword="True" Keyboard="Numeric" Text="{Binding senha}" x:Name="senha" Placeholder="******"/>
+                
+                <Label Text="{Binding labelUserError}"
+                VerticalOptions="StartAndExpand" 
+                HorizontalOptions="StartAndExpand" FontSize="Medium"
+                />
                 
                 <Button HeightRequest="50" 
                          TextColor="White" 
                          Text="Login"  
                          BackgroundColor="{StaticResource primary}"
-                         HorizontalOptions="FillAndExpand"/>
+                         HorizontalOptions="FillAndExpand"
+                         x:Name="labelUserError"
+                         Command="{Binding EventosCommand}"/>
 
                 <Label  Text="Forgot password" 
                         HorizontalOptions="Center" 
