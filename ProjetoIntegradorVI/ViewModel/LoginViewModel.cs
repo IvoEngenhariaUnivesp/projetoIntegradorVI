@@ -33,23 +33,14 @@ namespace ProjetoIntegradorVI.ViewModel
         {
             Usuario usuario = new Usuario();
 
-            var getUser = await _clientUsuario.GetAsyncLogin("Usuarios", email, senha);
-
-
-            //{
-            //    Email = email,
-            //    Senha = senha
-            //};
-
-            //var usuarioResponse = await _clientUsuario.InsertAsync("Usuarios", usuario);
+            var getUser = await _clientUsuario.GetUsuarioByEmailSenhaAsync(email, senha);
 
             if (getUser != null)
             {
-                // await App.Current.MainPage.DisplayAlert("Mensagem", "Login Criado e Aceito", "Voltar");
                 await App.Current.MainPage.Navigation.PushModalAsync(new View.Eventos());
             }
             else
-                await App.Current.MainPage.DisplayAlert("Erro", "Erro", "Cancel");
+                await App.Current.MainPage.DisplayAlert("Erro", "Houve uma falha no login.", "Cancel");
         }
     }
 }

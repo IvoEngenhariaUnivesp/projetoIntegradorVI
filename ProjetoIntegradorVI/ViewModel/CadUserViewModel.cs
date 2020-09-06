@@ -36,13 +36,17 @@ namespace ProjetoIntegradorVI.ViewModel
             }
             else
             {
-                var cadUser = await _firebase.InsertAsync("Usuarios", usuario);
+                var cadUser = await _firebase.InsertUsuarioAsync(usuario);
 
                 if (cadUser != null)
                 {
                     await App.Current.MainPage.DisplayAlert("Cadastro", "Sucesso no Cadastro!", "Ok");
 
                     App.Current.MainPage = new NavigationPage(new View.Eventos());
+                }
+                else
+                {
+                    await App.Current.MainPage.DisplayAlert("Cadastro", "Houve um erro no cadastro. É possível que o este e-mail já exista.", "Voltar");
                 }
             }
 

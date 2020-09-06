@@ -8,6 +8,7 @@ using FireSharp.Response;
 using System.Net;
 using System.Linq;
 using ProjetoIntegradorVI.Domain.Model.Common;
+using ProjetoIntegradorVI.Domain.Model;
 
 namespace ProjetoIntegradorVI.Database
 {
@@ -60,7 +61,7 @@ namespace ProjetoIntegradorVI.Database
             OpenConnection();
 
             // Pega o último registro da tabela informada
-            var ultimoRegistro = await _client.GetAsync("Usuarios", QueryBuilder.New().OrderBy("ID").LimitToLast(1));
+            var ultimoRegistro = await _client.GetAsync(table, QueryBuilder.New().OrderBy("ID").LimitToLast(1));
 
             // Instancia o ID
             long ID = 0;
@@ -199,26 +200,26 @@ namespace ProjetoIntegradorVI.Database
             }
         }
 
-        public async Task<T> GetAsyncLogin(string table, T objeto, string emailUser, string senhaUser)
-        {
-            OpenConnection();
+        //public async Task<T> GetAsyncLogin(string table, T objeto, string emailUser, string senhaUser)
+        //{
+        //    OpenConnection();
 
-            try
-            {
-                //var objectResponse = await _client.GetAsync("Usuarios", objeto);
-                var objectResponse = await _client.Get(table + "/" + Email + "/" + Senha);
+        //    try
+        //    {
+        //        //var objectResponse = await _client.GetAsync("Usuarios", objeto);
+        //        var objectResponse = await _client.Get(table + "/" + Email + "/" + Senha);
 
-                if (objectResponse.Body == "null")
-                    throw new Exception();
+        //        if (objectResponse.Body == "null")
+        //            throw new Exception();
 
-                return objectResponse.ResultAs<T>();
-            }
-            catch (Exception)
-            {
-                return default(T);
-            }
+        //        return objectResponse.ResultAs<T>();
+        //    }
+        //    catch (Exception)
+        //    {
+        //        return default(T);
+        //    }
 
-        }
+        //}
 
         public async Task<List<T>> GetListAsync(string table, QueryBuilder queryBuilder = null)
         {
@@ -249,6 +250,53 @@ namespace ProjetoIntegradorVI.Database
                 return default(List<T>);
             }
         }
+
+        public async Task<Usuario> GetUsuarioByEmailSenhaAsync(string email, string senha)
+        {
+            // Abre a conexão com o banco
+            OpenConnection();
+
+            try
+            {
+                var usuariosList = await _client.GetAsync("Usuarios", QueryBuilder.New().OrderBy("ID"));
+
+                // Se o objeto não existir, lança exception e retorna null
+                if (usuariosList.Body == "null")
+                    throw new Exception();
+
+                return usuariosList.ResultAs<IEnumerable<Usuario>>().FirstOrDefault(u => u.Email == email && u.Senha == senha);
+            }
+            catch (Exception)
+            {
+                // Se tiver errro, retorna null
+                return default(Usuario);
+            }
+        }
+
+        public async Task<Usuario> InsertUsuarioAsync(Usuario objeto)
+        {
+            // Abre a conexão com o banco
+            OpenConnection();
+
+            // Pega o último registro da tabela informada
+            var usuariosList = await _client.GetAsync("Usuarios", QueryBuilder.New().OrderBy("ID"));
+            var ultimoRegistro = usuariosList.ResultAs<IEnumerable<Usuario>>().OrderBy(u => u.ID).Last();
+
+
+            objeto.ID = ultimoRegistro.ID + 1;
+
+            foreach (var usuario in usuariosList.ResultAs<IEnumerable<Usuario>>())
+            {
+                if (usuario.Email == objeto.Email)
+                    return default(Usuario);
+            }
+
+            _client.Set("Usuarios" + "/" + objeto.ID, objeto);
+
+            return objeto;
+        }
+
+
 
     }
 }
