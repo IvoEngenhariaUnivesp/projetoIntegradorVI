@@ -31,11 +31,9 @@ namespace ProjetoIntegradorVI.ViewModel
 
         public async void EventosUser()
         {
-            Usuario usuario = new Usuario();
+            var usuarioResponse = await _clientUsuario.GetUsuarioByEmailAsync(email);
 
-            var getUser = await _clientUsuario.GetUsuarioByEmailSenhaAsync(email, senha);
-
-            if (getUser != null)
+            if (usuarioResponse != null && senha == usuarioResponse.Senha)
             {
                 await App.Current.MainPage.Navigation.PushModalAsync(new View.Eventos());
             }

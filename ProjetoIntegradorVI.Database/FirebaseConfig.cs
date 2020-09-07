@@ -251,20 +251,20 @@ namespace ProjetoIntegradorVI.Database
             }
         }
 
-        public async Task<Usuario> GetUsuarioByEmailSenhaAsync(string email, string senha)
+        public async Task<Usuario> GetUsuarioByEmailAsync(string email)
         {
             // Abre a conexão com o banco
             OpenConnection();
 
             try
             {
-                var usuariosList = await _client.GetAsync("Usuarios", QueryBuilder.New().OrderBy("ID"));
+                var usuariosList = await _client.GetAsync("Usuarios", QueryBuilder.New().OrderBy("Email").StartAt(email).LimitToLast(1));
 
                 // Se o objeto não existir, lança exception e retorna null
                 if (usuariosList.Body == "null")
                     throw new Exception();
 
-                return usuariosList.ResultAs<IEnumerable<Usuario>>().FirstOrDefault(u => u.Email == email && u.Senha == senha);
+                return usuariosList.ResultAs<IEnumerable<Usuario>>().Where(u => u != null).FirstOrDefault(u => u.Email == email);
             }
             catch (Exception)
             {
@@ -278,18 +278,33 @@ namespace ProjetoIntegradorVI.Database
             // Abre a conexão com o banco
             OpenConnection();
 
-            // Pega o último registro da tabela informada
-            var usuariosList = await _client.GetAsync("Usuarios", QueryBuilder.New().OrderBy("ID"));
-            var ultimoRegistro = usuariosList.ResultAs<IEnumerable<Usuario>>().OrderBy(u => u.ID).Last();
+            Usuario usuarioResponse;
 
+            #region Verifica Email
+            // Pega o último registro da tabela informada e compara se o email é o mesmo. Se sim, retorna null
+            var usuariosList = await _client.GetAsync("Usuarios", QueryBuilder.New().OrderBy("Email").StartAt(objeto.Email).LimitToLast(1));
 
-            objeto.ID = ultimoRegistro.ID + 1;
+            if (usuariosList.Body.Contains("[null"))
+                usuarioResponse = usuariosList.ResultAs<List<Usuario>>()[1];
+            else
+                usuarioResponse = usuariosList.ResultAs<Usuario>();
 
-            foreach (var usuario in usuariosList.ResultAs<IEnumerable<Usuario>>())
+            if (usuarioResponse != null && (usuarioResponse.Email == objeto.Email))
+                return default(Usuario);
+            #endregion
+
+            usuariosList = await _client.GetAsync("Usuarios", QueryBuilder.New().OrderBy("ID").LimitToLast(1));
+
+            if (usuariosList.Body.Contains("[null"))
+                usuarioResponse = usuariosList.ResultAs<List<Usuario>>()[1];
+            else
             {
-                if (usuario.Email == objeto.Email)
-                    return default(Usuario);
+                var usuarioGetByIDResponse = await _client.GetAsync("Usuarios/" + usuariosList.Body.Substring(2, 1));
+                usuarioResponse = usuarioGetByIDResponse.ResultAs<Usuario>();
             }
+
+
+            objeto.ID = usuarioResponse != null ? usuarioResponse.ID + 1 : 1;
 
             _client.Set("Usuarios" + "/" + objeto.ID, objeto);
 

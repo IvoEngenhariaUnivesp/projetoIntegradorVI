@@ -31,7 +31,7 @@ namespace DatabaseConsoleTest
 
             //var a = await client.GetListAsync("Usuarios");
 
-            await client.InsertAsync("Usuarios", usr);
+            //var b = await client.GetUsuarioByEmailSenhaAsync("rennancfra","usr");
 
             Console.ReadKey();
         }
