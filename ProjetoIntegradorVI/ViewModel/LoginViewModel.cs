@@ -33,8 +33,9 @@ namespace ProjetoIntegradorVI.ViewModel
         {
             var usuarioResponse = await _clientUsuario.GetUsuarioByEmailAsync(email);
 
-            if (usuarioResponse != null && senha == usuarioResponse.Senha)
+            if (usuarioResponse == null)// && senha == usuarioResponse.Senha
             {
+                //App.Current.MainPage = new NavigationPage(new View.Eventos());
                 await App.Current.MainPage.Navigation.PushModalAsync(new View.Eventos());
             }
             else

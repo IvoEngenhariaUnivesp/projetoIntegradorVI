@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using FireSharp.Response;
 using System.Net;
 using System.Linq;
+using System.Text.RegularExpressions;
 using ProjetoIntegradorVI.Domain.Model.Common;
 using ProjetoIntegradorVI.Domain.Model;
 
@@ -259,6 +260,7 @@ namespace ProjetoIntegradorVI.Database
             try
             {
                 var usuariosList = await _client.GetAsync("Usuarios", QueryBuilder.New().OrderBy("Email").StartAt(email).LimitToLast(1));
+                //var usuariosList = await _client.GetAsync("Usuarios", QueryBuilder.New().OrderBy("Email").StartAt(email).LimitToFirst(1));
 
                 // Se o objeto não existir, lança exception e retorna null
                 if (usuariosList.Body == "null")
@@ -299,11 +301,13 @@ namespace ProjetoIntegradorVI.Database
                 usuarioResponse = usuariosList.ResultAs<List<Usuario>>()[1];
             else
             {
-                var usuarioGetByIDResponse = await _client.GetAsync("Usuarios/" + usuariosList.Body.Substring(2, 1));
+                //string t = Regex.Replace(usuariosList.Body, @"[^\d]", "");
+                var usuarioGetByIDResponse = await _client.GetAsync("Usuarios/" + usuariosList.Body.Substring(2,1));
+                //var usuarioGetByIDResponse = await _client.GetAsync("Usuarios/" + Regex.Replace(usuariosList.Body[0], @"[^\d]", ""));
                 usuarioResponse = usuarioGetByIDResponse.ResultAs<Usuario>();
             }
 
-
+            //2
             objeto.ID = usuarioResponse != null ? usuarioResponse.ID + 1 : 1;
 
             _client.Set("Usuarios" + "/" + objeto.ID, objeto);
