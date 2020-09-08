@@ -40,27 +40,27 @@ namespace ProjetoIntegradorVI.Database
                     .Child("Usuarios")
                     .OrderBy("Email")
                     .EqualTo(objeto.Email)
-                    .OnceSingleAsync<KeyValuePair<long, Usuario>>();
+                    .OnceSingleAsync<Dictionary<long, Usuario>>();
 
             // Caso retorne null, quer dizer que não existe usuário com o mesmo email
-            if (usuarioRetorno.Value == null)
+            if (usuarioRetorno.Values.Count < 1)
             {
                 // Atribui ao objeto o ultimo ID do banco + 1
                 try
                 {
                     // Liberado para cadastrar
-                    // Pega ultimo registro do banco em forma de dicionario. Ex: Key: ID - Values = Usuario
+                    // Pega ultimo registro do banco em forma de lista, onde o primeiro objeto podeser nulo.
                     var ultimoRegistro = await _client
                         .Child("Usuarios")
-                        .OrderBy("ID")
+                        .OrderByKey()
                         .LimitToLast(1)
-                        .OnceSingleAsync<KeyValuePair<long, Usuario>>();
+                        .OnceSingleAsync<List<Usuario>>();
 
-                    objeto.ID = ultimoRegistro.Key + 1;
+                    objeto.ID = ultimoRegistro.Last().ID + 1;
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    objeto.ID = 1;
+                    objeto.ID = 0;
                 }
 
                 try
