@@ -3,6 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ProjetoIntegradorVI.App">
     <Application.Resources>
-
+        <ResourceDictionary>
+            <Color x:Key="DarkButtoBackground">#A9BCF5</Color>
+            <Style x:Key="BtnAdd" TargetType="Button">
+                <Setter Property="CornerRadius" Value="100"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource DarkButtoBackground}" />
+                <Setter Property="HeightRequest" Value="55"/>
+                <Setter Property="WidthRequest" Value="55"/>
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+                <Setter Property="Padding" Value="0"/>
+                <Setter Property="Margin" Value="250,250,0,0"/>
+            </Style>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
