@@ -7,6 +7,7 @@ using ProjetoIntegradorVI.Domain.Model;
 using Firebase.Database;
 using Firebase.Database.Query;
 using System.Linq.Expressions;
+using ProjetoIntegradorVI.Domain.Model.Enums;
 
 namespace ProjetoIntegradorVI.Database
 {
@@ -107,6 +108,109 @@ namespace ProjetoIntegradorVI.Database
             }
         }
         #endregion Métodos Child Usuário
+
+        #region Métodos Child Eventos
+
+        public async Task<Evento> InsertEventoAsync(Evento objeto)
+        {
+            // Abre a conexão com o banco
+            InstaciaClient();
+
+            // Atribui ao objeto o ultimo ID do banco + 1
+            try
+            {
+                // Liberado para cadastrar
+                // Pega ultimo registro do banco em forma de lista, onde o primeiro objeto podeser nulo.
+                var ultimoRegistro = await _client
+                    .Child("Eventos")
+                    .OrderByKey()
+                    .LimitToLast(1)
+                    .OnceSingleAsync<List<Evento>>();
+
+                objeto.ID = ultimoRegistro.Last().ID + 1;
+            }
+            catch (Exception ex)
+            {
+                objeto.ID = 0;
+            }
+
+            try
+            {
+                // Insere o objeto no Chil Usuarios/ID
+                await _client.Child("Eventos").Child(objeto.ID.ToString()).PutAsync(objeto);
+            }
+            catch (Exception)
+            {
+                return default(Evento);
+            }
+
+            return objeto;
+        }
+
+
+        public async Task<List<Evento>> GetAllEventosByUsuarioIDAsync(long usuarioID)
+        {
+            // Abre a conexão com o banco
+            InstaciaClient();
+
+            List<Evento> eventosRetorno = new List<Evento>();
+
+            try
+            {
+                // Busca o objeto com o mesmo email no banco
+                // Retorna um dictionary com <ID, Usuario>
+                var eventosByUsuarioIDRetorno =
+                    await _client
+                        .Child("EventoUsuario")
+                        .OrderBy("UsuarioMembroID")
+                        .EqualTo(usuarioID)
+                        .OnceSingleAsync<Dictionary<long, EventoUsuario>>();
+
+                foreach (EventoUsuario eventoUsuario in eventosByUsuarioIDRetorno.Values)
+                {
+                    if (eventoUsuario.StatusConvite == StatusConviteEnum.Recusado)
+                        continue;
+
+                    var evento = await GetEventoByEventoIDAsync(eventoUsuario.EventoID);
+
+                    if (evento != null) //&& evento.DataHoraTermino < DateTime.Now)
+                        eventosRetorno.Add(evento);
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return eventosRetorno;
+        }
+
+        public async Task<Evento> GetEventoByEventoIDAsync(long eventoID)
+        {
+            // Abre a conexão com o banco
+            InstaciaClient();
+
+            try
+            {
+                // Busca o objeto com o mesmo email no banco
+                // Retorna um dictionary com <ID, Evento>
+                var eventoRetorno =
+                    await _client
+                        .Child("Eventos")
+                        .OrderBy("ID")
+                        .EqualTo(eventoID)
+                        .OnceSingleAsync<Dictionary<long, Evento>>();
+
+                // Retorna o primeiro objeto(sempre vai ser um, se encontrar)
+                return eventoRetorno.Values.First();
+            }
+            catch (Exception ex)
+            {
+                // Se tiver não existir, retorna null
+                return default(Evento);
+            }
+        }
+
+        #endregion Métodos Child Eventos
 
     }
 }

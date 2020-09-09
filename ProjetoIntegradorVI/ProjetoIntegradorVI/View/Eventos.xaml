@@ -17,28 +17,25 @@
             </StackLayout>
             <ScrollView>
                 <StackLayout Spacing="50" Padding="20">
-                    <StackLayout>
-                        <Frame  BorderColor="White" CornerRadius="10" Padding="5" BackgroundColor="White" HasShadow="True">
-                            <StackLayout>
-                                <Label Text="Casa nova Marluce!" TextColor="#212121" Margin="10,10,0,0" FontSize="Subtitle" />
-                                <Label Text="Durante toda a minha carreira de desenvolvimento móvel, dediquei-me ao uso de imagens e ícones específicos para dispositivos." TextColor="#757575" Margin="10,1,10,0"/>
-                                <Label Text="29/09/2020 - 18h" HorizontalOptions="End" TextColor="#757575" Margin="10,1,10,0"/>
-                            </StackLayout>
-                        </Frame>
-                    </StackLayout>
-                    <ImageButton Source="add.png" IsVisible="True" BackgroundColor="Transparent" HeightRequest="80" WidthRequest="80" Margin="250,250,0,0" AbsoluteLayout.LayoutFlags="PositionProportional" 
-                            AbsoluteLayout.LayoutBounds=".95,.95,80, 80"/>
-                    <!--<ListView>
+                    <ListView x:Name="lvEventos" HasUnevenRows="True">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
-                                    
+                                    <Frame  BorderColor="White" CornerRadius="10" Padding="5" Margin="0,0,0,10" BackgroundColor="White" HasShadow="True">
+                                        <StackLayout>
+                                            <Label Text="{Binding Nome}" TextColor="#212121" Margin="10,10,0,0" FontSize="Subtitle" />
+                                            <Label Text="{Binding Descricao}" TextColor="#757575" Margin="10,1,10,0"/>
+                                            <Label Text="{Binding DataHoraInicio}" HorizontalOptions="End" TextColor="#757575" Margin="10,1,10,0"/>
+                                        </StackLayout>
+                                    </Frame>
                                 </ViewCell>
                             </DataTemplate>
                         </ListView.ItemTemplate>
-                    </ListView>-->
+                    </ListView>
                 </StackLayout>
             </ScrollView>
+            <ImageButton Source="add.png" IsVisible="True" BackgroundColor="Transparent" HeightRequest="80" WidthRequest="80" Margin="300,250,0,15" AbsoluteLayout.LayoutFlags="PositionProportional" 
+                            AbsoluteLayout.LayoutBounds=".95,.95,80, 80"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

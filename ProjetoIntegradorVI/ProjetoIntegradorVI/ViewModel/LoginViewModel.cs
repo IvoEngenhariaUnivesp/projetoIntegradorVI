@@ -42,7 +42,7 @@ namespace ProjetoIntegradorVI.ViewModel
 
             if ((usuarioResponse != null) && senha == usuarioResponse.Senha)
             {
-                await App.Current.MainPage.Navigation.PushModalAsync(new View.Eventos());
+                await App.Current.MainPage.Navigation.PushModalAsync(new View.Eventos(usuarioResponse));
             }
             else
                 await App.Current.MainPage.DisplayAlert("Erro", "Houve uma falha no login.", "Cancel");

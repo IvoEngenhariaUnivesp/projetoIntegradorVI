@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ProjetoIntegradorVI.Database;
+using ProjetoIntegradorVI.Domain.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,9 +14,25 @@ namespace ProjetoIntegradorVI.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Eventos : ContentPage
     {
-        public Eventos()
+        private Usuario usuarioLogado;
+        private List<Evento> lstEventos;
+        public Eventos(Usuario usuarioLogado)
         {
             InitializeComponent();
+
+            // Cria o client dos Eventos
+            var firebaseClient = new FirebaseConfig<Evento>();
+
+            // Recebe o usuário logado da tela de cadastro/login
+            this.usuarioLogado = usuarioLogado;
+
+            // Busca a lista de eventos do usuário
+            Task.Run(async () => {
+                this.lstEventos = await firebaseClient.GetAllEventosByUsuarioIDAsync(usuarioLogado.ID.Value);
+            }).Wait();
+
+            // Atribui a lista ao ListView
+            lvEventos.ItemsSource = this.lstEventos;
         }
     }
 }
