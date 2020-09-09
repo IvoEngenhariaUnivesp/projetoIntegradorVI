@@ -5,6 +5,7 @@ using Xamarin.Forms.Platform.iOS;
 using Xamarin.Auth;
 using Newtonsoft.Json.Linq;
 using ProjetoIntegradorVI.View;
+using ProjetoIntegradorVI;
 
 [assembly: ExportRenderer (typeof (FBCadastro), typeof (FBLoginTeste.iOS.LoginPageRenderer))]
 
@@ -36,16 +37,17 @@ namespace FBLoginTeste.iOS
 					var expiresIn = Convert.ToDouble (eventArgs.Account.Properties ["expires_in"]);
 					var expiryDate = DateTime.Now + TimeSpan.FromSeconds (expiresIn);
 
-					var request = new OAuth2Request ("GET", new Uri ("https://graph.facebook.com/me"), null, eventArgs.Account);
+					var request = new OAuth2Request ("GET", new Uri ("https://graph.facebook.com/me?fields=email,name,id"), null, eventArgs.Account);
 					var response = await request.GetResponseAsync ();
 					var obj = JObject.Parse (response.GetResponseText ());
 
 					var id = obj ["id"].ToString ().Replace ("\"", ""); 
 					var name = obj ["name"].ToString ().Replace ("\"", "");
+					var email = obj["email"].ToString().Replace("\"", "");
 
-					//await App.NavigateToProfile(string.Format("Olá {0}", name));
+					await App.Current.MainPage.Navigation.PushModalAsync(new Login(true, name, id, email));
 				} else {
-					//await App.NavigateToProfile("Usuário Cancelou o login");
+					await App.Current.MainPage.Navigation.PushModalAsync(new Login(false, "", "", ""));
 				}
 			};
 

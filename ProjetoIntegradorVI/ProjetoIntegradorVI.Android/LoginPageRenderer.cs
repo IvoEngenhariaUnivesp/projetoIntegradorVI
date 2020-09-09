@@ -6,6 +6,7 @@ using Android.App;
 using Xamarin.Auth;
 using Newtonsoft.Json.Linq;
 using ProjetoIntegradorVI.View;
+using ProjetoIntegradorVI;
 
 [assembly: ExportRenderer (typeof (FBCadastro), typeof (FBLoginTeste.Droid.LoginPageRenderer))]
 
@@ -20,7 +21,7 @@ namespace FBLoginTeste.Droid
 
 			var auth = new OAuth2Authenticator (
 				clientId: "2034617650012167", // your OAuth2 client id
-				scope: "", // the scopes for the particular API you're accessing, delimited by "+" symbols
+				scope: "email", // the scopes for the particular API you're accessing, delimited by "+" symbols
 				authorizeUrl: new Uri ("https://m.facebook.com/dialog/oauth/"),
 				redirectUrl: new Uri ("http://www.facebook.com/connect/login_success.html"));
 
@@ -30,16 +31,17 @@ namespace FBLoginTeste.Droid
 					var expiresIn = Convert.ToDouble (eventArgs.Account.Properties ["expires_in"]);
 					var expiryDate = DateTime.Now + TimeSpan.FromSeconds (expiresIn);
 
-					var request = new OAuth2Request ("GET", new Uri ("https://graph.facebook.com/me"), null, eventArgs.Account);
+					var request = new OAuth2Request ("GET", new Uri ("https://graph.facebook.com/me?fields=email,name,id"), null, eventArgs.Account);
 					var response = await request.GetResponseAsync ();
 					var obj = JObject.Parse (response.GetResponseText ());
 
 					var id = obj ["id"].ToString ().Replace ("\"", ""); 
 					var name = obj ["name"].ToString ().Replace ("\"", "");
+					var email = obj["email"].ToString().Replace("\"", "");
 
-//					App.NavigateToProfile(string.Format("Olá {0}", name));
+					App.Current.MainPage.Navigation.PushModalAsync(new Login(true,name, id,email));
 				} else {
-					//App.NavigateToProfile("Usuário Cancelou o login");
+					App.Current.MainPage.Navigation.PushModalAsync(new Login(false, "", "",""));
 				}
 			};
 
