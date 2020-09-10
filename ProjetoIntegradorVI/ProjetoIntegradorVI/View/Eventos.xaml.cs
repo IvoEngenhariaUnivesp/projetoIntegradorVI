@@ -1,5 +1,6 @@
 ﻿using ProjetoIntegradorVI.Database;
 using ProjetoIntegradorVI.Domain.Model;
+using ProjetoIntegradorVI.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,9 +17,16 @@ namespace ProjetoIntegradorVI.View
     {
         private Usuario usuarioLogado;
         private List<Evento> lstEventos;
+
+        //public Eventos()
+        //{
+        //    InitializeComponent();
+        //    BindingContext = new EventosViewModel();
+        //}
         public Eventos(Usuario usuarioLogado)
         {
             InitializeComponent();
+            BindingContext = new EventosViewModel();
 
             // Cria o client dos Eventos
             var firebaseClient = new FirebaseConfig<Evento>();
@@ -32,6 +40,7 @@ namespace ProjetoIntegradorVI.View
             }).Wait();
 
             // Atribui a lista ao ListView
+            
             lvEventos.ItemsSource = this.lstEventos;
         }
     }

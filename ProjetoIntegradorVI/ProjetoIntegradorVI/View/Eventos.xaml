@@ -34,7 +34,7 @@
                     </ListView>
                 </StackLayout>
             </ScrollView>
-            <ImageButton Source="add.png" IsVisible="True" BackgroundColor="Transparent" HeightRequest="80" WidthRequest="80" Margin="300,250,0,15" AbsoluteLayout.LayoutFlags="PositionProportional" 
+            <ImageButton Source="add.png" IsVisible="True" Command="{Binding AdicionarEvento}" BackgroundColor="Transparent" HeightRequest="80" WidthRequest="80" Margin="300,250,0,15" AbsoluteLayout.LayoutFlags="PositionProportional" 
                             AbsoluteLayout.LayoutBounds=".95,.95,80, 80"/>
         </StackLayout>
     </ContentPage.Content>
