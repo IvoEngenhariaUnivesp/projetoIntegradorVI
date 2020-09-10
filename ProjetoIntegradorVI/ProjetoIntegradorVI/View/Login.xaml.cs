@@ -13,19 +13,12 @@ namespace ProjetoIntegradorVI.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Login : ContentPage
     {
-
         public Login()
         {
             InitializeComponent();
             BindingContext = new LoginViewModel();
         }
-        public Login(bool v)
-        {
-            InitializeComponent();
-            BindingContext = new LoginViewModel();
-        }
-
-        public Login(bool v, bool facebookUser)
+        public Login(bool facebookUser)
         {
             InitializeComponent();
             BindingContext = new LoginViewModel();
@@ -46,7 +39,6 @@ namespace ProjetoIntegradorVI.View
             }
         }
 
-        public bool V { get; }
         public bool FacebookUser { get; }
         public string Nome { get; }
         public string Email { get; }
