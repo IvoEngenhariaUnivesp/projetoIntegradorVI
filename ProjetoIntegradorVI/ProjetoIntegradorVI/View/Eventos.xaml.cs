@@ -40,7 +40,6 @@ namespace ProjetoIntegradorVI.View
             }).Wait();
 
             // Atribui a lista ao ListView
-            
             lvEventos.ItemsSource = this.lstEventos;
         }
     }

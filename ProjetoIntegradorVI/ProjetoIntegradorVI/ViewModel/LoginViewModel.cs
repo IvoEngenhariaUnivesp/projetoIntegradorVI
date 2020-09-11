@@ -15,7 +15,7 @@ namespace ProjetoIntegradorVI.ViewModel
         public Command FBCadastroCommand { get; set; }
         public string email { get; set; }
         public string senha { get; set; }
-        public string labelUserError { get; set; }
+        public bool isFacebookUser { get; set; }
         private readonly FirebaseConfig<Usuario> _clientUsuario;
 
         public LoginViewModel()
