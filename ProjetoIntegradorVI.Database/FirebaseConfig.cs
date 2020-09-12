@@ -111,7 +111,42 @@ namespace ProjetoIntegradorVI.Database
 
         #region Métodos Child Eventos
 
-        public async Task<Evento> InsertEventoAsync(Evento objeto)
+        //public async Task<Evento> InsertEventoAsync(Evento objeto)
+        //{
+        //    // Abre a conexão com o banco
+        //    InstaciaClient();
+
+        //    // Atribui ao objeto o ultimo ID do banco + 1
+        //    try
+        //    {
+        //        // Liberado para cadastrar
+        //        // Pega ultimo registro do banco em forma de lista, onde o primeiro objeto podeser nulo.
+        //        var ultimoRegistro = await _client
+        //            .Child("Eventos")
+        //            .OrderByKey()
+        //            .LimitToLast(1)
+        //            .OnceSingleAsync<List<Evento>>();
+
+        //        objeto.ID = ultimoRegistro.Last().ID + 1;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        objeto.ID = 0;
+        //    }
+
+        //    try
+        //    {
+        //        // Insere o objeto no Chil Usuarios/ID
+        //        await _client.Child("Eventos").Child(objeto.ID.ToString()).PutAsync(objeto);
+        //    }
+        //    catch (Exception)
+        //    {
+        //        return default(Evento);
+        //    }
+
+        //    return objeto;
+        //}
+        public async Task<Evento> InsertEventoAsync(Evento objeto, Usuario usuario = null)
         {
             // Abre a conexão com o banco
             InstaciaClient();
@@ -138,6 +173,11 @@ namespace ProjetoIntegradorVI.Database
             {
                 // Insere o objeto no Chil Usuarios/ID
                 await _client.Child("Eventos").Child(objeto.ID.ToString()).PutAsync(objeto);
+
+                if (usuario != null)
+                {
+                    await _client.Child("EventoUsuario").Child(objeto.ID.ToString()).PutAsync(new EventoUsuario { EventoID = objeto.ID.Value, ID = objeto.ID, StatusConvite = StatusConviteEnum.Aceito, UsuarioMembroID = usuario.ID.Value });
+                }
             }
             catch (Exception)
             {
@@ -146,7 +186,6 @@ namespace ProjetoIntegradorVI.Database
 
             return objeto;
         }
-
 
         public async Task<List<Evento>> GetAllEventosByUsuarioIDAsync(long usuarioID)
         {

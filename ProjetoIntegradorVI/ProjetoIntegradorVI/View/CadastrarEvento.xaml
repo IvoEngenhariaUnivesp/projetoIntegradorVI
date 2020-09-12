@@ -16,58 +16,55 @@
             </StackLayout>
             <ScrollView>
                 <StackLayout Spacing="0" Padding="15">
-                    <!--<Label Text="Nome"
-                    VerticalOptions="StartAndExpand" 
-                    HorizontalOptions="StartAndExpand" FontSize="Medium" />-->
+
                     <Entry x:Name="nome" Text="{Binding nome}" Placeholder="Digite seu nome"/>
 
-                    <!--<Label Text="Descrição"
-                    VerticalOptions="StartAndExpand" 
-                    HorizontalOptions="StartAndExpand" FontSize="Medium" />-->
-                    <Editor Placeholder="Descrição" Grid.Row="5" Grid.Column="1" HeightRequest="150" />
+                    <Editor Text="{Binding descricao}" Placeholder="Descrição" Grid.Row="5" Grid.Column="1" HeightRequest="150" />
 
                     <StackLayout Orientation="Vertical">
                         <Label Text="Data Início" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" FontSize="Medium"/>
                         <StackLayout Orientation="Horizontal">
-                            <DatePicker TextColor="#3B529F" WidthRequest="150" HorizontalOptions="Start"/>
-                            <TimePicker Time="11:00" Format="T" WidthRequest="150" HorizontalOptions="EndAndExpand" TextColor="OrangeRed"/>
+                            <DatePicker TextColor="#3B529F" WidthRequest="150" HorizontalOptions="Start" x:Name="dtStart" Date="{Binding dataInicio}"/>
+                            <TimePicker Time="{Binding horaInicio}" Format="T" WidthRequest="150" HorizontalOptions="EndAndExpand" TextColor="OrangeRed" x:Name="hrStart" />
                         </StackLayout>
 
                         <Label Text="Data Término" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" FontSize="Medium"/>
                         <StackLayout Orientation="Horizontal">
-                            <DatePicker TextColor="#3B529F" WidthRequest="150" HorizontalOptions="Start"/>
-                            <TimePicker Time="11:00" Format="T" WidthRequest="150" HorizontalOptions="EndAndExpand" TextColor="OrangeRed"/>
+                            <DatePicker TextColor="#3B529F" WidthRequest="150" HorizontalOptions="Start" Date="{Binding dataTermino}" />
+                            <TimePicker Time="{Binding horaTermino}" Format="T" WidthRequest="150" HorizontalOptions="EndAndExpand" TextColor="OrangeRed"/>
                         </StackLayout>
                     </StackLayout>
+                    <!--<Label Text="{Binding Source={x:Reference dtStart}, Path=Date}" TextColor="Red" />
+                    <Label Text="{Binding Source={x:Reference hrStart}, Path=Time}" TextColor="Red" />-->
 
-                    <!--<Label Text="Logradouro"
-                    VerticalOptions="StartAndExpand" 
-                    HorizontalOptions="StartAndExpand" FontSize="Medium" />-->
-                    <Entry Keyboard="Text" Text="{Binding endereco}" Placeholder="Digite Endereço"/>
+                    <Entry Keyboard="Text" Text="{Binding logradouro}" Placeholder="Digite Endereço"/>
 
                     <StackLayout Orientation="Horizontal">
-                        <Entry Keyboard="Numeric" Text="{Binding number}" Placeholder="Número" WidthRequest="100"/>
+                        <Entry Keyboard="Numeric" Text="{Binding numero}" Placeholder="Número" WidthRequest="100"/>
                         <Entry Keyboard="Text" Text="{Binding bairro}" Placeholder="Bairro" WidthRequest="200" HorizontalOptions="EndAndExpand"/>
                     </StackLayout>
 
-                    <!--<Label Text="Complemento"
-                    VerticalOptions="StartAndExpand" 
-                    HorizontalOptions="StartAndExpand" FontSize="Medium" />-->
                     <Entry Keyboard="Text" Text="{Binding complemento}" Placeholder="Complemento"/>
 
-                    <!--<Label Text="Senha"
-                    VerticalOptions="StartAndExpand" 
-                    HorizontalOptions="StartAndExpand" FontSize="Medium" />-->
                     <Entry Keyboard="Numeric" x:Name="senha" Text="{Binding cep}" Placeholder="CEP"/>
 
-                    <!--<Label Text="Confirmar Senha"
-                    VerticalOptions="StartAndExpand" 
-                    HorizontalOptions="StartAndExpand" FontSize="Medium" />-->
                     <StackLayout Orientation="Horizontal">
-                        <Entry Keyboard="Text" Text="{Binding uf}" Placeholder="UF" WidthRequest="50" HorizontalOptions="StartAndExpand"/>
+                        <Picker x:Name="picker" Title="UF" TextColor="#3B529F" WidthRequest="50" HorizontalOptions="StartAndExpand">
+                            <Picker.ItemsSource>
+                                <x:Array Type="{x:Type x:String, Binding estado}">
+                                    <x:String>SP</x:String>
+                                    <x:String>RJ</x:String>
+                                    <x:String>BA</x:String>
+                                    <x:String>MG</x:String>
+                                    <x:String>SC</x:String>
+                                </x:Array>
+                            </Picker.ItemsSource>
+                        </Picker>
+                        <!--<Entry Keyboard="Text" Text="{Binding uf}" Placeholder="UF" WidthRequest="50" HorizontalOptions="StartAndExpand"/>-->
                         <Entry Keyboard="Text" Text="{Binding cidade}" Placeholder="Cidade" WidthRequest="200" HorizontalOptions="EndAndExpand"/>
+                        
                     </StackLayout>
-                    
+                    <!--<Label Text="{Binding Source={x:Reference picker}, Path=SelectedItem}" TextColor="Red" />-->
                     <Button HeightRequest="50" Margin="0,15,0,0" 
                          TextColor="White" 
                          Text="Cadastrar"  
