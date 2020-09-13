@@ -36,8 +36,10 @@ namespace ProjetoIntegradorVI.ViewModel
             Evento evento = new Evento();
             evento.Nome = nome;
             evento.Estado = estado;
-            evento.DataHoraInicio = dataInicio;
-            evento.DataHoraTermino = dataTermino;
+            evento.DataInicio = dataInicio;
+            evento.HoraInicio = horaInicio;
+            evento.DataTermino = dataTermino;
+            evento.HoraTermino = horaTermino;
             evento.Descricao = descricao;
             evento.Logradouro = logradouro;
             evento.Bairro = bairro;

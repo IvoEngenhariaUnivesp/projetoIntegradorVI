@@ -171,6 +171,7 @@ namespace ProjetoIntegradorVI.Database
 
             try
             {
+                var pegaUsuario = await _client.Child("EventoUsuario").OrderByKey().LimitToLast(1).OnceSingleAsync<EventoUsuario>();
                 // Insere o objeto no Chil Usuarios/ID
                 await _client.Child("Eventos").Child(objeto.ID.ToString()).PutAsync(objeto);
 

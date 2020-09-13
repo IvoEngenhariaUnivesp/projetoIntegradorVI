@@ -64,7 +64,7 @@
                         <Entry Keyboard="Text" Text="{Binding cidade}" Placeholder="Cidade" WidthRequest="200" HorizontalOptions="EndAndExpand"/>
                         
                     </StackLayout>
-                    <!--<Label Text="{Binding Source={x:Reference picker}, Path=SelectedItem}" TextColor="Red" />-->
+                    <Label Text="{Binding Source={x:Reference picker}, Path=SelectedItem estado}" TextColor="Red" IsVisible="true" />
                     <Button HeightRequest="50" Margin="0,15,0,0" 
                          TextColor="White" 
                          Text="Cadastrar"  

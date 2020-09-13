@@ -9,8 +9,10 @@ namespace ProjetoIntegradorVI.Domain.Model
         public string ChaveEvento { get; set; }
         public string Nome { get; set; }
         public string Descricao { get; set; }
-        public string DataHoraInicio { get; set; }
-        public string DataHoraTermino { get; set; }
+        public string DataInicio { get; set; }
+        public string HoraInicio { get; set; }
+        public string DataTermino { get; set; }
+        public string HoraTermino { get; set; }
         public string Logradouro { get; set; }
         public string Bairro { get; set; }
         public string Estado { get; set; }
