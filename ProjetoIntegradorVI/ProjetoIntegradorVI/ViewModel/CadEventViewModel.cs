@@ -13,10 +13,10 @@ namespace ProjetoIntegradorVI.ViewModel
         public readonly FirebaseConfig<Evento> _eventoFirebase;
         public string nome { get; set; }
         public string descricao { get; set; }
-        public string horaInicio { get; set; }
+        public TimePicker horaInicio { get; set; }
         public string dataInicio { get; set; }
         public string dataTermino { get; set; }
-        public string horaTermino { get; set; }
+        public TimePicker horaTermino { get; set; }
         public string logradouro { get; set; }
         public string bairro { get; set; }
         public string estado { get; set; }
@@ -35,11 +35,11 @@ namespace ProjetoIntegradorVI.ViewModel
         {
             Evento evento = new Evento();
             evento.Nome = nome;
-            evento.Estado = estado;
+            evento.Descricao = descricao;
             evento.DataInicio = dataInicio;
-            evento.HoraInicio = horaInicio;
+            evento.HoraInicio = horaInicio.ToString();
             evento.DataTermino = dataTermino;
-            evento.HoraTermino = horaTermino;
+            evento.HoraTermino = horaTermino.ToString();
             evento.Descricao = descricao;
             evento.Logradouro = logradouro;
             evento.Bairro = bairro;

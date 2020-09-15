@@ -30,8 +30,10 @@
 
                         <Label Text="Data Término" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" FontSize="Medium"/>
                         <StackLayout Orientation="Horizontal">
-                            <DatePicker TextColor="#3B529F" WidthRequest="150" HorizontalOptions="Start" Date="{Binding dataTermino}" />
-                            <TimePicker Time="{Binding horaTermino}" Format="T" WidthRequest="150" HorizontalOptions="EndAndExpand" TextColor="OrangeRed"/>
+                            <DatePicker TextColor="#3B529F" WidthRequest="150" HorizontalOptions="Start" Date="{Binding dataTermino, StringFormat=00/00/0000}" />
+                            <TimePicker Time="{Binding horaTermino}" Format="T" 
+                                        WidthRequest="150" HorizontalOptions="EndAndExpand" 
+                                        TextColor="OrangeRed" BindingContext="{Binding horaTermino}"/>
                         </StackLayout>
                     </StackLayout>
                     <!--<Label Text="{Binding Source={x:Reference dtStart}, Path=Date}" TextColor="Red" />
@@ -49,9 +51,12 @@
                     <Entry Keyboard="Numeric" x:Name="senha" Text="{Binding cep}" Placeholder="CEP"/>
 
                     <StackLayout Orientation="Horizontal">
-                        <Picker x:Name="picker" Title="UF" TextColor="#3B529F" WidthRequest="50" HorizontalOptions="StartAndExpand">
+                        <Picker x:Name="EstadoPicker"
+                                Title="UF" TextColor="#3B529F" 
+                                WidthRequest="50" HorizontalOptions="StartAndExpand"
+                                SelectedItem="{Binding estado}">
                             <Picker.ItemsSource>
-                                <x:Array Type="{x:Type x:String, Binding estado}">
+                                <x:Array Type="{x:Type x:String}">
                                     <x:String>SP</x:String>
                                     <x:String>RJ</x:String>
                                     <x:String>BA</x:String>
@@ -64,7 +69,7 @@
                         <Entry Keyboard="Text" Text="{Binding cidade}" Placeholder="Cidade" WidthRequest="200" HorizontalOptions="EndAndExpand"/>
                         
                     </StackLayout>
-                    <Label Text="{Binding Source={x:Reference picker}, Path=SelectedItem estado}" TextColor="Red" IsVisible="true" />
+                    <!--<Label Text="{Binding Source={x:Reference picker}, Path=SelectedItem estado}" TextColor="Red" IsVisible="true" />-->
                     <Button HeightRequest="50" Margin="0,15,0,0" 
                          TextColor="White" 
                          Text="Cadastrar"  

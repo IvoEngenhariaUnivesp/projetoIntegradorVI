@@ -17,6 +17,5 @@ namespace ProjetoIntegradorVI.View
             InitializeComponent();
             BindingContext = new CadUserViewModel();
         }
-
     }
 }

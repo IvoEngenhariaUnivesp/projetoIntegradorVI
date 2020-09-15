@@ -13,12 +13,11 @@ namespace ProjetoIntegradorVI.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CadastrarEvento : ContentPage
     {
+
         public CadastrarEvento()
         {
             InitializeComponent();
             BindingContext = new CadEventViewModel();
-
         }
-        
     }
 }
