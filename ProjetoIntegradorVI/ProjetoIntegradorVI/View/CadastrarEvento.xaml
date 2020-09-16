@@ -43,7 +43,7 @@
                     <Entry Keyboard="Text" Text="{Binding logradouro}" Placeholder="Digite Endereço"/>
 
                     <StackLayout Orientation="Horizontal">
-                        <Entry Keyboard="Numeric" Text="{Binding numero}" Placeholder="Número" WidthRequest="100"/>
+                        <Entry Keyboard="Default" Text="{Binding numero}" Placeholder="Número" WidthRequest="100"/>
                         <Entry Keyboard="Text" Text="{Binding bairro}" Placeholder="Bairro" WidthRequest="200" HorizontalOptions="EndAndExpand"/>
                     </StackLayout>
 
