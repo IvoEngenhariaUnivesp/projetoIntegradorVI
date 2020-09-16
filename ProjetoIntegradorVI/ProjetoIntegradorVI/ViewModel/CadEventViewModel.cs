@@ -1,6 +1,7 @@
 ﻿using ProjetoIntegradorVI.Database;
 using ProjetoIntegradorVI.Domain.Model;
 using System;
+using System.Globalization;
 using System.Collections.Generic;
 using System.Text;
 using Xamarin.Forms;
@@ -13,10 +14,10 @@ namespace ProjetoIntegradorVI.ViewModel
         public readonly FirebaseConfig<Evento> _eventoFirebase;
         public string nome { get; set; }
         public string descricao { get; set; }
-        public TimePicker horaInicio { get; set; }
+        public TimeSpan horaInicio { get; set; }
         public string dataInicio { get; set; }
         public string dataTermino { get; set; }
-        public TimePicker horaTermino { get; set; }
+        public TimeSpan horaTermino { get; set; }
         public string logradouro { get; set; }
         public string bairro { get; set; }
         public string estado { get; set; }
@@ -24,19 +25,19 @@ namespace ProjetoIntegradorVI.ViewModel
         public string cep { get; set; }
         public int numero { get; set; }
         public string complemento { get; set; }
-
-        public CadEventViewModel()
+        
+        public CadEventViewModel(Usuario usuarioLogado)
         {
             _eventoFirebase = new FirebaseConfig<Evento>();
-            ResultadoCommand = new Command(CadastrarEvento);
+            ResultadoCommand = new Command(CadastrarEvento<Evento>(usuarioLogado));
         }
 
-        public async void CadastrarEvento()
+        public async void CadastrarEvento(Usuario usuario)
         {
             Evento evento = new Evento();
             evento.Nome = nome;
             evento.Descricao = descricao;
-            evento.DataInicio = dataInicio;
+            evento.DataInicio = dataInicio.ToString(CultureInfo.CurrentCulture);
             evento.HoraInicio = horaInicio.ToString();
             evento.DataTermino = dataTermino;
             evento.HoraTermino = horaTermino.ToString();

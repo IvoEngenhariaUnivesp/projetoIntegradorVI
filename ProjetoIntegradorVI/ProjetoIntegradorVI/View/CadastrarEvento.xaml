@@ -25,7 +25,7 @@
                         <Label Text="Data Início" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" FontSize="Medium"/>
                         <StackLayout Orientation="Horizontal">
                             <DatePicker TextColor="#3B529F" WidthRequest="150" HorizontalOptions="Start" x:Name="dtStart" Date="{Binding dataInicio}"/>
-                            <TimePicker Time="{Binding horaInicio}" Format="T" WidthRequest="150" HorizontalOptions="EndAndExpand" TextColor="OrangeRed" x:Name="hrStart" />
+                            <TimePicker Time="{Binding horaInicio}" Format="T" WidthRequest="150" HorizontalOptions="EndAndExpand" TextColor="OrangeRed" />
                         </StackLayout>
 
                         <Label Text="Data Término" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" FontSize="Medium"/>
@@ -33,7 +33,8 @@
                             <DatePicker TextColor="#3B529F" WidthRequest="150" HorizontalOptions="Start" Date="{Binding dataTermino, StringFormat=00/00/0000}" />
                             <TimePicker Time="{Binding horaTermino}" Format="T" 
                                         WidthRequest="150" HorizontalOptions="EndAndExpand" 
-                                        TextColor="OrangeRed" BindingContext="{Binding horaTermino}"/>
+                                        TextColor="OrangeRed"/>
+                            
                         </StackLayout>
                     </StackLayout>
                     <!--<Label Text="{Binding Source={x:Reference dtStart}, Path=Date}" TextColor="Red" />
