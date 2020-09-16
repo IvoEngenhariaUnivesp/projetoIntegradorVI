@@ -146,6 +146,7 @@ namespace ProjetoIntegradorVI.Database
 
         //    return objeto;
         //}
+
         public async Task<Evento> InsertEventoAsync(Evento objeto, Usuario usuario = null)
         {
             // Abre a conexão com o banco
@@ -171,16 +172,16 @@ namespace ProjetoIntegradorVI.Database
 
             try
             {
-                var pegaUsuario = await _client.Child("EventoUsuario").OrderByKey().LimitToLast(1).OnceSingleAsync<EventoUsuario>();
+                var pegaEventoUsuario = await _client.Child("EventoUsuario").OrderByKey().LimitToLast(1).OnceSingleAsync<List<EventoUsuario>>();
                 // Insere o objeto no Chil Usuarios/ID
                 await _client.Child("Eventos").Child(objeto.ID.ToString()).PutAsync(objeto);
 
                 if (usuario != null)
                 {
-                    await _client.Child("EventoUsuario").Child(objeto.ID.ToString()).PutAsync(new EventoUsuario { EventoID = objeto.ID.Value, ID = objeto.ID, StatusConvite = StatusConviteEnum.Aceito, UsuarioMembroID = usuario.ID.Value });
+                    await _client.Child("EventoUsuario").Child((pegaEventoUsuario.Last().ID+1).ToString()).PutAsync(new EventoUsuario { EventoID = objeto.ID.Value, ID = pegaEventoUsuario.Last().ID+1, StatusConvite = StatusConviteEnum.Aceito, UsuarioMembroID = usuario.ID.Value });
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return default(Evento);
             }

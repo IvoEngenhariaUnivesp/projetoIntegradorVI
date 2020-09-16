@@ -11,46 +11,52 @@ namespace ProjetoIntegradorVI.ViewModel
     public class CadEventViewModel
     {
         public Command ResultadoCommand { get; set; }
-        public readonly FirebaseConfig<Evento> _eventoFirebase;
+        public FirebaseConfig<Evento> _eventoFirebase;
         public string nome { get; set; }
         public string descricao { get; set; }
         public TimeSpan horaInicio { get; set; }
-        public string dataInicio { get; set; }
-        public string dataTermino { get; set; }
+        public DateTime dataInicio { get; set; }
+        public DateTime dataTermino { get; set; }
         public TimeSpan horaTermino { get; set; }
         public string logradouro { get; set; }
         public string bairro { get; set; }
         public string estado { get; set; }
         public string cidade { get; set; }
         public string cep { get; set; }
-        public int numero { get; set; }
+        public string numero { get; set; }
         public string complemento { get; set; }
+        private Usuario _usuarioLogado { get; set; }
         
         public CadEventViewModel(Usuario usuarioLogado)
         {
-            _eventoFirebase = new FirebaseConfig<Evento>();
-            ResultadoCommand = new Command(CadastrarEvento<Evento>(usuarioLogado));
+            _usuarioLogado = usuarioLogado;
+            ResultadoCommand = new Command(CadastrarEvento);
         }
 
-        public async void CadastrarEvento(Usuario usuario)
+        public async void CadastrarEvento()
         {
+            _eventoFirebase = new FirebaseConfig<Evento>();
             Evento evento = new Evento();
+            evento.UsuarioCriadorID = _usuarioLogado.ID.Value;
             evento.Nome = nome;
             evento.Descricao = descricao;
-            evento.DataInicio = dataInicio.ToString(CultureInfo.CurrentCulture);
-            evento.HoraInicio = horaInicio.ToString();
-            evento.DataTermino = dataTermino;
-            evento.HoraTermino = horaTermino.ToString();
-            evento.Descricao = descricao;
-            evento.Logradouro = logradouro;
-            evento.Bairro = bairro;
-            evento.Estado = estado;
-            evento.Cidade = cidade;
-            evento.CEP = cep;
-            evento.Numero = numero;
-            evento.Complemento = complemento;
+            evento.ChaveEvento = new Random().Next().ToString();
+            evento.DataInicio = dataInicio.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture);
+            evento.HoraInicio = horaInicio.ToString(@"hh\:mm");
+            evento.DataTermino = dataTermino.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture);
+            evento.HoraTermino = horaTermino.ToString(@"hh\:mm");
+            evento.Descricao = descricao == (null) ? "" : descricao;
+            evento.Logradouro = logradouro == (null) ? "" : logradouro;
+            evento.Bairro = bairro == (null) ? "" : bairro;
+            evento.Estado = estado == (null) ? "" : estado;
+            evento.Cidade = cidade == (null) ? "" : cidade;
+            evento.CEP = cep == (null) ? "" : cep;
+            evento.Numero = numero == (null) ? "" : numero;
+            evento.Complemento = complemento == (null) ? "" : complemento;
+            evento.Latitude = "";
+            evento.Longitude = "";
 
-            var cadEventoSucces = await _eventoFirebase.InsertEventoAsync(evento);
+            var cadEventoSucces = await _eventoFirebase.InsertEventoAsync(evento, _usuarioLogado);
             if (cadEventoSucces != null)
             {
                 await App.Current.MainPage.DisplayAlert("Cadastro", "Sucesso no Cadastro!", "Ok");

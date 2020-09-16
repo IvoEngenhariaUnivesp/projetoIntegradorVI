@@ -14,10 +14,10 @@ namespace ProjetoIntegradorVI.View
     public partial class CadastrarEvento : ContentPage
     {
 
-        public CadastrarEvento()
+        public CadastrarEvento(Usuario usuarioLogado)
         {
             InitializeComponent();
-            BindingContext = new CadEventViewModel();
+            BindingContext = new CadEventViewModel(usuarioLogado);
         }
     }
 }

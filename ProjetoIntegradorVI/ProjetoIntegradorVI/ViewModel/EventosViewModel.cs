@@ -12,9 +12,11 @@ namespace ProjetoIntegradorVI.ViewModel
     {
         public Command ResultCommand { get; set; }
         public Command AdicionarEvento { get; set; }
+        private Usuario _usuarioLogado { get; set; }
 
-        public EventosViewModel()
+        public EventosViewModel(Usuario usuarioLogado)
         {
+            _usuarioLogado = usuarioLogado;
             ResultCommand = new Command(PushBackLogin);
             AdicionarEvento = new Command(AddEvent);
         }
@@ -26,8 +28,7 @@ namespace ProjetoIntegradorVI.ViewModel
 
         public void AddEvent()
         {
-            App.Current.MainPage.Navigation.PushModalAsync(new View.CadastrarEvento());
-            //App.Current.MainPage = new NavigationPage(new View.CadastrarEvento());
+            App.Current.MainPage.Navigation.PushModalAsync(new View.CadastrarEvento(_usuarioLogado));
         }
     }
 }

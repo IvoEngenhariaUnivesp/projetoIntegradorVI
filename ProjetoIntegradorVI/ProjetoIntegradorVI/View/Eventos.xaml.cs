@@ -18,15 +18,10 @@ namespace ProjetoIntegradorVI.View
         private Usuario usuarioLogado;
         private List<Evento> lstEventos;
 
-        //public Eventos()
-        //{
-        //    InitializeComponent();
-        //    BindingContext = new EventosViewModel();
-        //}
         public Eventos(Usuario usuarioLogado)
         {
             InitializeComponent();
-            BindingContext = new EventosViewModel();
+            BindingContext = new EventosViewModel(usuarioLogado);
 
             // Cria o client dos Eventos
             var firebaseClient = new FirebaseConfig<Evento>();

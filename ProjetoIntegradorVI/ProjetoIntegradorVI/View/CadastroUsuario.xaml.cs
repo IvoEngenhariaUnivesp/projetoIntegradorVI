@@ -1,4 +1,5 @@
-﻿using ProjetoIntegradorVI.ViewModel;
+﻿using ProjetoIntegradorVI.Domain.Model;
+using ProjetoIntegradorVI.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;

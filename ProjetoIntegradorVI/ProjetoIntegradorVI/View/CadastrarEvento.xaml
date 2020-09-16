@@ -30,7 +30,7 @@
 
                         <Label Text="Data Término" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" FontSize="Medium"/>
                         <StackLayout Orientation="Horizontal">
-                            <DatePicker TextColor="#3B529F" WidthRequest="150" HorizontalOptions="Start" Date="{Binding dataTermino, StringFormat=00/00/0000}" />
+                            <DatePicker TextColor="#3B529F" WidthRequest="150" HorizontalOptions="Start" Date="{Binding dataTermino}" />
                             <TimePicker Time="{Binding horaTermino}" Format="T" 
                                         WidthRequest="150" HorizontalOptions="EndAndExpand" 
                                         TextColor="OrangeRed"/>
