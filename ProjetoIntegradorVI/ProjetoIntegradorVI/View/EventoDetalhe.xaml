@@ -4,9 +4,18 @@
              x:Class="ProjetoIntegradorVI.View.EventoDetalhe">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Detalhes do Evento cadastrado com Sucesso! ;)"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <StackLayout Spacing="0" BackgroundColor="#3B529F" HeightRequest="50">
+                <Label Text="Detalhes do Evento" TextColor="FloralWhite" FontSize="Title" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+            </StackLayout>
+            <ScrollView>
+                <StackLayout Spacing="0" Padding="15">
+                    <StackLayout>
+                        <Frame WidthRequest="90" HeightRequest="100" HasShadow="True">
+                            <Label Text="Testando Detalhes do Evento" TextColor="#ccc" FontSize="Default" />
+                        </Frame>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -61,7 +61,7 @@ namespace ProjetoIntegradorVI.ViewModel
             {
                 await App.Current.MainPage.DisplayAlert("Cadastro", "Sucesso no Cadastro!", "Ok");
 
-                App.Current.MainPage = new NavigationPage(new View.EventoDetalhe());
+                App.Current.MainPage = new NavigationPage(new View.EventoDetalhe(_usuarioLogado));
             }
             else
             {
