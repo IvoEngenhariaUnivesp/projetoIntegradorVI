@@ -156,36 +156,60 @@ namespace ProjetoIntegradorVI.Database
             try
             {
                 // Liberado para cadastrar
-                // Pega ultimo registro do banco em forma de lista, onde o primeiro objeto podeser nulo.
+                // Pega ultimo registro do banco em forma de lista, onde o primeiro objeto pode ser nulo.
                 var ultimoRegistro = await _client
                     .Child("Eventos")
                     .OrderByKey()
                     .LimitToLast(1)
-                    .OnceSingleAsync<List<Evento>>();
+                    .OnceSingleAsync<Dictionary<object,Evento>>();
 
-                objeto.ID = ultimoRegistro.Last().ID + 1;
+                objeto.ID = ultimoRegistro != (null) ? ultimoRegistro.Values.Last().ID + 1 : 0;
             }
-            catch (Exception ex)
+            catch (Firebase.Database.FirebaseException ex)
             {
-                objeto.ID = 0;
+                if (ex.ResponseData.StartsWith("[{") || ex.ResponseData.StartsWith("[null"))
+                {
+                    var ultimoRegistro = await _client
+                        .Child("Eventos")
+                        .OrderByKey()
+                        .LimitToLast(1)
+                        .OnceSingleAsync<List<Evento>>();
+
+                    objeto.ID = ultimoRegistro.Last().ID + 1;
+                }
+                else
+                {
+                    objeto.ID = 0;
+                }
             }
 
             try
             {
-                var pegaEventoUsuario = await _client.Child("EventoUsuario").OrderByKey().LimitToLast(1).OnceSingleAsync<List<EventoUsuario>>();
                 // Insere o objeto no Chil Usuarios/ID
                 await _client.Child("Eventos").Child(objeto.ID.ToString()).PutAsync(objeto);
 
+                var pegaEventoUsuario = await _client.Child("EventoUsuario").OrderByKey().LimitToLast(1).OnceSingleAsync<Dictionary<object, EventoUsuario>>();
+
+                var eventoUsuarioID = pegaEventoUsuario == (null) ? 0 : pegaEventoUsuario.Values.Last().ID+1;
+
                 if (usuario != null)
                 {
-                    await _client.Child("EventoUsuario").Child((pegaEventoUsuario.Last().ID+1).ToString()).PutAsync(new EventoUsuario { EventoID = objeto.ID.Value, ID = pegaEventoUsuario.Last().ID+1, StatusConvite = StatusConviteEnum.Aceito, UsuarioMembroID = usuario.ID.Value });
+                    await _client.Child("EventoUsuario").Child(eventoUsuarioID.ToString()).PutAsync(new EventoUsuario { EventoID = objeto.ID.Value, ID = eventoUsuarioID, StatusConvite = StatusConviteEnum.Aceito, UsuarioMembroID = usuario.ID.Value });
                 }
             }
-            catch (Exception ex)
+            catch (Firebase.Database.FirebaseException ex)
             {
-                return default(Evento);
+                if (ex.ResponseData.StartsWith("[{") || ex.ResponseData.StartsWith("[null"))
+                {
+                    var pegaEventoUsuario = await _client.Child("EventoUsuario").OrderByKey().LimitToLast(1).OnceSingleAsync<List<EventoUsuario>>();
+                    var eventoUsuarioID = pegaEventoUsuario == (null) ? 0 : pegaEventoUsuario.Last().ID + 1;
+                    if (usuario != null)
+                    {
+                        await _client.Child("EventoUsuario").Child(eventoUsuarioID.ToString()).PutAsync(new EventoUsuario { EventoID = objeto.ID.Value, ID = eventoUsuarioID, StatusConvite = StatusConviteEnum.Aceito, UsuarioMembroID = usuario.ID.Value });
+                    }
+                }
+                return objeto;
             }
-
             return objeto;
         }
 
