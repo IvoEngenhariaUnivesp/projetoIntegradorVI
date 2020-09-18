@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="ProjetoIntegradorVI.View.TabbedPageEventoDetalhe">
+    <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="Detalhes"
+             x:Name="tabDetalhes">
+        <ContentPage.Content>
+            <StackLayout>
+                <ScrollView>
+                    <StackLayout Spacing="0" Padding="15">
+                        <StackLayout>
+                            <Frame  BorderColor="White" CornerRadius="10" Padding="5" Margin="0,0,0,10" BackgroundColor="White" HasShadow="True">
+                                <StackLayout>
+                                    <Label Text="{Binding NomeEvento}" TextColor="#212121" Margin="10,10,0,0" FontSize="Subtitle" />
+                                    <Label Text="{Binding DescricaoEvento}" TextColor="#757575" Margin="10,1,10,0"/>
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+                    </StackLayout>
+                </ScrollView>
+            </StackLayout>
+        </ContentPage.Content>
+    </ContentPage>
+    <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="Itens"
+             x:Name="tabItens">
+        <ContentPage.Content>
+            <StackLayout>
+                <StackLayout Spacing="0" BackgroundColor="#3B529F" HeightRequest="50">
+                    <Label Text="Detalhes do Evento" TextColor="FloralWhite" FontSize="Title" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                </StackLayout>
+                <ScrollView>
+                    <StackLayout Spacing="0" Padding="15">
+                        <StackLayout>
+                            <Frame WidthRequest="90" HeightRequest="100" HasShadow="True">
+                                <Label Text="Testando Detalhes do Evento" TextColor="#ccc" FontSize="Default" />
+                            </Frame>
+                        </StackLayout>
+                    </StackLayout>
+                </ScrollView>
+            </StackLayout>
+        </ContentPage.Content>
+    </ContentPage>
+    <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="Convites"
+             x:Name="tabConvites">
+        <ContentPage.Content>
+            <StackLayout>
+                <StackLayout Spacing="0" BackgroundColor="#3B529F" HeightRequest="50">
+                    <Label Text="Detalhes do Evento" TextColor="FloralWhite" FontSize="Title" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                </StackLayout>
+                <ScrollView>
+                    <StackLayout Spacing="0" Padding="15">
+                        <StackLayout>
+                            <Frame WidthRequest="90" HeightRequest="100" HasShadow="True">
+                                <Label Text="Testando Detalhes do Evento" TextColor="#ccc" FontSize="Default" />
+                            </Frame>
+                        </StackLayout>
+                    </StackLayout>
+                </ScrollView>
+            </StackLayout>
+        </ContentPage.Content>
+    </ContentPage>
+</TabbedPage>

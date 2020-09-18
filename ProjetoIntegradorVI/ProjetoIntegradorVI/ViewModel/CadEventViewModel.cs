@@ -63,7 +63,7 @@ namespace ProjetoIntegradorVI.ViewModel
 
                 App.Current.MainPage = new NavigationPage(new View.Eventos(_usuarioLogado));
 
-                await App.Current.MainPage.Navigation.PushModalAsync(new View.EventoDetalhe(_usuarioLogado));
+                await App.Current.MainPage.Navigation.PushModalAsync(new View.TabbedPageEventoDetalhe(_usuarioLogado, cadEventoSucces.ID.Value));
             }
             else
             {

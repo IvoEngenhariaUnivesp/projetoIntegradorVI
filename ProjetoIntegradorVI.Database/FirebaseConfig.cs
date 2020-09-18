@@ -275,6 +275,70 @@ namespace ProjetoIntegradorVI.Database
             }
         }
 
+        public async Task<EventoDetalhe> GetEventoDetalheByEventoIDAsync(long eventoID)
+        {
+            // Abre a conexão com o banco
+            InstaciaClient();
+
+            EventoDetalhe eventoDetalhe = new EventoDetalhe();
+
+            try
+            {
+                // Busca o evento com base no ID informado
+                // Retorna um dictionary com <ID, Evento>
+                var eventoRetorno =
+                    await _client
+                        .Child("Eventos")
+                        .OrderBy("ID")
+                        .EqualTo(eventoID)
+                        .OnceSingleAsync<Dictionary<long, Evento>>();
+
+                // Retorna o primeiro objeto(sempre vai ser um, se encontrar)
+                var evento = eventoRetorno.Values.First();
+
+                // Monta o objeto de retorno
+                eventoDetalhe.EventoID = evento.ID.Value;
+                eventoDetalhe.UsuarioID = evento.UsuarioCriadorID;
+                eventoDetalhe.NomeEvento = evento.Nome;
+                eventoDetalhe.DescricaoEvento = evento.Descricao;
+                eventoDetalhe.DataInicio = evento.DataInicio;
+                eventoDetalhe.DataTermino = evento.DataTermino;
+                eventoDetalhe.HoraInicio = evento.HoraInicio;
+                eventoDetalhe.HoraTermino = evento.HoraTermino;
+                eventoDetalhe.DiasRestantes = DateTime.Parse(evento.DataInicio).Day - DateTime.Now.Day;
+
+                // Busca a lista de usuários vinculados ao evento
+                // Retorna um dictionary com <ID, Usuario>
+                var eventosByUsuarioIDRetorno =
+                    await _client
+                        .Child("EventoUsuario")
+                        .OrderBy("EventoID")
+                        .EqualTo(eventoID)
+                        .OnceSingleAsync<Dictionary<long, EventoUsuario>>();
+
+                // Monta a quantidade de convites aceitos, pendentes e recusados
+                foreach (EventoUsuario eventoUsuario in eventosByUsuarioIDRetorno.Values)
+                {
+                    if (eventoUsuario.StatusConvite == StatusConviteEnum.Aceito)
+                        eventoDetalhe.ConvitesAceitos++;
+
+                    if (eventoUsuario.StatusConvite == StatusConviteEnum.Pendente)
+                        eventoDetalhe.ConvitesPendentes++;
+
+                    if (eventoUsuario.StatusConvite == StatusConviteEnum.Recusado)
+                        eventoDetalhe.ConvitesRecusados++;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                // Se tiver não existir, retorna null
+                return default(EventoDetalhe);
+            }
+            return eventoDetalhe;
+        }
+
+
         #endregion Métodos Child Eventos
 
     }
