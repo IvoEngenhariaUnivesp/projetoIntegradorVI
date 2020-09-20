@@ -10,9 +10,19 @@
             <ScrollView>
                 <StackLayout Spacing="0" Padding="15">
                     <StackLayout>
-                        <Frame WidthRequest="90" HeightRequest="100" HasShadow="True">
+                        <Frame WidthRequest="90" HeightRequest="200" HasShadow="True">
                             <Label Text="Testando Detalhes do Evento" TextColor="#ccc" FontSize="Default" />
                         </Frame>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <StackLayout>
+                            <Label Text="Data do início"/>
+                            <Label Text="29/09/2020 - 18:00hrs" />
+                        </StackLayout>
+                        <StackLayout>
+                            <Label Text="Data do término"/>
+                            <Label Text="30/09/2020 - 01:00hrs" />
+                        </StackLayout>
                     </StackLayout>
                 </StackLayout>
             </ScrollView>

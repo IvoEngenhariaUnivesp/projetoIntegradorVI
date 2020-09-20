@@ -14,10 +14,48 @@
                 <ScrollView>
                     <StackLayout Spacing="0" Padding="15">
                         <StackLayout>
-                            <Frame  BorderColor="White" CornerRadius="10" Padding="5" Margin="0,0,0,10" BackgroundColor="White" HasShadow="True">
+                            <Frame BorderColor="White" HeightRequest="200" CornerRadius="10" Padding="5" Margin="0,0,0,10" BackgroundColor="White" HasShadow="True">
                                 <StackLayout>
                                     <Label Text="{Binding NomeEvento}" TextColor="#212121" Margin="10,10,0,0" FontSize="Subtitle" />
                                     <Label Text="{Binding DescricaoEvento}" TextColor="#757575" Margin="10,1,10,0"/>
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="0,10,0,0">
+                            <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                <Label Text="Data do início" HorizontalOptions="CenterAndExpand"/>
+                                <Label Text="{Binding dataInicio}" HorizontalOptions="CenterAndExpand" />
+                                <Label Text="{Binding horaInicio}" HorizontalOptions="CenterAndExpand" />
+                            </StackLayout>
+                            <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                <Label Text="Data do término" HorizontalOptions="CenterAndExpand"/>
+                                <Label Text="{Binding dataTermino}" HorizontalOptions="CenterAndExpand" />
+                                <Label Text="{Binding horaTermino}" HorizontalOptions="CenterAndExpand" />
+                            </StackLayout>
+                        </StackLayout>
+                        <StackLayout HorizontalOptions="CenterAndExpand" Margin="0,15,0,0">
+                            <Label Text="Faltam 20 dias!" FontSize="Subtitle" />
+                        </StackLayout>
+                        <StackLayout Margin="0,10,0,0">
+                            <Frame BorderColor="White" HeightRequest="200" CornerRadius="10" Padding="5" Margin="0,0,0,10" BackgroundColor="White" HasShadow="True">
+                                <StackLayout>
+                                    <StackLayout>
+                                        <Label HorizontalOptions="CenterAndExpand" Text="Convites" FontSize="Title" FontAttributes="Bold" FontFamily="Arial" />
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Margin="0,10,0,0">
+                                        <StackLayout VerticalOptions="Center">
+                                            <Label Text="05" HorizontalOptions="CenterAndExpand" TextColor="Green" FontSize="Large"/>
+                                            <Label Text="Confirmados" />
+                                        </StackLayout>
+                                        <StackLayout VerticalOptions="Center">
+                                            <Label Text="01" HorizontalOptions="CenterAndExpand" TextColor="#eeff41" FontSize="Large"/>
+                                            <Label Text="Pendentes" />
+                                        </StackLayout>
+                                        <StackLayout VerticalOptions="Center">
+                                            <Label Text="04" HorizontalOptions="CenterAndExpand" TextColor="Red" FontSize="Large"/>
+                                            <Label Text="Recusados" />
+                                        </StackLayout>
+                                    </StackLayout>
                                 </StackLayout>
                             </Frame>
                         </StackLayout>
