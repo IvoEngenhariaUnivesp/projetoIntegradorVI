@@ -1,5 +1,6 @@
 ﻿using ProjetoIntegradorVI.Database;
 using ProjetoIntegradorVI.Domain.Model;
+using System;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -22,6 +23,10 @@ namespace ProjetoIntegradorVI.ViewModel
         public string dataTermino { get; set; }
         public string horaInicio { get; set; }
         public string horaTermino { get; set; }
+        public string diasRestantes { get; set; }
+        public string convidadosAceitos { get; set; }
+        public string convidadosRecusados { get; set; }
+        public string convidadosPendentes { get; set; }
 
         public EventoDetalheViewModel(Usuario usuarioLogado, long eventoID)
         {
@@ -42,10 +47,14 @@ namespace ProjetoIntegradorVI.ViewModel
             dataTermino = eventoDetalhe.DataTermino;
             horaInicio = eventoDetalhe.HoraInicio;
             horaTermino = eventoDetalhe.HoraTermino;
-            //Adicionar outras propriedades
+            diasRestantes = String.Format("Faltam {0} dias!", eventoDetalhe.DiasRestantes);
+            convidadosAceitos = eventoDetalhe.ConvitesAceitos.ToString();
+            convidadosRecusados = eventoDetalhe.ConvitesRecusados.ToString();
+            convidadosPendentes = eventoDetalhe.ConvitesPendentes.ToString();
+
         }
 
-
+         
 
     }
 }
