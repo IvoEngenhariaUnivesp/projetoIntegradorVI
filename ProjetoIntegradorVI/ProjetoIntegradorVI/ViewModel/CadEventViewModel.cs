@@ -15,8 +15,8 @@ namespace ProjetoIntegradorVI.ViewModel
         public string nome { get; set; }
         public string descricao { get; set; }
         public TimeSpan horaInicio { get; set; }
-        public DateTime dataInicio { get; set; }
-        public DateTime dataTermino { get; set; }
+        public DateTime dataInicio { get; set; } = DateTime.Now;
+        public DateTime dataTermino { get; set; } = DateTime.Now;
         public TimeSpan horaTermino { get; set; }
         public string logradouro { get; set; }
         public string bairro { get; set; }

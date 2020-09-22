@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
              x:Class="ProjetoIntegradorVI.View.CadastrarEvento">
 
     <ContentPage.Resources>
@@ -24,13 +25,13 @@
                     <StackLayout Orientation="Vertical">
                         <Label Text="Data Início" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" FontSize="Medium"/>
                         <StackLayout Orientation="Horizontal">
-                            <DatePicker TextColor="#3B529F" WidthRequest="150" HorizontalOptions="Start" x:Name="dtStart" Date="{Binding dataInicio}"/>
+                            <DatePicker TextColor="#3B529F" WidthRequest="150" HorizontalOptions="Start" x:Name="dtStart" Date="{Binding dataInicio}" Format="dd/MM/yyyy"/>
                             <TimePicker Time="{Binding horaInicio}" Format="T" WidthRequest="150" HorizontalOptions="EndAndExpand" TextColor="OrangeRed" />
                         </StackLayout>
 
                         <Label Text="Data Término" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" FontSize="Medium"/>
                         <StackLayout Orientation="Horizontal">
-                            <DatePicker TextColor="#3B529F" WidthRequest="150" HorizontalOptions="Start" Date="{Binding dataTermino}" />
+                            <DatePicker TextColor="#3B529F" WidthRequest="150" HorizontalOptions="Start" Date="{Binding dataTermino}" Format="dd/MM/yyyy" />
                             <TimePicker Time="{Binding horaTermino}" Format="T" 
                                         WidthRequest="150" HorizontalOptions="EndAndExpand" 
                                         TextColor="OrangeRed"/>
