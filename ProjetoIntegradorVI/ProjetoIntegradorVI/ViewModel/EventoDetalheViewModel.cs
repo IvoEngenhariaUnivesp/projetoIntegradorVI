@@ -18,6 +18,10 @@ namespace ProjetoIntegradorVI.ViewModel
         private Usuario _usuarioLogado { get; set; }
         public string NomeEvento { get; set; }
         public string DescricaoEvento { get; set; }
+        public string dataInicio { get; set; }
+        public string dataTermino { get; set; }
+        public string horaInicio { get; set; }
+        public string horaTermino { get; set; }
 
         public EventoDetalheViewModel(Usuario usuarioLogado, long eventoID)
         {
@@ -34,6 +38,10 @@ namespace ProjetoIntegradorVI.ViewModel
             // Monta as propriedades da tela
             NomeEvento = eventoDetalhe.NomeEvento;
             DescricaoEvento = eventoDetalhe.DescricaoEvento;
+            dataInicio = eventoDetalhe.DataInicio;
+            dataTermino = eventoDetalhe.DataTermino;
+            horaInicio = eventoDetalhe.HoraInicio;
+            horaTermino = eventoDetalhe.HoraTermino;
             //Adicionar outras propriedades
         }
 
