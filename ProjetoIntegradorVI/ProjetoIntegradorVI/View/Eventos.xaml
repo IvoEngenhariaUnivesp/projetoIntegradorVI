@@ -18,41 +18,42 @@
                 <!--<ImageButton Source="pesquisa.png" WidthRequest="25" HeightRequest="25" HorizontalOptions="End" Margin="0,-35,10,0" CornerRadius="250" BorderColor="White" />-->
                 <!--<Button ImageSource="pesquisa.png" WidthRequest="10" HeightRequest="10" BackgroundColor="Beige" HorizontalOptions="End" Margin="0,-25,15,0"/>-->
             </StackLayout>
-            <RefreshView IsRefreshing="False">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
-                        
-                    <ScrollView VerticalScrollBarVisibility="Never">
-                        <StackLayout Spacing="50" Padding="10">
-                            <ListView x:Name="lvEventos" HasUnevenRows="True">
-                                <ListView.ItemTemplate>
-                                    <DataTemplate>
-                                        <ViewCell>
-                                            <Frame BorderColor="White" CornerRadius="10" Padding="5" Margin="0,0,0,10" BackgroundColor="White" HasShadow="True">
-                                                <StackLayout>
-                                                    <Label Text="{Binding Nome}" TextColor="#212121" Margin="10,10,0,0" FontSize="Subtitle" />
-                                                    <Label Text="{Binding Descricao}" TextColor="#757575" Margin="10,1,10,0"/>
-                                                    <Label Text="{Binding DataHoraInicio}" HorizontalOptions="End" TextColor="#757575" Margin="10,1,10,0"/>
-                                                    <StackLayout.GestureRecognizers>
-                                                        <TapGestureRecognizer Command="{Binding BindingContext.AcessEventoCommand, Source={x:Reference lvEventos}}" CommandParameter="{Binding ID}"/>
-                                                    </StackLayout.GestureRecognizers>
-                                                </StackLayout>
-                                            </Frame>
-                                        </ViewCell>
-                                    </DataTemplate>
-                                </ListView.ItemTemplate>
-                            </ListView>
-                        </StackLayout>
-                    </ScrollView>
-                    <ImageButton Source="add.png" IsVisible="True" Command="{Binding AdicionarEvento}" 
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <ScrollView VerticalScrollBarVisibility="Never">
+                    <StackLayout Spacing="50" Padding="10">
+                        <ListView x:Name="lvEventos" HasUnevenRows="True">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Frame BorderColor="White" CornerRadius="10" Padding="5" Margin="0,0,0,10" BackgroundColor="White" HasShadow="True">
+                                            <StackLayout>
+                                                <Label Text="{Binding Nome}" TextColor="#212121" Margin="10,10,0,0" FontSize="Subtitle" />
+                                                <Label Text="{Binding Descricao}" TextColor="#757575" Margin="10,1,10,0"/>
+                                                <Label Text="{Binding DataHoraInicio}" HorizontalOptions="End" TextColor="#757575" Margin="10,1,10,0"/>
+                                                <StackLayout.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding BindingContext.AcessEventoCommand, Source={x:Reference lvEventos}}" CommandParameter="{Binding ID}"/>
+                                                </StackLayout.GestureRecognizers>
+                                            </StackLayout>
+                                        </Frame>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackLayout>
+                </ScrollView>
+                <ImageButton Source="add.png" IsVisible="True" Command="{Binding AdicionarEvento}" 
                             BackgroundColor="Transparent" 
                             HeightRequest="80" WidthRequest="80" Margin="300,400,10,15" 
                             AbsoluteLayout.LayoutFlags="PositionProportional" 
                             AbsoluteLayout.LayoutBounds=".95,.95,80, 80"/>
-                </Grid>
-            </RefreshView>
+            </Grid>
+            <!--<RefreshView IsRefreshing="True">
+                
+            </RefreshView>-->
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
