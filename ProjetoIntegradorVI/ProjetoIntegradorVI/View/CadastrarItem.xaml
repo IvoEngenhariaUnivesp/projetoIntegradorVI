@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProjetoIntegradorVI.View.CadastrarItem">
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="primary">#3ec3d5</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+  <ContentView.Content>
+        <StackLayout>
+            <StackLayout Spacing="0" BackgroundColor="#3B529F" HeightRequest="50">
+                <Label Text="Cadastrar Evento" TextColor="FloralWhite" FontSize="Title" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+            </StackLayout>
+            <ScrollView>
+                <StackLayout Spacing="0" Padding="15">
+
+                    <Entry x:Name="nome" Text="{Binding nome}" Placeholder="Digite seu nome"/>
+
+                    <Editor Text="{Binding item}" Placeholder="Descrição" Grid.Row="5" Grid.Column="1" HeightRequest="150" />
+
+                    <Entry Keyboard="Text" Text="{Binding logradouro}" Placeholder="Digite Endereço"/>
+
+                    <StackLayout Orientation="Horizontal">
+                        <Entry Keyboard="Default" Text="{Binding numero}" Placeholder="Número" WidthRequest="100"/>
+                        <Entry Keyboard="Text" Text="{Binding bairro}" Placeholder="Bairro" WidthRequest="200" HorizontalOptions="EndAndExpand"/>
+                    </StackLayout>
+
+                    <Slider x:Name="gramas" Maximum="1000" Minimum="1" HorizontalOptions="FillAndExpand" />
+
+                    <Entry Keyboard="Text" Text="{Binding complemento}" Placeholder="Complemento"/>
+
+                    <Entry Keyboard="Numeric" x:Name="senha" Text="{Binding cep}" Placeholder="CEP"/>
+
+                    <StackLayout Orientation="Horizontal">
+                        <Picker x:Name="EstadoPicker"
+                                Title="UF" TextColor="#3B529F" 
+                                WidthRequest="50" HorizontalOptions="StartAndExpand"
+                                SelectedItem="{Binding estado}">
+                            <Picker.ItemsSource>
+                                <x:Array Type="{x:Type x:String}">
+                                    <x:String>Bebidas</x:String>
+                                    <x:String>Doces</x:String>
+                                    <x:String>Salgados</x:String>
+                                    <x:String>Saladas</x:String>
+                                    <x:String>Comidas</x:String>
+                                </x:Array>
+                            </Picker.ItemsSource>
+                        </Picker>
+                        <!--<Entry Keyboard="Text" Text="{Binding uf}" Placeholder="UF" WidthRequest="50" HorizontalOptions="StartAndExpand"/>-->
+                        <Entry Keyboard="Text" Text="{Binding cidade}" Placeholder="Cidade" WidthRequest="200" HorizontalOptions="EndAndExpand"/>
+
+                    </StackLayout>
+                    <!--<Label Text="{Binding Source={x:Reference picker}, Path=SelectedItem estado}" TextColor="Red" IsVisible="true" />-->
+                    <Button HeightRequest="50" Margin="0,15,0,0" 
+                         TextColor="White" 
+                         Text="Cadastrar"  
+                         BackgroundColor="{StaticResource primary}"
+                         HorizontalOptions="FillAndExpand"
+                         Command="{Binding ResultadoCommand}"/>
+
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

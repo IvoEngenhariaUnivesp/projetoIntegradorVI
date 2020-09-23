@@ -338,8 +338,31 @@ namespace ProjetoIntegradorVI.Database
             return eventoDetalhe;
         }
 
-
         #endregion Métodos Child Eventos
 
+        #region Métodos Child Itens
+        public async Task<Evento> InsertEventoItemAsync(Evento objeto, Usuario usuario = null)
+        {
+            InstaciaClient();
+
+            try
+            {
+                var ultimoRegistro = await _client.Child("EventoItem").OrderByKey().LimitToLast(1).OnceSingleAsync<Dictionary<object, EventoItem>>();
+
+                objeto.ID = ultimoRegistro != null ? ultimoRegistro.Values.Last().ID + 1 : 0;
+            }
+            catch (Firebase.Database.FirebaseException ex)
+            {
+                if (ex.ResponseData.StartsWith("[{") || ex.ResponseData.StartsWith("[null"))
+                {
+                    var ultimoRegistro = await _client.Child("EventoItem").OrderByKey().LimitToLast(1).OnceSingleAsync<List<EventoItem>>();
+                    objeto.ID = ultimoRegistro.Last().ID + 1;
+                }
+                else
+                    objeto.ID = 0;
+            }
+            return objeto;
+        }
+        #endregion Métodos Child Itens
     }
 }
