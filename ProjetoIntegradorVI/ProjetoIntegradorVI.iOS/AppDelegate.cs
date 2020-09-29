@@ -24,7 +24,8 @@ namespace ProjetoIntegradorVI.iOS
         {
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
-
+            UISlider.Appearance.TintColor = UIColor.FromRGBA(255, 160, 2, 255);
+            UISlider.Appearance.ThumbTintColor = UIColor.FromRGBA(255, 160, 0, 255);
             return base.FinishedLaunching(app, options);
         }
     }

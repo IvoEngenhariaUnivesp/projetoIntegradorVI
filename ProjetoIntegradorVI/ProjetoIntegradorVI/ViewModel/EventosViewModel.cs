@@ -8,6 +8,7 @@ namespace ProjetoIntegradorVI.ViewModel
 {
     public class EventosViewModel
     {
+        public Command cadItemEventoItemCommand2 { get; set; }
         public Command ResultCommand { get; set; }
         public Command AdicionarEvento { get; set; }
         public ICommand AcessEventoCommand { get; set; }
@@ -20,6 +21,7 @@ namespace ProjetoIntegradorVI.ViewModel
             ResultCommand = new Command(PushBackLogin);
             AdicionarEvento = new Command(AddEvent);
             AcessEventoCommand = new Command(async (object obj) => await AccessEventoDetalheCommand(obj));
+            cadItemEventoItemCommand2 = new Command(AddItemEventoUser);
         }
 
         // Retorna a tela de login
@@ -38,6 +40,11 @@ namespace ProjetoIntegradorVI.ViewModel
         private async Task AccessEventoDetalheCommand(object sender)
         {
             await App.Current.MainPage.Navigation.PushModalAsync(new View.TabbedPageEventoDetalhe(_usuarioLogado, (long)sender));
+        }
+        public void AddItemEventoUser()
+        {
+            App.Current.MainPage.DisplayAlert("Teste", "Testes2", "OK");
+            App.Current.MainPage.Navigation.PushModalAsync(new View.CadastrarItem(_usuarioLogado));
         }
     }
 }

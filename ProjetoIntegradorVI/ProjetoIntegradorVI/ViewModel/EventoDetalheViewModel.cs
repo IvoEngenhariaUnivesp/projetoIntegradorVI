@@ -3,6 +3,7 @@ using ProjetoIntegradorVI.Domain.Model;
 using System;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
 namespace ProjetoIntegradorVI.ViewModel
 {
@@ -17,6 +18,7 @@ namespace ProjetoIntegradorVI.ViewModel
         public Command cadItemEventoItemCommand { get; set; }//btn de cadastrar novo item para usuario criador
         public Command cadItemEventoItemUsuarioCommand { get; set; }//btn de cadastrar novo item para usuario convidado()
         private Usuario _usuarioLogado { get; set; }
+        private long _eventoID { get; set; }
         public string NomeEvento { get; set; }
         public string DescricaoEvento { get; set; }
         public string dataInicio { get; set; }
@@ -32,9 +34,10 @@ namespace ProjetoIntegradorVI.ViewModel
         {
             // Instancia as variaveis de acesso a tela
             var eventoDetalhe = new EventoDetalhe();
+            cadItemEventoItemCommand = new Command(AddItemEventoUser);
             _usuarioLogado = usuarioLogado;
             _firebaseClient = new FirebaseConfig<Evento>();
-
+            _eventoID = eventoID;
             // Busca o objeto de modelo para a tela
             Task.Run(async () => {
                 eventoDetalhe = await _firebaseClient.GetEventoDetalheByEventoIDAsync(eventoID);
@@ -52,9 +55,14 @@ namespace ProjetoIntegradorVI.ViewModel
             convidadosRecusados = eventoDetalhe.ConvitesRecusados.ToString();
             convidadosPendentes = eventoDetalhe.ConvitesPendentes.ToString();
 
+            //cadItemEventoItemCommand = new Command(AddItemEventoUser);
         }
 
-         
+        public void AddItemEventoUser()
+        {
+            //App.Current.MainPage.DisplayAlert("Teste", "Testes2", "OK");
+            App.Current.MainPage.Navigation.PushModalAsync(new View.CadastrarItem(_usuarioLogado));
+        }
 
     }
 }

@@ -350,6 +350,12 @@ namespace ProjetoIntegradorVI.Database
                 var ultimoRegistro = await _client.Child("EventoItem").OrderByKey().LimitToLast(1).OnceSingleAsync<Dictionary<object, EventoItem>>();
 
                 objeto.ID = ultimoRegistro != null ? ultimoRegistro.Values.Last().ID + 1 : 0;
+
+                if(usuario != null)
+                {
+                    await _client.Child("EventoItem").Child(usuario.ID.ToString()).PostAsync(new EventoItem { EventoID = objeto.ID.Value });
+                }
+
             }
             catch (Firebase.Database.FirebaseException ex)
             {

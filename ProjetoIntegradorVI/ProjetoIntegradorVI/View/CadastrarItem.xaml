@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ProjetoIntegradorVI.View.CadastrarItem">
     
@@ -9,30 +9,22 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     
-  <ContentView.Content>
+  <ContentPage.Content>
         <StackLayout>
             <StackLayout Spacing="0" BackgroundColor="#3B529F" HeightRequest="50">
                 <Label Text="Cadastrar Evento" TextColor="FloralWhite" FontSize="Title" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
             </StackLayout>
             <ScrollView>
-                <StackLayout Spacing="0" Padding="15">
+                <StackLayout Spacing="0" Padding="15" VerticalOptions="Center">
 
                     <Entry x:Name="nome" Text="{Binding nome}" Placeholder="Digite seu nome"/>
 
-                    <Editor Text="{Binding item}" Placeholder="Descrição" Grid.Row="5" Grid.Column="1" HeightRequest="150" />
+                    <Entry Text="{Binding item}" Placeholder="Descrição" Grid.Row="5" Grid.Column="1" HeightRequest="150" />
 
-                    <Entry Keyboard="Text" Text="{Binding logradouro}" Placeholder="Digite Endereço"/>
-
-                    <StackLayout Orientation="Horizontal">
-                        <Entry Keyboard="Default" Text="{Binding numero}" Placeholder="Número" WidthRequest="100"/>
-                        <Entry Keyboard="Text" Text="{Binding bairro}" Placeholder="Bairro" WidthRequest="200" HorizontalOptions="EndAndExpand"/>
-                    </StackLayout>
-
-                    <Slider x:Name="gramas" Maximum="1000" Minimum="1" HorizontalOptions="FillAndExpand" />
-
-                    <Entry Keyboard="Text" Text="{Binding complemento}" Placeholder="Complemento"/>
-
-                    <Entry Keyboard="Numeric" x:Name="senha" Text="{Binding cep}" Placeholder="CEP"/>
+                    <Label x:Name="lblText" Text="0" HorizontalOptions="Start" FontSize="Medium" 
+                           HorizontalTextAlignment="Center" VerticalOptions="EndAndExpand" TextColor="Red" />
+                    <Slider x:Name="gramas" Maximum="1000" Minimum="100" HorizontalOptions="FillAndExpand" 
+                            ValueChanged="gramas_ValueChanged" MaximumTrackColor="White" MinimumTrackColor="Blue"/>
 
                     <StackLayout Orientation="Horizontal">
                         <Picker x:Name="EstadoPicker"
@@ -64,5 +56,5 @@
                 </StackLayout>
             </ScrollView>
         </StackLayout>
-    </ContentView.Content>
-</ContentView>
+    </ContentPage.Content>
+</ContentPage>
