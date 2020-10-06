@@ -14,10 +14,12 @@ namespace ProjetoIntegradorVI.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CadastrarItem : ContentPage
     {
+        CadItemViewModel cadItem = null;
         public CadastrarItem(Usuario usuario)
         {
             InitializeComponent();
             BindingContext = new CadItemViewModel(usuario);
+            cadItem = new CadItemViewModel(usuario);
         }
 
         private void gramas_ValueChanged(object sender, ValueChangedEventArgs e)
@@ -27,6 +29,10 @@ namespace ProjetoIntegradorVI.View
             lblText.Text = gramas.Value.ToString();
             lblText.TranslateTo(gramas.Value * ((gramas.Width - 40) / gramas.Maximum), 0, 100);
 
+            if(gramas != null)
+            {
+                cadItem.getGramas = lblText.Text;
+            }
         }
 
     }

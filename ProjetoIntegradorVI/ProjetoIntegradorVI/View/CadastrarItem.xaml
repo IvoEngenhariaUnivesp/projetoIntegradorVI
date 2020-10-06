@@ -17,9 +17,9 @@
             <ScrollView>
                 <StackLayout Spacing="0" Padding="15" VerticalOptions="Center">
 
-                    <Entry x:Name="nome" Text="{Binding nome}" Placeholder="Digite seu nome"/>
+                    <Entry x:Name="nome" Text="{Binding getNome}" Placeholder="Digite seu nome"/>
 
-                    <Entry Text="{Binding item}" Placeholder="Descrição" Grid.Row="5" Grid.Column="1" HeightRequest="150" />
+                    <!--<Entry Text="{Binding item}" Placeholder="Descrição" Grid.Row="5" Grid.Column="1" HeightRequest="150" />-->
 
                     <Label x:Name="lblText" Text="0" HorizontalOptions="Start" FontSize="Medium" 
                            HorizontalTextAlignment="Center" VerticalOptions="EndAndExpand" TextColor="Red" />
@@ -30,19 +30,19 @@
                         <Picker x:Name="EstadoPicker"
                                 Title="UF" TextColor="#3B529F" 
                                 WidthRequest="50" HorizontalOptions="StartAndExpand"
-                                SelectedItem="{Binding estado}">
+                                SelectedItem="{Binding getTipo}">
                             <Picker.ItemsSource>
                                 <x:Array Type="{x:Type x:String}">
-                                    <x:String>Bebidas</x:String>
-                                    <x:String>Doces</x:String>
-                                    <x:String>Salgados</x:String>
-                                    <x:String>Saladas</x:String>
-                                    <x:String>Comidas</x:String>
+                                    <x:String>Bebida</x:String>
+                                    <x:String>Doce</x:String>
+                                    <x:String>Salgado</x:String>
+                                    <x:String>PratoFrio</x:String>
+                                    <x:String>PratoQuente</x:String>
                                 </x:Array>
                             </Picker.ItemsSource>
                         </Picker>
                         <!--<Entry Keyboard="Text" Text="{Binding uf}" Placeholder="UF" WidthRequest="50" HorizontalOptions="StartAndExpand"/>-->
-                        <Entry Keyboard="Text" Text="{Binding cidade}" Placeholder="Cidade" WidthRequest="200" HorizontalOptions="EndAndExpand"/>
+                        <!--<Entry Keyboard="Text" Text="{Binding cidade}" Placeholder="Cidade" WidthRequest="200" HorizontalOptions="EndAndExpand"/>-->
 
                     </StackLayout>
                     <!--<Label Text="{Binding Source={x:Reference picker}, Path=SelectedItem estado}" TextColor="Red" IsVisible="true" />-->

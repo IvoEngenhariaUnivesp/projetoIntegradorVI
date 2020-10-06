@@ -341,7 +341,7 @@ namespace ProjetoIntegradorVI.Database
         #endregion Métodos Child Eventos
 
         #region Métodos Child Itens
-        public async Task<Evento> InsertEventoItemAsync(Evento objeto, Usuario usuario = null)
+        public async Task<EventoItem> InsertEventoItemAsync(EventoItem eventoItem, Usuario usuario = null)
         {
             InstaciaClient();
 
@@ -349,11 +349,11 @@ namespace ProjetoIntegradorVI.Database
             {
                 var ultimoRegistro = await _client.Child("EventoItem").OrderByKey().LimitToLast(1).OnceSingleAsync<Dictionary<object, EventoItem>>();
 
-                objeto.ID = ultimoRegistro != null ? ultimoRegistro.Values.Last().ID + 1 : 0;
+                eventoItem.ID = ultimoRegistro != null ? ultimoRegistro.Values.Last().ID + 1 : 0;
 
                 if(usuario != null)
                 {
-                    await _client.Child("EventoItem").Child(usuario.ID.ToString()).PostAsync(new EventoItem { EventoID = objeto.ID.Value });
+                    await _client.Child("EventoItem").Child(usuario.ID.ToString()).PostAsync(new EventoItem { EventoID = eventoItem.ID.Value, Tipo = eventoItem.Tipo, Nome = eventoItem.Nome, TipoUnidade = eventoItem.TipoUnidade });
                 }
 
             }
@@ -362,12 +362,12 @@ namespace ProjetoIntegradorVI.Database
                 if (ex.ResponseData.StartsWith("[{") || ex.ResponseData.StartsWith("[null"))
                 {
                     var ultimoRegistro = await _client.Child("EventoItem").OrderByKey().LimitToLast(1).OnceSingleAsync<List<EventoItem>>();
-                    objeto.ID = ultimoRegistro.Last().ID + 1;
+                    eventoItem.ID = ultimoRegistro.Last().ID + 1;
                 }
                 else
-                    objeto.ID = 0;
+                    eventoItem.ID = 0;
             }
-            return objeto;
+            return eventoItem;
         }
         #endregion Métodos Child Itens
     }
