@@ -9,8 +9,10 @@ namespace ProjetoIntegradorVI.Domain.Model
     public class EventoItem : EntidadeBase
     {
         public long EventoID { get; set; }
-        public TipoItemEnum Tipo { get; set; }
+        //public TipoItemEnum Tipo { get; set; }
+        public string Tipo { get; set; }
         public string Nome { get; set; }
         public string TipoUnidade { get; set; }
+        public string QuantidadeDesejada { get; set; }
     }
 }

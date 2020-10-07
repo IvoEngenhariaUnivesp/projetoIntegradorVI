@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:ProjetoIntegradorVI.ViewModel"
              x:Class="ProjetoIntegradorVI.View.CadastrarItem">
-    
+
     <ContentPage.Resources>
         <ResourceDictionary>
             <Color x:Key="primary">#3ec3d5</Color>
@@ -24,12 +24,15 @@
                     <Label x:Name="lblText" Text="0" HorizontalOptions="Start" FontSize="Medium" 
                            HorizontalTextAlignment="Center" VerticalOptions="EndAndExpand" TextColor="Red" />
                     <Slider x:Name="gramas" Maximum="1000" Minimum="100" HorizontalOptions="FillAndExpand" 
-                            ValueChanged="gramas_ValueChanged" MaximumTrackColor="White" MinimumTrackColor="Blue"/>
+                            ValueChanged="gramas_ValueChanged" MaximumTrackColor="White" MinimumTrackColor="Blue" Value="{Binding getGramas}"/>
+                    <!--<Slider x:Name="gramas" Maximum="1000" Minimum="100" HorizontalOptions="FillAndExpand" 
+                            MaximumTrackColor="White" MinimumTrackColor="Blue" Value="{Binding getGramas}"/>-->
+                    
 
                     <StackLayout Orientation="Horizontal">
-                        <Picker x:Name="EstadoPicker"
+                        <Picker x:Name="TipoPicker"
                                 Title="UF" TextColor="#3B529F" 
-                                WidthRequest="50" HorizontalOptions="StartAndExpand"
+                                WidthRequest="150" HorizontalOptions="StartAndExpand"
                                 SelectedItem="{Binding getTipo}">
                             <Picker.ItemsSource>
                                 <x:Array Type="{x:Type x:String}">

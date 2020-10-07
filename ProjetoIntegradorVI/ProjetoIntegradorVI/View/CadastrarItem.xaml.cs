@@ -29,7 +29,7 @@ namespace ProjetoIntegradorVI.View
             lblText.Text = gramas.Value.ToString();
             lblText.TranslateTo(gramas.Value * ((gramas.Width - 40) / gramas.Maximum), 0, 100);
 
-            if(gramas != null)
+            if (gramas != null)
             {
                 cadItem.getGramas = lblText.Text;
             }

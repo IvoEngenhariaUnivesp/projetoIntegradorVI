@@ -3,19 +3,25 @@ using ProjetoIntegradorVI.Domain.Model;
 using ProjetoIntegradorVI.Domain.Model.Enums;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 using Xamarin.Forms;
 
 namespace ProjetoIntegradorVI.ViewModel
 {
-    public class CadItemViewModel
+    public class CadItemViewModel : INotifyPropertyChanged
     {
         public FirebaseConfig<EventoItem> _eventoItemFirebase;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        
+        public Evento _evento { get; set; }
         public Command getGramasCommand { get; set; }
         public Command ResultadoCommand { get; set; }
         public string getGramas { get; set; }
         public string getNome { get; set; }
-        public TipoItemEnum getTipo { get; set; }
+        //public TipoItemEnum getTipo { get; set; }
+        public string getTipo { get; set; }
         private Usuario _usuarioLogado { get; set; }
 
         public CadItemViewModel(Usuario usuario)
@@ -30,7 +36,8 @@ namespace ProjetoIntegradorVI.ViewModel
             EventoItem eventoItem = new EventoItem();
             eventoItem.Nome = getNome;
             eventoItem.Tipo = getTipo;
-
+            PropertyChanged.Invoke(this, new PropertyChangedEventArgs(getGramas));
+            eventoItem.QuantidadeDesejada = getGramas;
             var cadItemEvento = await _eventoItemFirebase.InsertEventoItemAsync(eventoItem, _usuarioLogado);
             if(cadItemEvento != null)
             {

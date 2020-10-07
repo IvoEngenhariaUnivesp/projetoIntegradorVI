@@ -353,7 +353,7 @@ namespace ProjetoIntegradorVI.Database
 
                 if(usuario != null)
                 {
-                    await _client.Child("EventoItem").Child(usuario.ID.ToString()).PostAsync(new EventoItem { EventoID = eventoItem.ID.Value, Tipo = eventoItem.Tipo, Nome = eventoItem.Nome, TipoUnidade = eventoItem.TipoUnidade });
+                    await _client.Child("EventoItem").Child(usuario.ID.ToString()).PutAsync(new EventoItem { EventoID = eventoItem.ID.Value, Tipo = eventoItem.Tipo, Nome = eventoItem.Nome, TipoUnidade = eventoItem.TipoUnidade });
                 }
 
             }
@@ -363,6 +363,11 @@ namespace ProjetoIntegradorVI.Database
                 {
                     var ultimoRegistro = await _client.Child("EventoItem").OrderByKey().LimitToLast(1).OnceSingleAsync<List<EventoItem>>();
                     eventoItem.ID = ultimoRegistro.Last().ID + 1;
+
+                    if (usuario != null)
+                    {
+                        await _client.Child("EventoItem").Child(usuario.ID.ToString()).PutAsync(new EventoItem { EventoID = eventoItem.ID.Value, Tipo = eventoItem.Tipo, Nome = eventoItem.Nome, QuantidadeDesejada = eventoItem.QuantidadeDesejada, TipoUnidade = eventoItem.TipoUnidade, ID = eventoItem.ID });
+                    }
                 }
                 else
                     eventoItem.ID = 0;
