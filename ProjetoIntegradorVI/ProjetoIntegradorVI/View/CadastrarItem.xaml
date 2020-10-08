@@ -30,25 +30,14 @@
                     
 
                     <StackLayout Orientation="Horizontal">
-                        <Picker x:Name="TipoPicker"
-                                Title="UF" TextColor="#3B529F" 
+                        <Picker x:Name="picker"
+                                Title="Tipo de Item" TextColor="#3B529F" 
                                 WidthRequest="150" HorizontalOptions="StartAndExpand"
                                 SelectedItem="{Binding getTipo}">
-                            <Picker.ItemsSource>
-                                <x:Array Type="{x:Type x:String}">
-                                    <x:String>Bebida</x:String>
-                                    <x:String>Doce</x:String>
-                                    <x:String>Salgado</x:String>
-                                    <x:String>PratoFrio</x:String>
-                                    <x:String>PratoQuente</x:String>
-                                </x:Array>
-                            </Picker.ItemsSource>
                         </Picker>
-                        <!--<Entry Keyboard="Text" Text="{Binding uf}" Placeholder="UF" WidthRequest="50" HorizontalOptions="StartAndExpand"/>-->
-                        <!--<Entry Keyboard="Text" Text="{Binding cidade}" Placeholder="Cidade" WidthRequest="200" HorizontalOptions="EndAndExpand"/>-->
 
                     </StackLayout>
-                    <!--<Label Text="{Binding Source={x:Reference picker}, Path=SelectedItem estado}" TextColor="Red" IsVisible="true" />-->
+                    
                     <Button HeightRequest="50" Margin="0,15,0,0" 
                          TextColor="White" 
                          Text="Cadastrar"  

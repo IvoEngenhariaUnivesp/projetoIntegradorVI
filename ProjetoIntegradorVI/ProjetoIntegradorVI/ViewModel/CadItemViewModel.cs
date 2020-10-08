@@ -20,7 +20,6 @@ namespace ProjetoIntegradorVI.ViewModel
         public Command ResultadoCommand { get; set; }
         public string getGramas { get; set; }
         public string getNome { get; set; }
-        //public TipoItemEnum getTipo { get; set; }
         public string getTipo { get; set; }
         private Usuario _usuarioLogado { get; set; }
 
@@ -37,7 +36,8 @@ namespace ProjetoIntegradorVI.ViewModel
             EventoItem eventoItem = new EventoItem();
             eventoItem.EventoID = _evento;
             eventoItem.Nome = getNome;
-            eventoItem.Tipo = getTipo;
+            eventoItem.Tipo = (TipoItemEnum)Enum.Parse(typeof(TipoItemEnum), getTipo);
+            var obj = Enum.GetNames(typeof(TipoItemEnum));
 
             PropertyChanged.Invoke(this, new PropertyChangedEventArgs(getGramas));
             eventoItem.QuantidadeDesejada = getGramas;

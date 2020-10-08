@@ -1,4 +1,5 @@
 ﻿using ProjetoIntegradorVI.Domain.Model;
+using ProjetoIntegradorVI.Domain.Model.Enums;
 using ProjetoIntegradorVI.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,10 @@ namespace ProjetoIntegradorVI.View
             InitializeComponent();
             BindingContext = new CadItemViewModel(usuario, eventoId);
             cadItem = new CadItemViewModel(usuario, eventoId);
+
+            var tipoEnumNames = Enum.GetNames(typeof(TipoItemEnum));
+
+            picker.ItemsSource = tipoEnumNames;
         }
 
         private void gramas_ValueChanged(object sender, ValueChangedEventArgs e)
