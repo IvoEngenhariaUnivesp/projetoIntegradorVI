@@ -15,7 +15,7 @@ namespace ProjetoIntegradorVI.ViewModel
 
         public event PropertyChangedEventHandler PropertyChanged;
         
-        public Evento _evento { get; set; }
+        public long _evento { get; set; }
         public Command getGramasCommand { get; set; }
         public Command ResultadoCommand { get; set; }
         public string getGramas { get; set; }
@@ -24,9 +24,10 @@ namespace ProjetoIntegradorVI.ViewModel
         public string getTipo { get; set; }
         private Usuario _usuarioLogado { get; set; }
 
-        public CadItemViewModel(Usuario usuario)
+        public CadItemViewModel(Usuario usuario, long eventoId)
         {
             _usuarioLogado = usuario;
+            _evento = eventoId;
             ResultadoCommand = new Command(CadastrarItemEvento);
         }
 
@@ -34,8 +35,10 @@ namespace ProjetoIntegradorVI.ViewModel
         {
             _eventoItemFirebase = new FirebaseConfig<EventoItem>();
             EventoItem eventoItem = new EventoItem();
+            eventoItem.EventoID = _evento;
             eventoItem.Nome = getNome;
             eventoItem.Tipo = getTipo;
+
             PropertyChanged.Invoke(this, new PropertyChangedEventArgs(getGramas));
             eventoItem.QuantidadeDesejada = getGramas;
             var cadItemEvento = await _eventoItemFirebase.InsertEventoItemAsync(eventoItem, _usuarioLogado);
@@ -43,7 +46,8 @@ namespace ProjetoIntegradorVI.ViewModel
             {
                 await App.Current.MainPage.DisplayAlert("Cadastro", "Sucesso no Cadastro!", "Ok");
 
-                App.Current.MainPage = new NavigationPage(new View.Eventos(_usuarioLogado));
+                //App.Current.MainPage = new NavigationPage(new View.Eventos(_usuarioLogado));
+                await App.Current.MainPage.Navigation.PopModalAsync();
 
                 //await App.Current.MainPage.Navigation.PushModalAsync(new View.TabbedPageEventoDetalhe(_usuarioLogado, cadEventoSucces.ID.Value));
             }

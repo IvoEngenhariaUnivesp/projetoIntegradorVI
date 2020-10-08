@@ -344,30 +344,43 @@ namespace ProjetoIntegradorVI.Database
         public async Task<EventoItem> InsertEventoItemAsync(EventoItem eventoItem, Usuario usuario = null)
         {
             InstaciaClient();
-
             try
             {
                 var ultimoRegistro = await _client.Child("EventoItem").OrderByKey().LimitToLast(1).OnceSingleAsync<Dictionary<object, EventoItem>>();
 
                 eventoItem.ID = ultimoRegistro != null ? ultimoRegistro.Values.Last().ID + 1 : 0;
 
-                if(usuario != null)
-                {
-                    await _client.Child("EventoItem").Child(usuario.ID.ToString()).PutAsync(new EventoItem { EventoID = eventoItem.ID.Value, Tipo = eventoItem.Tipo, Nome = eventoItem.Nome, TipoUnidade = eventoItem.TipoUnidade });
-                }
+                if (eventoItem.ID != null)
+                    await _client.Child("EventoItem").Child(eventoItem.ID.ToString()).PutAsync(eventoItem);
+
+                //if(usuario != null)
+                //{
+                //    await _client.Child("EventoItem").Child(usuario.ID.ToString()).PutAsync(new EventoItem { ID = eventoItem.ID, EventoID = eventoItem.ID.Value, Tipo = eventoItem.Tipo, Nome = eventoItem.Nome, TipoUnidade = eventoItem.TipoUnidade, QuantidadeDesejada = eventoItem.QuantidadeDesejada });
+                //}
 
             }
             catch (Firebase.Database.FirebaseException ex)
             {
+
                 if (ex.ResponseData.StartsWith("[{") || ex.ResponseData.StartsWith("[null"))
                 {
                     var ultimoRegistro = await _client.Child("EventoItem").OrderByKey().LimitToLast(1).OnceSingleAsync<List<EventoItem>>();
+                    //if(ultimoRegistro.Count > 0)
+                    //{
+                    //    if(ultimoRegistro[0] == null)
+                    //    {
+                    //        ultimoRegistro.RemoveAt(0);
+                    //    }
+                    //}
                     eventoItem.ID = ultimoRegistro.Last().ID + 1;
 
-                    if (usuario != null)
-                    {
-                        await _client.Child("EventoItem").Child(usuario.ID.ToString()).PutAsync(new EventoItem { EventoID = eventoItem.ID.Value, Tipo = eventoItem.Tipo, Nome = eventoItem.Nome, QuantidadeDesejada = eventoItem.QuantidadeDesejada, TipoUnidade = eventoItem.TipoUnidade, ID = eventoItem.ID });
-                    }
+                    if (eventoItem.ID != null)
+                        await _client.Child("EventoItem").Child(eventoItem.ID.ToString()).PutAsync(eventoItem);
+
+                    //if (usuario != null)
+                    //{
+                    //    await _client.Child("EventoItem").Child(usuario.ID.ToString()).PutAsync(new EventoItem { EventoID = eventoItem.ID.Value, Tipo = eventoItem.Tipo, Nome = eventoItem.Nome, QuantidadeDesejada = eventoItem.QuantidadeDesejada, TipoUnidade = eventoItem.TipoUnidade, ID = eventoItem.ID });
+                    //}
                 }
                 else
                     eventoItem.ID = 0;

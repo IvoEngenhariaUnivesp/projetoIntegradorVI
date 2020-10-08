@@ -15,11 +15,11 @@ namespace ProjetoIntegradorVI.View
     public partial class CadastrarItem : ContentPage
     {
         CadItemViewModel cadItem = null;
-        public CadastrarItem(Usuario usuario)
+        public CadastrarItem(Usuario usuario, long eventoId)
         {
             InitializeComponent();
-            BindingContext = new CadItemViewModel(usuario);
-            cadItem = new CadItemViewModel(usuario);
+            BindingContext = new CadItemViewModel(usuario, eventoId);
+            cadItem = new CadItemViewModel(usuario, eventoId);
         }
 
         private void gramas_ValueChanged(object sender, ValueChangedEventArgs e)
