@@ -387,6 +387,23 @@ namespace ProjetoIntegradorVI.Database
             }
             return eventoItem;
         }
+
+        public async Task<EventoItem> GetEventoItemAsync(long eventoID)
+        {
+            InstaciaClient();
+
+            try
+            {
+                var eventoItemRetorno = await _client.Child("EventoItem").OrderBy("EventoID").EqualTo(eventoID).OnceSingleAsync<Dictionary<long, EventoItem>>();
+
+                return eventoItemRetorno.Values.First();
+            }
+            catch(Exception ex)
+            {
+                return default(EventoItem);
+            }
+        }
+
         #endregion Métodos Child Itens
     }
 }
