@@ -74,30 +74,105 @@
              Title="Itens"
              x:Name="tabItens">
         <ContentPage.Content>
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <StackLayout>
-                    <StackLayout Spacing="0" BackgroundColor="#3B529F" HeightRequest="50">
-                        <Label Text="Detalhes do Evento" TextColor="FloralWhite" FontSize="Title" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
-                    </StackLayout>
-                    <ScrollView>
-                        <StackLayout Spacing="0" Padding="15">
-                            <StackLayout>
-                                <Frame WidthRequest="90" HeightRequest="100" HasShadow="True">
-                                    <Label Text="Testando Detalhes do Evento" TextColor="#ccc" FontSize="Default" />
-                                </Frame>
-                            </StackLayout>
+            <StackLayout Spacing="0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <StackLayout>
+                        <StackLayout Spacing="0" BackgroundColor="#3B529F" HeightRequest="50">
+                            <Label Text="Detalhes do Evento" TextColor="FloralWhite" FontSize="Title" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
                         </StackLayout>
-                    </ScrollView>
-                </StackLayout>
-                <ImageButton Source="add.png" IsVisible="True" Command="{Binding cadItemEventoItemCommand}" 
+                        <Label Text="Bebidas" HorizontalOptions="CenterAndExpand" FontSize="Subtitle"/>
+                        <ScrollView Orientation="Horizontal">
+                            
+                            <StackLayout Orientation="Horizontal" Spacing="0" Padding="15">
+                                <StackLayout Margin="5,0,5,0">
+                                    <Frame WidthRequest="90" HeightRequest="100" HasShadow="True">
+                                        <Label Text="Testando Detalhes do Evento 1" TextColor="#ccc" FontSize="Default" />
+                                    </Frame>
+                                </StackLayout>
+                                <StackLayout Margin="5,0,5,0">
+                                    <Frame WidthRequest="90" HeightRequest="100" HasShadow="True">
+                                        <Label Text="Testando Detalhes do Evento 2" TextColor="#ccc" FontSize="Default" />
+                                    </Frame>
+                                </StackLayout>
+                                <StackLayout Margin="5,0,5,0">
+                                    <Frame WidthRequest="90" HeightRequest="100" HasShadow="True">
+                                        <Label Text="Testando Detalhes do Evento 3" TextColor="#ccc" FontSize="Default" />
+                                    </Frame>
+                                </StackLayout>
+                                <StackLayout Margin="5,0,5,0">
+                                    <Frame WidthRequest="90" HeightRequest="100" HasShadow="True">
+                                        <Label Text="Testando Detalhes do Evento 4" TextColor="#ccc" FontSize="Default" />
+                                    </Frame>
+                                </StackLayout>
+                                <StackLayout Margin="5,0,5,0">
+                                    <Frame WidthRequest="90" HeightRequest="100" HasShadow="True">
+                                        <Label Text="Testando Detalhes do Evento 5" TextColor="#ccc" FontSize="Default" />
+                                    </Frame>
+                                </StackLayout>
+                                <StackLayout Margin="5,0,5,0">
+                                    <Frame WidthRequest="90" HeightRequest="100" HasShadow="True">
+                                        <Label Text="Testando Detalhes do Evento" TextColor="#ccc" FontSize="Default" />
+                                    </Frame>
+                                </StackLayout>
+                                <StackLayout Margin="5,0,5,0">
+                                    <Frame WidthRequest="90" HeightRequest="100" HasShadow="True">
+                                        <Label Text="Testando Detalhes do Evento" TextColor="#ccc" FontSize="Default" />
+                                    </Frame>
+                                </StackLayout>
+                            </StackLayout>
+                        </ScrollView>
+                        
+                        <Label Text="Salgados" HorizontalOptions="CenterAndExpand" FontSize="Subtitle"/>
+                        <ScrollView Orientation="Horizontal">
+                            <StackLayout Orientation="Horizontal" Spacing="0" Padding="15">
+                                <StackLayout Margin="5,0,5,0">
+                                    <Frame WidthRequest="90" HeightRequest="100" HasShadow="True">
+                                        <Label Text="Torta de Frango" TextColor="#ccc" FontSize="Default" />
+                                    </Frame>
+                                </StackLayout>
+                                <StackLayout Margin="5,0,5,0">
+                                    <Frame WidthRequest="90" HeightRequest="100" HasShadow="True">
+                                        <Label Text="Esfihas" TextColor="#ccc" FontSize="Default" />
+                                    </Frame>
+                                </StackLayout>
+                                <StackLayout Margin="5,0,5,0">
+                                    <Frame WidthRequest="90" HeightRequest="100" HasShadow="True">
+                                        <Label Text="Baguete de Frios" TextColor="#ccc" FontSize="Default" />
+                                    </Frame>
+                                </StackLayout>
+                                <StackLayout Margin="5,0,5,0">
+                                    <Frame WidthRequest="90" HeightRequest="100" HasShadow="True">
+                                        <Label Text="Coxinhas" TextColor="#ccc" FontSize="Default" />
+                                    </Frame>
+                                </StackLayout>
+                                <StackLayout Margin="5,0,5,0">
+                                    <Frame WidthRequest="90" HeightRequest="100" HasShadow="True">
+                                        <Label Text="Risoles de Queijo" TextColor="#ccc" FontSize="Default" />
+                                    </Frame>
+                                </StackLayout>
+                                <StackLayout Margin="5,0,5,0">
+                                    <Frame WidthRequest="90" HeightRequest="100" HasShadow="True">
+                                        <Label Text="Pão de Queijo" TextColor="#ccc" FontSize="Default" />
+                                    </Frame>
+                                </StackLayout>
+                                <StackLayout Margin="5,0,5,0">
+                                    <Frame WidthRequest="90" HeightRequest="100" HasShadow="True">
+                                        <Label Text="Pão com Patê" TextColor="#ccc" FontSize="Default" />
+                                    </Frame>
+                                </StackLayout>
+                            </StackLayout>
+                        </ScrollView>
+                    </StackLayout>
+                    <ImageButton Source="add.png" IsVisible="True" Command="{Binding cadItemEventoItemCommand}" 
                             BackgroundColor="Transparent" 
                             HeightRequest="80" WidthRequest="80" Margin="300,400,10,15" 
                             AbsoluteLayout.LayoutFlags="PositionProportional" 
                             AbsoluteLayout.LayoutBounds=".95,.95,80, 80"/>
-            </Grid>
+                </Grid>
+            </StackLayout>
         </ContentPage.Content>
     </ContentPage>
     <!--<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"

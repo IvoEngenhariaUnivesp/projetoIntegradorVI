@@ -16,10 +16,12 @@
             </StackLayout>
             <ScrollView>
                 <StackLayout Spacing="0" Padding="15" VerticalOptions="Center">
-
+                    <Label Text="Digite o nome do item"/>
                     <Entry x:Name="nome" Text="{Binding getNome}" Placeholder="Digite seu nome"/>
-
-                    <!--<Entry Text="{Binding item}" Placeholder="Descrição" Grid.Row="5" Grid.Column="1" HeightRequest="150" />-->
+                    <Label Text="Diigite a quantidade total para este item"/>
+                    <Entry Text="{Binding quantidadeTotal}" Placeholder="Quantidade Total" Keyboard="Numeric" />
+                    <Label Text="Digite o tipo de unidade" />
+                    <Entry Text="{Binding getTipoUnidade}" Placeholder="Digite o tipo de unidade"/>
 
                     <Label x:Name="lblText" Text="0" HorizontalOptions="Start" FontSize="Medium" 
                            HorizontalTextAlignment="Center" VerticalOptions="EndAndExpand" TextColor="Red" />
