@@ -16,7 +16,6 @@ namespace ProjetoIntegradorVI.View
     public partial class Login : ContentPage
     {
         private readonly FirebaseConfig<Usuario> _client;
-        private Usuario cadUser;
         public Login()
         {
             InitializeComponent();

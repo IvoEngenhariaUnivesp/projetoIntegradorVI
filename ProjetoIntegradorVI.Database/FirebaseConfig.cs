@@ -8,6 +8,7 @@ using Firebase.Database;
 using Firebase.Database.Query;
 using System.Linq.Expressions;
 using ProjetoIntegradorVI.Domain.Model.Enums;
+using System.Globalization;
 
 namespace ProjetoIntegradorVI.Database
 {
@@ -59,7 +60,7 @@ namespace ProjetoIntegradorVI.Database
 
                     objeto.ID = ultimoRegistro.Last().ID + 1;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     objeto.ID = 0;
                 }
@@ -242,7 +243,7 @@ namespace ProjetoIntegradorVI.Database
                         eventosRetorno.Add(evento);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -268,7 +269,7 @@ namespace ProjetoIntegradorVI.Database
                 // Retorna o primeiro objeto(sempre vai ser um, se encontrar)
                 return eventoRetorno.Values.First();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 // Se tiver não existir, retorna null
                 return default(Evento);
@@ -305,7 +306,10 @@ namespace ProjetoIntegradorVI.Database
                 eventoDetalhe.DataTermino = evento.DataTermino;
                 eventoDetalhe.HoraInicio = evento.HoraInicio;
                 eventoDetalhe.HoraTermino = evento.HoraTermino;
-                eventoDetalhe.DiasRestantes = DateTime.Parse(evento.DataInicio).Day - DateTime.Now.Day;
+
+                var dataEvento = DateTime.ParseExact(evento.DataInicio, "dd/MM/yyyy", CultureInfo.InvariantCulture).Day;
+                var dataAtual = DateTime.Now.Day;
+                eventoDetalhe.DiasRestantes = dataEvento - dataAtual;
 
                 // Busca a lista de usuários vinculados ao evento
                 // Retorna um dictionary com <ID, Usuario>
@@ -330,12 +334,40 @@ namespace ProjetoIntegradorVI.Database
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 // Se tiver não existir, retorna null
                 return default(EventoDetalhe);
             }
             return eventoDetalhe;
+        }
+
+        public async Task<List<EventoUsuario>> GetConvitesPendentesByEventoIDAsync(long eventoID)
+        {
+            // Lista de Retorno dos Convites
+            List<EventoUsuario> lstConvites = new List<EventoUsuario>();
+
+
+            // Abre a conexão com o banco
+            InstaciaClient();
+
+            // Busca a lista de usuários vinculados ao evento
+            // Retorna um dictionary com <ID, Usuario>
+            var eventosByUsuarioIDRetorno =
+                await _client
+                    .Child("EventoUsuario")
+                    .OrderBy("EventoID")
+                    .EqualTo(eventoID)
+                    .OnceSingleAsync<Dictionary<long, EventoUsuario>>();
+
+            // Monta a quantidade de convites aceitos, pendentes e recusados
+            foreach (EventoUsuario eventoUsuario in eventosByUsuarioIDRetorno.Values)
+            {
+                if (eventoUsuario.StatusConvite == StatusConviteEnum.Pendente)
+                    lstConvites.Add(eventoUsuario);
+            }
+
+            return lstConvites;
         }
 
         #endregion Métodos Child Eventos
@@ -388,20 +420,32 @@ namespace ProjetoIntegradorVI.Database
             return eventoItem;
         }
 
-        public async Task<EventoItem> GetEventoItemAsync(long eventoID)
+        // Retorna lista de itens cadastrados pelo criador do evento
+        public async Task<List<EventoItem>> GetEventoItemAsync(long eventoID)
         {
             InstaciaClient();
-
+            List<EventoItem> itensEventoRetorno = new List<EventoItem>();
             try
             {
                 var eventoItemRetorno = await _client.Child("EventoItem").OrderBy("EventoID").EqualTo(eventoID).OnceSingleAsync<Dictionary<long, EventoItem>>();
 
-                return eventoItemRetorno.Values.First();
+                var eventoRetorno =
+                    await _client
+                        .Child("Eventos")
+                        .OrderBy("ID")
+                        .EqualTo(eventoID)
+                        .OnceSingleAsync<Dictionary<long, Evento>>();
+
+                foreach (EventoItem eventoItem in eventoItemRetorno.Values)
+                {
+                    itensEventoRetorno.Add(eventoItem);
+                }
+                
             }
-            catch(Exception ex)
+            catch(Exception)
             {
-                return default(EventoItem);
             }
+            return itensEventoRetorno;
         }
 
         #endregion Métodos Child Itens

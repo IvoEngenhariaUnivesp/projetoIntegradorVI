@@ -44,7 +44,7 @@ namespace ProjetoIntegradorVI.ViewModel
             var obj = Enum.GetNames(typeof(TipoItemEnum));
 
             PropertyChanged.Invoke(this, new PropertyChangedEventArgs(getGramas));
-            eventoItem.QuantidadeDesejada = getGramas;
+            //eventoItem.QuantidadeDesejada = getGramas;
             var cadItemEvento = await _eventoItemFirebase.InsertEventoItemAsync(eventoItem, _usuarioLogado);
             if(cadItemEvento != null)
             {

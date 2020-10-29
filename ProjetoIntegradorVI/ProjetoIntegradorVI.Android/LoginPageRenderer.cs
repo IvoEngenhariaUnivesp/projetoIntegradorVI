@@ -14,7 +14,7 @@ namespace FBLoginTeste.Droid
 {
 	public class LoginPageRenderer : PageRenderer
 	{
-
+        [Obsolete]
         public LoginPageRenderer()
 		{
 			var activity = this.Context as Activity;
@@ -38,9 +38,9 @@ namespace FBLoginTeste.Droid
 					var id = obj ["id"].ToString ().Replace ("\"", ""); 
 					var name = obj ["name"].ToString ().Replace ("\"", "");
 					var email = obj["email"].ToString().Replace("\"", "");
-					App.Current.MainPage.Navigation.PushModalAsync(new Login(true,name, id,email));
+					await App.Current.MainPage.Navigation.PushModalAsync(new Login(true,name, id,email));
 				} else {
-					App.Current.MainPage.Navigation.PushModalAsync(new Login(false, "", "",""));
+					await App.Current.MainPage.Navigation.PushModalAsync(new Login(false, "", "",""));
 				}
 			};
 

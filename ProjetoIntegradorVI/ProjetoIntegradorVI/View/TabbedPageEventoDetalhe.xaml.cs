@@ -15,6 +15,10 @@ namespace ProjetoIntegradorVI.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TabbedPageEventoDetalhe : TabbedPage
     {
+        private Usuario _usuarioLogado;
+        private List<EventoItem> lstEventoItems;
+        public Command AceitaConviteCommand;
+        public Command RemoveConviteCommand;
         public TabbedPageEventoDetalhe(Usuario usuarioLogado, long eventoID)
         {
             InitializeComponent();
@@ -29,9 +33,23 @@ namespace ProjetoIntegradorVI.View
             // Dá contexto ao ViewModel
             BindingContext = new EventoDetalheViewModel(usuarioLogado, evento.ID.Value);
 
+            // Busca o item do evento...
+            if (tabItens != null)
+            {
+                EventoItem eventoItem = new EventoItem();
+                Task.Run(async () =>
+                {
+                    this.lstEventoItems = await firebaseClient.GetEventoItemAsync(eventoID);
+                }).Wait();
+                ;
+                //lvItemEvento.ItemsSource = this.lstEventoItems;
+            }
+
             // Remove a aba de convites caso o usuário logado não seja o criador do evento
             if (evento != null && (usuarioLogado.ID != evento.UsuarioCriadorID))
+            {
                 this.Children.Remove(tabConvites);
+            }
         }
     }
 }
