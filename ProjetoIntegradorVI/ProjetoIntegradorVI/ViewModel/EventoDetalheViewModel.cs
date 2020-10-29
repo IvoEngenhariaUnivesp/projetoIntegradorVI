@@ -2,6 +2,7 @@
 using ProjetoIntegradorVI.Domain.Model;
 using System;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -10,13 +11,9 @@ namespace ProjetoIntegradorVI.ViewModel
     public class EventoDetalheViewModel
     {
         private readonly FirebaseConfig<Evento> _firebaseClient;
-        //public Command backCommand { get; set; }//btn voltar no topo
-        //public Command infoCommand { get; set; }//btn de informações no topo a direita
-        //public Command eventoCommand { get; set; }//btn no rodapé para o evento
-        //public Command itensCommand { get; set; }//btn no rodapé para ver os itens
-        //public Command conviteCommand { get; set; }//btn no rodapé para ver os convites
-        public Command cadItemEventoItemCommand { get; set; }//btn de cadastrar novo item para usuario criador
-        public Command cadItemEventoItemUsuarioCommand { get; set; }//btn de cadastrar novo item para usuario convidado()
+        public Command cadItemEventoItemCommand { get; set; }
+        public Command cadItemEventoItemUsuarioCommand { get; set; }
+        public ICommand AceitaConviteCommand { get; set; }
         private Usuario _usuarioLogado { get; set; }
         private long _eventoID { get; set; }
         public string NomeEvento { get; set; }
@@ -54,14 +51,17 @@ namespace ProjetoIntegradorVI.ViewModel
             convidadosAceitos = eventoDetalhe.ConvitesAceitos.ToString();
             convidadosRecusados = eventoDetalhe.ConvitesRecusados.ToString();
             convidadosPendentes = eventoDetalhe.ConvitesPendentes.ToString();
-
-            //cadItemEventoItemCommand = new Command(AddItemEventoUser);
         }
 
         public void AddItemEventoUser()
         {
             //App.Current.MainPage.DisplayAlert("Teste", "Testes2", "OK");
             App.Current.MainPage.Navigation.PushModalAsync(new View.CadastrarItem(_usuarioLogado, _eventoID));
+        }
+
+        public void SetConvidadosAceitos(string valor)
+        {
+            convidadosAceitos = valor;
         }
 
     }

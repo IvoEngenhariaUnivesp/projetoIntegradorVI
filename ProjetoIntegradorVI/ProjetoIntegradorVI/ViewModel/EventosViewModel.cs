@@ -42,6 +42,7 @@ namespace ProjetoIntegradorVI.ViewModel
         {
             await App.Current.MainPage.Navigation.PushModalAsync(new View.TabbedPageEventoDetalhe(_usuarioLogado, (long)sender));
         }
+
         public void AddItemEventoUser()
         {
             App.Current.MainPage.DisplayAlert("Teste", "Testes2", "OK");

@@ -112,42 +112,6 @@ namespace ProjetoIntegradorVI.Database
 
         #region Métodos Child Eventos
 
-        //public async Task<Evento> InsertEventoAsync(Evento objeto)
-        //{
-        //    // Abre a conexão com o banco
-        //    InstaciaClient();
-
-        //    // Atribui ao objeto o ultimo ID do banco + 1
-        //    try
-        //    {
-        //        // Liberado para cadastrar
-        //        // Pega ultimo registro do banco em forma de lista, onde o primeiro objeto podeser nulo.
-        //        var ultimoRegistro = await _client
-        //            .Child("Eventos")
-        //            .OrderByKey()
-        //            .LimitToLast(1)
-        //            .OnceSingleAsync<List<Evento>>();
-
-        //        objeto.ID = ultimoRegistro.Last().ID + 1;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        objeto.ID = 0;
-        //    }
-
-        //    try
-        //    {
-        //        // Insere o objeto no Chil Usuarios/ID
-        //        await _client.Child("Eventos").Child(objeto.ID.ToString()).PutAsync(objeto);
-        //    }
-        //    catch (Exception)
-        //    {
-        //        return default(Evento);
-        //    }
-
-        //    return objeto;
-        //}
-
         public async Task<Evento> InsertEventoAsync(Evento objeto, Usuario usuario = null)
         {
             // Abre a conexão com o banco
@@ -307,9 +271,9 @@ namespace ProjetoIntegradorVI.Database
                 eventoDetalhe.HoraInicio = evento.HoraInicio;
                 eventoDetalhe.HoraTermino = evento.HoraTermino;
 
-                var dataEvento = DateTime.ParseExact(evento.DataInicio, "dd/MM/yyyy", CultureInfo.InvariantCulture).Day;
-                var dataAtual = DateTime.Now.Day;
-                eventoDetalhe.DiasRestantes = dataEvento - dataAtual;
+                var dataEvento = DateTime.ParseExact(evento.DataInicio, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                var dataAtual = DateTime.Now;
+                eventoDetalhe.DiasRestantes = (dataEvento - dataAtual).Days;
 
                 // Busca a lista de usuários vinculados ao evento
                 // Retorna um dictionary com <ID, Usuario>
@@ -342,10 +306,10 @@ namespace ProjetoIntegradorVI.Database
             return eventoDetalhe;
         }
 
-        public async Task<List<EventoUsuario>> GetConvitesPendentesByEventoIDAsync(long eventoID)
+        public async Task<List<EventoUsuarioDetalhe>> GetConvitesPendentesByEventoIDAsync(long eventoID)
         {
             // Lista de Retorno dos Convites
-            List<EventoUsuario> lstConvites = new List<EventoUsuario>();
+            List<EventoUsuarioDetalhe> lstConvites = new List<EventoUsuarioDetalhe>();
 
 
             // Abre a conexão com o banco
@@ -364,10 +328,50 @@ namespace ProjetoIntegradorVI.Database
             foreach (EventoUsuario eventoUsuario in eventosByUsuarioIDRetorno.Values)
             {
                 if (eventoUsuario.StatusConvite == StatusConviteEnum.Pendente)
-                    lstConvites.Add(eventoUsuario);
+                {
+                    EventoUsuarioDetalhe conviteDetalhe = new EventoUsuarioDetalhe();
+
+                    var usuario =
+                        await _client
+                            .Child("Usuarios")
+                            .OrderBy("ID")
+                            .EqualTo(eventoUsuario.UsuarioMembroID)
+                            .OnceSingleAsync<Dictionary<long, Usuario>>();
+
+                    conviteDetalhe.ID = eventoUsuario.ID;
+                    conviteDetalhe.UsuarioMembroID = usuario.Values.First().ID.Value;
+                    conviteDetalhe.NomeUsuario = usuario.Values.First().Nome;
+                    conviteDetalhe.StatusConvite = eventoUsuario.StatusConvite;
+
+                    lstConvites.Add(conviteDetalhe);
+                }
             }
 
             return lstConvites;
+        }
+
+        // Muda o status de um convite
+        public async Task<bool> SetStatusConvite(EventoUsuario eventoUsuario)
+        {
+            bool response = true;
+
+            // Abre a conexão com o banco
+            InstaciaClient();
+
+            try
+            {
+                // Monta o objeto para mudança no banco
+                await _client
+                    .Child("EventoUsuario")
+                    .Child(eventoUsuario.ID.ToString())
+                    .PutAsync(eventoUsuario);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+            return response;
         }
 
         #endregion Métodos Child Eventos

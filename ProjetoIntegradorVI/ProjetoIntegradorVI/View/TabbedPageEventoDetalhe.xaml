@@ -48,15 +48,15 @@
                                         </StackLayout>
                                         <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Margin="0,10,0,0">
                                             <StackLayout VerticalOptions="Center">
-                                                <Label Text="{Binding convidadosAceitos}" HorizontalOptions="CenterAndExpand" TextColor="Green" FontSize="Large"/>
+                                                <Label Text="{Binding convidadosAceitos}" x:Name="convidadosAceitos" HorizontalOptions="CenterAndExpand" TextColor="Green" FontSize="Large"/>
                                                 <Label Text="Confirmados" TextColor="Black" />
                                             </StackLayout>
                                             <StackLayout VerticalOptions="Center">
-                                                <Label Text="{Binding convidadosRecusados}" HorizontalOptions="CenterAndExpand" TextColor="#eeff41" FontSize="Large"/>
+                                                <Label Text="{Binding convidadosPendentes}" x:Name="convidadosPendentes" HorizontalOptions="CenterAndExpand" TextColor="#eeff41" FontSize="Large"/>
                                                 <Label Text="Pendentes" TextColor="Black" />
                                             </StackLayout>
                                             <StackLayout VerticalOptions="Center">
-                                                <Label Text="{Binding convidadosPendentes}" HorizontalOptions="CenterAndExpand" TextColor="Red" FontSize="Large"/>
+                                                <Label Text="{Binding convidadosRecusados}" x:Name="convidadosRecusados" HorizontalOptions="CenterAndExpand" TextColor="Red" FontSize="Large"/>
                                                 <Label Text="Recusados" TextColor="Black" />
                                             </StackLayout>
                                         </StackLayout>
@@ -182,15 +182,37 @@
         <ContentPage.Content>
             <StackLayout>
                 <StackLayout Spacing="0" BackgroundColor="#3B529F" HeightRequest="50">
-                    <Label Text="Detalhes do Evento" TextColor="FloralWhite" FontSize="Title" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                    <Label Text="Convites Pendentes" TextColor="FloralWhite" FontSize="Title" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
                 </StackLayout>
                 <ScrollView>
                     <StackLayout Spacing="0" Padding="15">
-                        <StackLayout>
-                            <Frame WidthRequest="90" HeightRequest="100" HasShadow="True">
-                                <Label Text="Testando Detalhes do Evento" TextColor="#ccc" FontSize="Default" />
-                            </Frame>
-                        </StackLayout>
+                        <ListView x:Name="lstConvitesPendentes" HasUnevenRows="True">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Frame WidthRequest="90" HeightRequest="45" HasShadow="True">
+                                            <StackLayout Orientation="Horizontal">
+                                                <Label Text="{Binding NomeUsuario}" FontSize="Large" VerticalOptions="CenterAndExpand"/>
+                                                <ImageButton 
+                                                    Source="check.png" 
+                                                    HeightRequest="45" 
+                                                    HorizontalOptions="EndAndExpand" 
+                                                    BackgroundColor="Transparent" 
+                                                    Clicked="AceitaConvite_Clicked" 
+                                                    CommandParameter="{Binding .}"/>
+                                                <ImageButton 
+                                                    Source="error.png" 
+                                                    HeightRequest="40" 
+                                                    HorizontalOptions="End"  
+                                                    BackgroundColor="Transparent" 
+                                                    Clicked="RecusaConvite_Clicked"
+                                                    CommandParameter="{Binding .}"/>
+                                            </StackLayout>
+                                        </Frame>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
                     </StackLayout>
                 </ScrollView>
             </StackLayout>
