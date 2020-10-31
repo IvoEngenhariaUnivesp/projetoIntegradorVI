@@ -8,6 +8,58 @@
     <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              Title="Detalhes"
+             x:Name="tabDetalhesConvitePendente">
+        <ContentPage.Content>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <StackLayout>
+                    <ScrollView>
+                        <StackLayout Spacing="0" Padding="15">
+                            <StackLayout>
+                                <Frame BorderColor="White" HeightRequest="200" CornerRadius="10" Padding="5" Margin="0,0,0,10" BackgroundColor="White" HasShadow="True">
+                                    <StackLayout>
+                                        <Label Text="{Binding NomeEvento}" TextColor="#212121" Margin="10,10,0,0" FontSize="Subtitle" />
+                                        <Label Text="{Binding DescricaoEvento}" TextColor="#757575" Margin="10,1,10,0"/>
+                                    </StackLayout>
+                                </Frame>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="0,10,0,0">
+                                <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                    <Label Text="Data do início" HorizontalOptions="CenterAndExpand"/>
+                                    <Label Text="{Binding dataInicio}" HorizontalOptions="CenterAndExpand" />
+                                    <Label Text="{Binding horaInicio}" HorizontalOptions="CenterAndExpand" />
+                                </StackLayout>
+                                <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                    <Label Text="Data do término" HorizontalOptions="CenterAndExpand"/>
+                                    <Label Text="{Binding dataTermino}" HorizontalOptions="CenterAndExpand" />
+                                    <Label Text="{Binding horaTermino}" HorizontalOptions="CenterAndExpand" />
+                                </StackLayout>
+                            </StackLayout>
+                            <StackLayout HorizontalOptions="CenterAndExpand" Margin="0,15,0,0">
+                                <Label Text="{Binding diasRestantes}" FontSize="Subtitle" />
+                            </StackLayout>
+                            <StackLayout>
+                                <Button IsVisible="True"
+                                        Clicked="EnviaConvite_Clicked" 
+                                        HeightRequest="50" 
+                                        Margin="0,15,0,0" 
+                                        TextColor="White" 
+                                        Text="Enviar Convite"  
+                                        BackgroundColor="#0275d8"
+                                        HorizontalOptions="FillAndExpand"
+                                        x:Name="btnEnviaConvite"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </ScrollView>
+                </StackLayout>
+            </Grid>
+        </ContentPage.Content>
+    </ContentPage>
+    <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="Detalhes"
              x:Name="tabDetalhes">
         <ContentPage.Content>
             <Grid>
@@ -41,7 +93,7 @@
                                 <Label Text="{Binding diasRestantes}" FontSize="Subtitle" />
                             </StackLayout>
                             <StackLayout Margin="0,10,0,0">
-                                <Frame BorderColor="White" HeightRequest="200" CornerRadius="10" Padding="5" Margin="0,0,0,10" BackgroundColor="White" HasShadow="True">
+                                <Frame BorderColor="White" HeightRequest="170" CornerRadius="10" Padding="5" Margin="0,0,0,10" BackgroundColor="White" HasShadow="True">
                                     <StackLayout>
                                         <StackLayout>
                                             <Label HorizontalOptions="CenterAndExpand" Text="Convites" FontSize="Title" FontAttributes="Bold" FontFamily="Arial" TextColor="Black" />
@@ -52,7 +104,7 @@
                                                 <Label Text="Confirmados" TextColor="Black" />
                                             </StackLayout>
                                             <StackLayout VerticalOptions="Center">
-                                                <Label Text="{Binding convidadosPendentes}" x:Name="convidadosPendentes" HorizontalOptions="CenterAndExpand" TextColor="#eeff41" FontSize="Large"/>
+                                                <Label Text="{Binding convidadosPendentes}" x:Name="convidadosPendentes" HorizontalOptions="CenterAndExpand" TextColor="#ffa500" FontSize="Large"/>
                                                 <Label Text="Pendentes" TextColor="Black" />
                                             </StackLayout>
                                             <StackLayout VerticalOptions="Center">
@@ -60,6 +112,15 @@
                                                 <Label Text="Recusados" TextColor="Black" />
                                             </StackLayout>
                                         </StackLayout>
+                                        <Button IsVisible="True"
+                                                Clicked="VisualizaLocalizacao_Clicked" 
+                                                HeightRequest="50" 
+                                                Margin="0,15,0,0" 
+                                                TextColor="White" 
+                                                Text="Visualizar Localização"  
+                                                BackgroundColor="#0275d8"
+                                                HorizontalOptions="FillAndExpand"
+                                                x:Name="btnVisualizaLocalizacao"/>
                                     </StackLayout>
                                 </Frame>
                             </StackLayout>

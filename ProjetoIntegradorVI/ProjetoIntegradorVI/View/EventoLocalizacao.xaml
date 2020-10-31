@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProjetoIntegradorVI.View.EventoLocalizacao">
+    <ContentPage.Content>
+        <StackLayout>
+            <ScrollView>
+                <StackLayout Spacing="0" Padding="15">
+                    <StackLayout>
+                        <Frame WidthRequest="90" HeightRequest="200" HasShadow="True">
+                            <Label Text="Testando Detalhes do Evento" TextColor="#ccc" FontSize="Default" />
+                        </Frame>
+                        <Button IsVisible="True"
+                                Clicked="AbreMapa_Clicked" 
+                                HeightRequest="50" 
+                                Margin="0,15,0,0" 
+                                TextColor="White" 
+                                Text="Abrir Mapa"  
+                                BackgroundColor="#0275d8"
+                                HorizontalOptions="FillAndExpand"
+                                x:Name="btnAbreMapa"/>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

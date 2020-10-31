@@ -11,6 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Xam.Plugin.ExternalMaps" Version="4.0.1" />
     <PackageReference Include="Xamarin.Auth" Version="1.7.0" />
     <PackageReference Include="Xamarin.Forms" Version="4.6.0.1141" />
     <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
@@ -19,6 +20,12 @@
   <ItemGroup>
     <ProjectReference Include="..\..\ProjetoIntegradorVI.Database\ProjetoIntegradorVI.Database.csproj" />
     <ProjectReference Include="..\..\ProjetoIntegradorVI.Domain\ProjetoIntegradorVI.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="View\EventoLocalizacao.xaml.cs">
+      <DependentUpon>EventoLocalizacao.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>

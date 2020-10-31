@@ -10,6 +10,13 @@ namespace ProjetoIntegradorVI.Domain.Model
         public long UsuarioID { get; set; }
         public string NomeEvento { get; set; }
         public string DescricaoEvento { get; set; }
+        public string LogradouroEvento { get; set; }
+        public string BairroEvento { get; set; }
+        public string EstadoEvento { get; set; }
+        public string CidadeEvento { get; set; }
+        public string CEPEvento { get; set; }
+        public string NumeroEvento { get; set; }
+        public string ComplementoEvento { get; set; }
         public string DataInicio { get; set; }
         public string DataTermino { get; set; }
         public string HoraInicio { get; set; }

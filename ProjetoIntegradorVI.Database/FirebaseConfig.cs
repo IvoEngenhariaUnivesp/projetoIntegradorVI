@@ -60,19 +60,20 @@ namespace ProjetoIntegradorVI.Database
 
                     objeto.ID = ultimoRegistro.Last().ID + 1;
                 }
-                catch (Exception)
+                catch (Firebase.Database.FirebaseException)
                 {
-                    objeto.ID = 0;
-                }
 
-                try
-                {
-                    // Insere o objeto no Chil Usuarios/ID
+                    // Verificando se tem o mesmo email
+                    var ultimoRegistro =
+                        await _client
+                            .Child("Usuarios")
+                            .OrderByKey()
+                            .LimitToLast(1)
+                            .OnceSingleAsync<Dictionary<long, Usuario>>();
+
+                    objeto.ID = ultimoRegistro.Values.Last().ID + 1;
+
                     await _client.Child("Usuarios").Child(objeto.ID.ToString()).PutAsync(objeto);
-                }
-                catch (Exception)
-                {
-                    return default(Usuario);
                 }
             }
             else
@@ -270,6 +271,13 @@ namespace ProjetoIntegradorVI.Database
                 eventoDetalhe.DataTermino = evento.DataTermino;
                 eventoDetalhe.HoraInicio = evento.HoraInicio;
                 eventoDetalhe.HoraTermino = evento.HoraTermino;
+                eventoDetalhe.LogradouroEvento = evento.Logradouro;
+                eventoDetalhe.BairroEvento = evento.Bairro;
+                eventoDetalhe.EstadoEvento = evento.Estado;
+                eventoDetalhe.CidadeEvento = evento.Cidade;
+                eventoDetalhe.CEPEvento = evento.CEP;
+                eventoDetalhe.ComplementoEvento = evento.Complemento;
+                eventoDetalhe.NumeroEvento = evento.Numero;
 
                 var dataEvento = DateTime.ParseExact(evento.DataInicio, "dd/MM/yyyy", CultureInfo.InvariantCulture);
                 var dataAtual = DateTime.Now;
@@ -375,6 +383,104 @@ namespace ProjetoIntegradorVI.Database
         }
 
         #endregion Métodos Child Eventos
+
+        #region Métodos Child EventoUsuario
+        public async Task<EventoUsuario> InsertEventoUsuarioAsync(EventoUsuario eventoUsuario)
+        {
+            InstaciaClient();
+            try
+            {
+                var ultimoRegistro = await _client.Child("EventoUsuario").OrderByKey().LimitToLast(1).OnceSingleAsync<Dictionary<object, EventoUsuario>>();
+
+                eventoUsuario.ID = ultimoRegistro != null ? ultimoRegistro.Values.Last().ID + 1 : 0;
+
+                if (eventoUsuario.ID != null)
+                    await _client.Child("EventoUsuario").Child(eventoUsuario.ID.ToString()).PutAsync(eventoUsuario);
+
+            }
+            catch (Firebase.Database.FirebaseException ex)
+            {
+
+                if (ex.ResponseData.StartsWith("[{") || ex.ResponseData.StartsWith("[null"))
+                {
+                    var ultimoRegistro = await _client.Child("EventoItem").OrderByKey().LimitToLast(1).OnceSingleAsync<List<EventoUsuario>>();
+
+                    eventoUsuario.ID = ultimoRegistro.Last().ID + 1;
+
+                    if (eventoUsuario.ID != null)
+                        await _client.Child("EventoItem").Child(eventoUsuario.ID.ToString()).PutAsync(eventoUsuario);
+                }
+                else
+                    eventoUsuario.ID = 0;
+            }
+            return eventoUsuario;
+        }
+
+        public async Task<bool> IsUsuarioMembroAceitoByEventoIDAsync(long usuarioID, long eventoID)
+        {
+            // Abre a conexão com o banco
+            InstaciaClient();
+
+            bool isMembro = false;
+
+            try
+            {
+                // Busca o evento com base no ID informado
+                // Retorna um dictionary com <ID, Evento>
+                var eventoRetorno =
+                    await _client
+                        .Child("EventoUsuario")
+                        .OrderBy("EventoID")
+                        .EqualTo(eventoID)
+                        .OnceSingleAsync<Dictionary<long, EventoUsuario>>();
+
+                // Caso o usuário seja membro(mesmo que pendente), retorna verdadeiro
+                if (eventoRetorno.Values.Any(x => x.UsuarioMembroID == usuarioID && x.StatusConvite == StatusConviteEnum.Aceito)) return true;
+            }
+            catch (Exception)
+            {
+                // Se tiver não existir, retorna null
+                return false;
+            }
+            return isMembro;
+        }
+
+        public async Task<bool> IsUsuarioMembroPendenteRecusadoByEventoIDAsync(long usuarioID, long eventoID)
+        {
+            // Abre a conexão com o banco
+            InstaciaClient();
+
+            bool isMembro = false;
+
+            try
+            {
+                // Busca o evento com base no ID informado
+                // Retorna um dictionary com <ID, Evento>
+                var eventoRetorno =
+                    await _client
+                        .Child("EventoUsuario")
+                        .OrderBy("EventoID")
+                        .EqualTo(eventoID)
+                        .OnceSingleAsync<Dictionary<long, EventoUsuario>>();
+
+                // Caso o usuário seja membro(mesmo que pendente), retorna verdadeiro
+                if (eventoRetorno.Values.Any(
+                                                x => x.UsuarioMembroID == usuarioID && 
+                                                (x.StatusConvite == StatusConviteEnum.Pendente || 
+                                                 x.StatusConvite == StatusConviteEnum.Recusado)
+                                             )
+                   ) return true;
+            }
+            catch (Exception)
+            {
+                // Se tiver não existir, retorna null
+                return false;
+            }
+            return isMembro;
+        }
+
+        #endregion Métodos Child EventoUsuario
+
 
         #region Métodos Child Itens
         public async Task<EventoItem> InsertEventoItemAsync(EventoItem eventoItem, Usuario usuario = null)

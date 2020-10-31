@@ -41,6 +41,20 @@ namespace ProjetoIntegradorVI.View
             _usuarioLogado = usuarioLogado;
             EventoID = eventoID;
 
+            // Verifica se o usuário é membro do evento
+            // Se não for, desabilita todas as abas 
+            // e deixa disponível a aba pra enviar o convite
+            if (IsMembroAceito(_clientEventoUsuario))
+                this.Children.Remove(tabDetalhesConvitePendente);
+            else
+            {
+                this.Children.Remove(tabItens);
+                this.Children.Remove(tabDetalhes);
+            }
+
+            // Desabilita o frame de envio de convite para um usuário que esteja com seu convite pendente
+            if (IsMembroPendente(_clientEventoUsuario)) btnEnviaConvite.IsVisible = false;
+
             // Traz o evento do eventoID informado
             Evento evento = BuscaEvento(eventoID, _clientEvento);
 
@@ -78,6 +92,28 @@ namespace ProjetoIntegradorVI.View
             }).Wait();
 
             return eventoReturn;
+        }
+
+        public bool IsMembroAceito(FirebaseConfig<EventoUsuario> firebaseClient)
+        {
+            var isMembro = true;
+
+            Task.Run(async () => {
+                isMembro = await firebaseClient.IsUsuarioMembroAceitoByEventoIDAsync(_usuarioLogado.ID.Value, EventoID);
+            }).Wait();
+
+            return isMembro;
+        }
+
+        public bool IsMembroPendente(FirebaseConfig<EventoUsuario> firebaseClient)
+        {
+            var isMembro = true;
+
+            Task.Run(async () => {
+                isMembro = await firebaseClient.IsUsuarioMembroPendenteRecusadoByEventoIDAsync(_usuarioLogado.ID.Value, EventoID);
+            }).Wait();
+
+            return isMembro;
         }
 
         public void BuscaConvitesPendentes(long eventoID, FirebaseConfig<EventoUsuario> firebaseClient)
@@ -167,6 +203,26 @@ namespace ProjetoIntegradorVI.View
             else
                 App.Current.MainPage.DisplayAlert("Erro", "Não foi possível alterar o status do convite", "Ok");
 
+        }
+
+        private void EnviaConvite_Clicked(object sender, EventArgs e)
+        {
+            // Converte o sender para Button
+            var parametro = sender as Button;
+
+            var conviteEnviar = new EventoUsuario { EventoID = EventoID, StatusConvite = StatusConviteEnum.Pendente, UsuarioMembroID = _usuarioLogado.ID.Value };
+
+            Task.Run(async () =>
+            {
+                await _clientEventoUsuario.InsertEventoUsuarioAsync(conviteEnviar);
+            }).Wait();
+
+            App.Current.MainPage.Navigation.PopModalAsync();
+        }
+
+        private void VisualizaLocalizacao_Clicked(object sender, EventArgs e)
+        {
+            App.Current.MainPage.Navigation.PushModalAsync(new View.EventoLocalizacao());
         }
     }
 }

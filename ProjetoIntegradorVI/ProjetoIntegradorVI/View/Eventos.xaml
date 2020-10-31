@@ -14,7 +14,7 @@
         <StackLayout Spacing="0">
             <StackLayout Spacing="0" BackgroundColor="#3B529F" HeightRequest="50" VerticalOptions="Start">
                 <!--<Entry WidthRequest="280" HorizontalOptions="Center" HorizontalTextAlignment="Start" Visual="Material" />-->
-                <SearchBar Placeholder="Digite" PlaceholderColor="#c5cae9" Margin="0,0,10,0" TextColor="White" />
+                <SearchBar Placeholder="Digite o ID do Evento" PlaceholderColor="#c5cae9" Margin="0,0,10,0" TextColor="White" SearchButtonPressed="BuscaEvento_SearchButtonPressed" />
                 <!--<ImageButton Source="pesquisa.png" WidthRequest="25" HeightRequest="25" HorizontalOptions="End" Margin="0,-35,10,0" CornerRadius="250" BorderColor="White" />-->
                 <!--<Button ImageSource="pesquisa.png" WidthRequest="10" HeightRequest="10" BackgroundColor="Beige" HorizontalOptions="End" Margin="0,-25,15,0"/>-->
             </StackLayout>
@@ -25,7 +25,11 @@
 
                 <ScrollView VerticalScrollBarVisibility="Never">
                     <StackLayout Spacing="50" Padding="10">
-                        <ListView x:Name="lvEventos" HasUnevenRows="True">
+                        <ListView x:Name="lvEventos" 
+                                  HasUnevenRows="True"
+                                  IsPullToRefreshEnabled = "True"
+                                  Refreshing="lvEventos_Refreshing"
+                                  IsRefreshing = "False">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
