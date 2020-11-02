@@ -10,7 +10,7 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout Spacing="50" Padding="20">
+            <StackLayout Spacing="30" Padding="20">
                 <Image Source="LogoOficial.png" WidthRequest="150" HeightRequest="150" />
                 <Label Text="BEM VINDO!" FontSize="Title" HorizontalOptions="CenterAndExpand"/>
 
@@ -44,9 +44,6 @@
 
                     <Button Text="Cadastre-se Aqui"
                         Command="{Binding ResultCommand}"/>
-
-                    <Button Text="Login com Facebook"
-                        Command="{Binding FBCadastroCommand}"/>
                 </StackLayout>
 
             </StackLayout>

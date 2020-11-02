@@ -51,14 +51,16 @@ namespace ProjetoIntegradorVI.Database
                 try
                 {
                     // Liberado para cadastrar
-                    // Pega ultimo registro do banco em forma de lista, onde o primeiro objeto podeser nulo.
+                    // Pega ultimo registro do banco em forma de lista, onde o primeiro objeto pode ser nulo.
                     var ultimoRegistro = await _client
                         .Child("Usuarios")
                         .OrderByKey()
                         .LimitToLast(1)
                         .OnceSingleAsync<List<Usuario>>();
 
-                    objeto.ID = ultimoRegistro.Last().ID + 1;
+                    objeto.ID = ultimoRegistro != (null) ? ultimoRegistro.Last().ID + 1 : 0;
+
+                    await _client.Child("Usuarios").Child(objeto.ID.ToString()).PutAsync(objeto);
                 }
                 catch (Firebase.Database.FirebaseException)
                 {

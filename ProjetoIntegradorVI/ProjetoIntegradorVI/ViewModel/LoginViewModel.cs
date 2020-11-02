@@ -12,10 +12,8 @@ namespace ProjetoIntegradorVI.ViewModel
     {
         public Command ResultCommand { get; set; }
         public Command EventosCommand { get; set; }
-        public Command FBCadastroCommand { get; set; }
         public string email { get; set; }
         public string senha { get; set; }
-        public bool isFacebookUser { get; set; }
         private readonly FirebaseConfig<Usuario> _clientUsuario;
 
         public LoginViewModel()
@@ -23,17 +21,11 @@ namespace ProjetoIntegradorVI.ViewModel
             _clientUsuario = new FirebaseConfig<Usuario>();
             ResultCommand = new Command(CadastroUser);
             EventosCommand = new Command(EventosUser);
-            FBCadastroCommand = new Command(FBCadastroUser);
         }
 
         public void CadastroUser()
         {
             App.Current.MainPage.Navigation.PushModalAsync(new View.CadastroUsuario());
-        }
-
-        public void FBCadastroUser()
-        {
-            App.Current.MainPage.Navigation.PushModalAsync(new View.FBCadastro());
         }
 
         public async void EventosUser()

@@ -9,14 +9,17 @@ namespace ProjetoIntegradorVI.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class EventoLocalizacao : ContentPage
     {
-        public EventoLocalizacao()
+        public EventoDetalhe _evento { get; set; }
+        public EventoLocalizacao(EventoDetalhe evento)
         {
             InitializeComponent();
+
+            _evento = evento;
         }
 
         private void AbreMapa_Clicked(object sender, System.EventArgs e)
         {
-            CrossExternalMaps.Current.NavigateTo("Teste", "Rua Francisco Mascarenhas, 205B", "São Paulo", "São Paulo", "02808030", "BR", "55");
+            CrossExternalMaps.Current.NavigateTo("Localização", _evento.LogradouroEvento+", "+_evento.NumeroEvento, _evento.CidadeEvento, _evento.EstadoEvento, _evento.CEPEvento, "BR", "55");
         }
     }
 }

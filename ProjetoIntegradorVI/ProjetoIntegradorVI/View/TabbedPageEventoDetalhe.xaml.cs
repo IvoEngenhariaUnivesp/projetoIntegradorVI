@@ -220,9 +220,11 @@ namespace ProjetoIntegradorVI.View
             App.Current.MainPage.Navigation.PopModalAsync();
         }
 
-        private void VisualizaLocalizacao_Clicked(object sender, EventArgs e)
+        private async void VisualizaLocalizacao_Clicked(object sender, EventArgs e)
         {
-            App.Current.MainPage.Navigation.PushModalAsync(new View.EventoLocalizacao());
+            EventoDetalhe eventoDetalhe = await _clientEvento.GetEventoDetalheByEventoIDAsync(EventoID);
+
+            await App.Current.MainPage.Navigation.PushModalAsync(new View.EventoLocalizacao(eventoDetalhe));
         }
     }
 }
