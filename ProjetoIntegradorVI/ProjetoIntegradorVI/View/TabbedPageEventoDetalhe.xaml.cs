@@ -63,17 +63,19 @@ namespace ProjetoIntegradorVI.View
             
             // Dá contexto ao ViewModel e aos commands
             BindingContext = new EventoDetalheViewModel(usuarioLogado, evento.ID.Value);
+            BindingContext = new ItensEventoDetalheViewModel(usuarioLogado, evento.ID.Value);
 
             // Busca o item do evento...
             if (tabItens != null)
             {
-                EventoItem eventoItem = new EventoItem();
+                //EventoItem eventoItem = new EventoItem();
                 Task.Run(async () =>
                 {
                     this.lstEventoItems = await _clientEventoItem.GetEventoItemAsync(eventoID);
                 }).Wait();
-                ;
+                listViewItens.ItemsSource = this.lstEventoItems;
                 //lvItemEvento.ItemsSource = this.lstEventoItems;
+                //listViewItens.ItemsSource = this.eventoItem;
             }
 
             // Remove a aba de convites caso o usuário logado não seja o criador do evento

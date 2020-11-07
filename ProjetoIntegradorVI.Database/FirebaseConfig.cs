@@ -537,6 +537,7 @@ namespace ProjetoIntegradorVI.Database
         {
             InstaciaClient();
             List<EventoItem> itensEventoRetorno = new List<EventoItem>();
+            EventoItem eventoItem = new EventoItem();
             try
             {
                 var eventoItemRetorno = await _client.Child("EventoItem").OrderBy("EventoID").EqualTo(eventoID).OnceSingleAsync<Dictionary<long, EventoItem>>();
@@ -548,11 +549,14 @@ namespace ProjetoIntegradorVI.Database
                         .EqualTo(eventoID)
                         .OnceSingleAsync<Dictionary<long, Evento>>();
 
-                foreach (EventoItem eventoItem in eventoItemRetorno.Values)
+                var teste = eventoItemRetorno.Values.First();
+                eventoItem.Nome = teste.Nome;
+
+                foreach (EventoItem eventItem in eventoItemRetorno.Values)
                 {
-                    itensEventoRetorno.Add(eventoItem);
+                    itensEventoRetorno.Add(eventItem);
                 }
-                
+
             }
             catch(Exception)
             {
