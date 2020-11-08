@@ -1,6 +1,7 @@
 ﻿using ProjetoIntegradorVI.Database;
 using ProjetoIntegradorVI.Domain.Model;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -27,6 +28,9 @@ namespace ProjetoIntegradorVI.ViewModel
         public string convidadosRecusados { get; set; }
         public string convidadosPendentes { get; set; }
 
+        //sobre itens
+        public string NomeItem { get; set; }
+
         public EventoDetalheViewModel(Usuario usuarioLogado, long eventoID)
         {
             // Instancia as variaveis de acesso a tela
@@ -51,6 +55,19 @@ namespace ProjetoIntegradorVI.ViewModel
             convidadosAceitos = eventoDetalhe.ConvitesAceitos.ToString();
             convidadosRecusados = eventoDetalhe.ConvitesRecusados.ToString();
             convidadosPendentes = eventoDetalhe.ConvitesPendentes.ToString();
+
+            //Informações dos detalhes dos itens
+            //List<EventoItem> items = new List<EventoItem>();
+            ////var items = new EventoItem();
+            //Task.Run(async () =>
+            //{
+            //    items = await _firebaseClient.GetEventoItemAsync(_eventoID);
+            //}).Wait();
+            
+            //foreach (var i in items)
+            //{
+            //    NomeItem = i.Nome;
+            //}
         }
 
         public void AddItemEventoUser()

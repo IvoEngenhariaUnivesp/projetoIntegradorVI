@@ -30,14 +30,14 @@ namespace ProjetoIntegradorVI.ViewModel
             _firebaseClient = new FirebaseConfig<EventoItem>();
             _eventoID = eventoID;
             //AcessEventoCommand = new Command(async (object obj) => await AccessEventoDetalheCommand(obj));
-            Task.Run(async () =>
-            {
-                items = await _firebaseClient.GetEventoItemAsync(_eventoID);
-            }).Wait();
-            foreach(var i in items)
-            {
-                nome = i.Nome;
-            }
+            //Task.Run(async () =>
+            //{
+            //    items = await _firebaseClient.GetEventoItemAsync(_eventoID);
+            //}).Wait();
+            //foreach(var i in items)
+            //{
+            //    nome = i.Nome;
+            //}
         }
     }
 }

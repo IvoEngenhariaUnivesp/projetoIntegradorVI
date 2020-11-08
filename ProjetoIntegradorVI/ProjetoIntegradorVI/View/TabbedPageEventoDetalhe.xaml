@@ -145,18 +145,25 @@
                             <Label Text="Detalhes do Evento" TextColor="FloralWhite" FontSize="Title" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
                         </StackLayout>
                         <Label Text="Bebidas" HorizontalOptions="CenterAndExpand" FontSize="Subtitle"/>
-                        <ScrollView Orientation="Horizontal">
+                        <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never" FlowDirection="MatchParent">
 
                             <StackLayout Orientation="Vertical" Spacing="0" Padding="15">
                                 <ListView x:Name="listViewItens" HasUnevenRows="True">
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
                                             <ViewCell>
-                                                <StackLayout Margin="5,0,5,0">
-                                                    <Frame WidthRequest="50" HeightRequest="100" HasShadow="True">
-                                                        <Label Text="{Binding nome}" TextColor="Black" FontSize="Default" />
-                                                    </Frame>
-                                                </StackLayout>
+                                                <ViewCell.View>
+                                                    <StackLayout Margin="5,0,5,0">
+                                                        <Frame WidthRequest="20" HeightRequest="40" BackgroundColor="Aquamarine" HasShadow="True">
+                                                            <StackLayout>
+                                                                <Label Text="{Binding Nome}" TextColor="Black" FontSize="Large" HorizontalTextAlignment="Center"  VerticalTextAlignment="Center" />
+                                                                <!--<StackLayout.GestureRecognizers>
+                                                                <TapGestureRecognizer Command="{Binding BindingContext.AcessEventoCommand, Source={x:Reference listViewItens}}" CommandParameter="{Binding ID}"/>
+                                                            </StackLayout.GestureRecognizers>-->
+                                                            </StackLayout>
+                                                        </Frame>
+                                                    </StackLayout>
+                                                </ViewCell.View>
                                             </ViewCell>
                                         </DataTemplate>
                                     </ListView.ItemTemplate>

@@ -549,8 +549,8 @@ namespace ProjetoIntegradorVI.Database
                         .EqualTo(eventoID)
                         .OnceSingleAsync<Dictionary<long, Evento>>();
 
-                var teste = eventoItemRetorno.Values.First();
-                eventoItem.Nome = teste.Nome;
+                //var teste = eventoItemRetorno.Values.First();
+                //eventoItem.Nome = teste.Nome;
 
                 foreach (EventoItem eventItem in eventoItemRetorno.Values)
                 {

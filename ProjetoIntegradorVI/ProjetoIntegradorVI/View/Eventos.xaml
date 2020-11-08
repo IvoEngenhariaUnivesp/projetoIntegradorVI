@@ -37,7 +37,7 @@
                                             <StackLayout>
                                                 <Label Text="{Binding Nome}" TextColor="#212121" Margin="10,10,0,0" FontSize="Subtitle" />
                                                 <Label Text="{Binding Descricao}" TextColor="#757575" Margin="10,1,10,0"/>
-                                                <Label Text="{Binding DataHoraInicio}" HorizontalOptions="End" TextColor="#757575" Margin="10,1,10,0"/>
+                                                <Label Text="{Binding DataInicio}" HorizontalOptions="End" TextColor="#757575" Margin="10,1,10,0"/>
                                                 <StackLayout.GestureRecognizers>
                                                     <TapGestureRecognizer Command="{Binding BindingContext.AcessEventoCommand, Source={x:Reference lvEventos}}" CommandParameter="{Binding ID}"/>
                                                 </StackLayout.GestureRecognizers>
