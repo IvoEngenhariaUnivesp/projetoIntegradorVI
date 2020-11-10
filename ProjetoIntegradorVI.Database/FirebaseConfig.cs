@@ -483,8 +483,8 @@ namespace ProjetoIntegradorVI.Database
 
         #endregion Métodos Child EventoUsuario
 
-
         #region Métodos Child Itens
+        // Insere item cadastrado pelo criador
         public async Task<EventoItem> InsertEventoItemAsync(EventoItem eventoItem, Usuario usuario = null)
         {
             InstaciaClient();
@@ -497,11 +497,6 @@ namespace ProjetoIntegradorVI.Database
                 if (eventoItem.ID != null)
                     await _client.Child("EventoItem").Child(eventoItem.ID.ToString()).PutAsync(eventoItem);
 
-                //if(usuario != null)
-                //{
-                //    await _client.Child("EventoItem").Child(usuario.ID.ToString()).PutAsync(new EventoItem { ID = eventoItem.ID, EventoID = eventoItem.ID.Value, Tipo = eventoItem.Tipo, Nome = eventoItem.Nome, TipoUnidade = eventoItem.TipoUnidade, QuantidadeDesejada = eventoItem.QuantidadeDesejada });
-                //}
-
             }
             catch (Firebase.Database.FirebaseException ex)
             {
@@ -509,22 +504,12 @@ namespace ProjetoIntegradorVI.Database
                 if (ex.ResponseData.StartsWith("[{") || ex.ResponseData.StartsWith("[null"))
                 {
                     var ultimoRegistro = await _client.Child("EventoItem").OrderByKey().LimitToLast(1).OnceSingleAsync<List<EventoItem>>();
-                    //if(ultimoRegistro.Count > 0)
-                    //{
-                    //    if(ultimoRegistro[0] == null)
-                    //    {
-                    //        ultimoRegistro.RemoveAt(0);
-                    //    }
-                    //}
+
                     eventoItem.ID = ultimoRegistro.Last().ID + 1;
 
                     if (eventoItem.ID != null)
                         await _client.Child("EventoItem").Child(eventoItem.ID.ToString()).PutAsync(eventoItem);
 
-                    //if (usuario != null)
-                    //{
-                    //    await _client.Child("EventoItem").Child(usuario.ID.ToString()).PutAsync(new EventoItem { EventoID = eventoItem.ID.Value, Tipo = eventoItem.Tipo, Nome = eventoItem.Nome, QuantidadeDesejada = eventoItem.QuantidadeDesejada, TipoUnidade = eventoItem.TipoUnidade, ID = eventoItem.ID });
-                    //}
                 }
                 else
                     eventoItem.ID = 0;
@@ -564,6 +549,35 @@ namespace ProjetoIntegradorVI.Database
             return itensEventoRetorno;
         }
 
+        // Insere item cadastrado pelo convidado
+        public async Task<EventoItemUsuario> InsertEventoItemUsuarioAsync(EventoItemUsuario eventoItemUsuario, Usuario usuario = null)
+        {
+            InstaciaClient();
+            try
+            {
+                var ultimoRegistro = await _client.Child("EventoItemUsuario").OrderByKey().LimitToLast(1).OnceSingleAsync<Dictionary<object, EventoItemUsuario>>();
+
+                eventoItemUsuario.ID = ultimoRegistro != null ? ultimoRegistro.Values.Last().ID + 1 : 0;
+
+                if (eventoItemUsuario.ID != null)
+                    await _client.Child("EventoItemUsuario").Child(eventoItemUsuario.ID.ToString()).PutAsync(eventoItemUsuario);
+            }
+            catch (Firebase.Database.FirebaseException ex)
+            {
+
+                if (ex.ResponseData.StartsWith("[{") || ex.ResponseData.StartsWith("[null"))
+                {
+                    var ultimoRegistro = await _client.Child("EventoItemUsuario").OrderByKey().LimitToLast(1).OnceSingleAsync<List<EventoItemUsuario>>();
+
+                    eventoItemUsuario.ID = ultimoRegistro.Last().ID + 1;
+
+                    if (eventoItemUsuario.ID != null)
+                        await _client.Child("EventoItemUsuario").Child(eventoItemUsuario.ID.ToString()).PutAsync(eventoItemUsuario);
+                }
+
+            }
+            return eventoItemUsuario;
+        }
         #endregion Métodos Child Itens
     }
 }
