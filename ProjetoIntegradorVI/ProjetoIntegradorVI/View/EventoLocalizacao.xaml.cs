@@ -15,6 +15,10 @@ namespace ProjetoIntegradorVI.View
             InitializeComponent();
 
             _evento = evento;
+
+            lblEndereco.Text = _evento.LogradouroEvento + ", " + _evento.NumeroEvento;
+            lblCidadeEstado.Text = _evento.CidadeEvento + " - " + _evento.EstadoEvento;
+            lblCEP.Text = _evento.CEPEvento;
         }
 
         private void AbreMapa_Clicked(object sender, System.EventArgs e)
