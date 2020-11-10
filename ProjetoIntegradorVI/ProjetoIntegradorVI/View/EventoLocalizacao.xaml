@@ -7,8 +7,13 @@
             <ScrollView>
                 <StackLayout Spacing="0" Padding="15">
                     <StackLayout>
-                        <Frame WidthRequest="90" HeightRequest="200" HasShadow="True">
-                            <Label Text="Testando Detalhes do Evento" TextColor="#ccc" FontSize="Default" />
+                        <Frame WidthRequest="90" HeightRequest="120" HasShadow="True">
+                            <StackLayout>
+                                <Label Text="Endereço" FontSize="21" TextColor="Black" />
+                                <Label x:Name="lblEndereco" FontSize="15" TextColor="#777777" />
+                                <Label x:Name="lblCidadeEstado" FontSize="15" TextColor="#777777" />
+                                <Label x:Name="lblCEP" FontSize="15" TextColor="#777777" />
+                            </StackLayout>
                         </Frame>
                         <Button IsVisible="True"
                                 Clicked="AbreMapa_Clicked" 

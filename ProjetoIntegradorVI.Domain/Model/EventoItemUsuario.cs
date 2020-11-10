@@ -10,6 +10,6 @@ namespace ProjetoIntegradorVI.Domain.Model
         public long EventoItemID { get; set; }
         public long EventoID { get; set; }
         public long UsuarioID { get; set; }
-        public double Quantidade { get; set; }
+        public string Quantidade { get; set; }
     }
 }
