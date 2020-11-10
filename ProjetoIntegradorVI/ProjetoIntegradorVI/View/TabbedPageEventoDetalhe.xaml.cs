@@ -77,7 +77,7 @@ namespace ProjetoIntegradorVI.View
                 //lvItemEvento.ItemsSource = this.lstEventoItems;
                 //listViewItens.ItemsSource = this.eventoItem;
             }
-
+            
             // Remove a aba de convites caso o usuário logado não seja o criador do evento
             if (evento != null && (usuarioLogado.ID != evento.UsuarioCriadorID))
             {

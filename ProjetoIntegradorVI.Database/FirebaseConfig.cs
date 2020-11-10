@@ -532,6 +532,41 @@ namespace ProjetoIntegradorVI.Database
             return eventoItem;
         }
 
+        /// <summary>
+        /// Lógica para inserir quantidade que o convidado irá levar. obs: ainda em fase de teste.
+        /// </summary>
+        /// <param name="eventoItemUsuario"></param>
+        /// <param name="usuario"></param>
+        /// <returns></returns>
+        public async Task<EventoItemUsuario> InsertItemEventoConvidado(EventoItemUsuario eventoItemUsuario, Usuario usuario = null)
+        {
+            InstaciaClient();
+            try
+            {
+                var ultimoRegistro = await _client.Child("EventoItemUsuario").OrderByKey().LimitToLast(1).OnceSingleAsync<Dictionary<object, EventoItemUsuario>>();
+                eventoItemUsuario.ID = ultimoRegistro != null ? ultimoRegistro.Values.Last().ID + 1 : 0;
+                if (eventoItemUsuario.ID != null)
+                    await _client.Child("EventoItemUsuario").Child(eventoItemUsuario.ID.ToString()).PutAsync(eventoItemUsuario);
+
+
+            }
+            catch(Firebase.Database.FirebaseException ex)
+            {
+                if (ex.ResponseData.StartsWith("[{") || ex.ResponseData.StartsWith("[null"))
+                {
+                    var ultimoRegistro = await _client.Child("EventoItemUsuario").OrderByKey().LimitToLast(1).OnceSingleAsync<List<EventoItemUsuario>>();
+
+                    eventoItemUsuario.ID = ultimoRegistro.Last().ID + 1;
+
+                    if (eventoItemUsuario.ID != null)
+                        await _client.Child("EventoItemUsuario").Child(eventoItemUsuario.ID.ToString()).PutAsync(eventoItemUsuario);
+                }
+                else
+                    eventoItemUsuario.ID = 0;
+            }
+            return eventoItemUsuario;
+        }
+
         // Retorna lista de itens cadastrados pelo criador do evento
         public async Task<List<EventoItem>> GetEventoItemAsync(long eventoID)
         {
