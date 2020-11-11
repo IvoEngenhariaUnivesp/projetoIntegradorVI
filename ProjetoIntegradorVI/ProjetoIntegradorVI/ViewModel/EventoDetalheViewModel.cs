@@ -45,7 +45,7 @@ namespace ProjetoIntegradorVI.ViewModel
             }).Wait();
 
             // Monta as propriedades da tela
-            NomeEvento = eventoDetalhe.NomeEvento;
+            NomeEvento = eventoDetalhe.NomeEvento + " - #" + eventoDetalhe.EventoID;
             DescricaoEvento = eventoDetalhe.DescricaoEvento;
             dataInicio = eventoDetalhe.DataInicio;
             dataTermino = eventoDetalhe.DataTermino;

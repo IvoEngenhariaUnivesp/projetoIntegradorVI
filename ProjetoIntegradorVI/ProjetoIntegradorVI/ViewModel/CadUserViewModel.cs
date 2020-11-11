@@ -40,9 +40,9 @@ namespace ProjetoIntegradorVI.ViewModel
 
                 if (cadUser != null)
                 {
-                    await App.Current.MainPage.DisplayAlert("Cadastro", "Sucesso no Cadastro!", "Ok");
+                    await App.Current.MainPage.DisplayAlert("Cadastro", "Sucesso no Cadastro! \nFaça o login.", "Ok");
 
-                    App.Current.MainPage = new NavigationPage(new View.Eventos(cadUser));
+                    await App.Current.MainPage.Navigation.PopModalAsync();
                 }
                 else
                 {
