@@ -27,18 +27,18 @@ namespace ProjetoIntegradorVI.View
             picker.ItemsSource = tipoEnumNames;
         }
 
-        private void gramas_ValueChanged(object sender, ValueChangedEventArgs e)
-        {
-            var newStep = Math.Round(e.NewValue / 100);
-            gramas.Value = newStep * 100;
-            lblText.Text = gramas.Value.ToString();
-            lblText.TranslateTo(gramas.Value * ((gramas.Width - 40) / gramas.Maximum), 0, 100);
+        //private void gramas_ValueChanged(object sender, ValueChangedEventArgs e)
+        //{
+        //    var newStep = Math.Round(e.NewValue / 100);
+        //    gramas.Value = newStep * 100;
+        //    lblText.Text = gramas.Value.ToString();
+        //    lblText.TranslateTo(gramas.Value * ((gramas.Width - 40) / gramas.Maximum), 0, 100);
 
-            if (gramas != null)
-            {
-                cadItem.getGramas = lblText.Text;
-            }
-        }
+        //    if (gramas != null)
+        //    {
+        //        cadItem.getGramas = lblText.Text;
+        //    }
+        //}
 
     }
 }

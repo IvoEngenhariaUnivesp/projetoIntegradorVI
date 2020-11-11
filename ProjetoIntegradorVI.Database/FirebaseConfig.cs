@@ -405,12 +405,12 @@ namespace ProjetoIntegradorVI.Database
 
                 if (ex.ResponseData.StartsWith("[{") || ex.ResponseData.StartsWith("[null"))
                 {
-                    var ultimoRegistro = await _client.Child("EventoItem").OrderByKey().LimitToLast(1).OnceSingleAsync<List<EventoUsuario>>();
+                    var ultimoRegistro = await _client.Child("EventoUsuario").OrderByKey().LimitToLast(1).OnceSingleAsync<List<EventoUsuario>>();
 
                     eventoUsuario.ID = ultimoRegistro.Last().ID + 1;
 
                     if (eventoUsuario.ID != null)
-                        await _client.Child("EventoItem").Child(eventoUsuario.ID.ToString()).PutAsync(eventoUsuario);
+                        await _client.Child("EventoUsuario").Child(eventoUsuario.ID.ToString()).PutAsync(eventoUsuario);
                 }
                 else
                     eventoUsuario.ID = 0;

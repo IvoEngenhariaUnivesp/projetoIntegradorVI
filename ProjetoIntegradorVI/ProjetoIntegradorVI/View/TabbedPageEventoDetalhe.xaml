@@ -158,10 +158,9 @@
                                                         <Label Text="{Binding Nome}" TextColor="#212121" Margin="10,10,0,0" FontSize="Subtitle" />
                                                         <StackLayout Orientation="Horizontal">
                                                             <Label Text="{Binding QuantidadeDesejada}" TextColor="#212121" Margin="10,0,0,0" FontSize="Subtitle" />
-                                                            <Label Text=" - " />
+                                                            <Label Text="-" />
                                                             <Label Text="{Binding TipoUnidade}" TextColor="#212121" Margin="0,0,0,0" FontSize="Subtitle" />
                                                         </StackLayout>
-                                                        <Label Text="{Binding Tipo}" TextColor="#212121" Margin="0,0,0,0" FontSize="Subtitle" />
                                                         <!--<StackLayout.GestureRecognizers>
                                                             <TapGestureRecognizer Command="{Binding BindingContext.AcessEventoCommand, Source={x:Reference listViewItens}}" CommandParameter="{Binding ID}"/>
                                                         </StackLayout.GestureRecognizers>-->
@@ -183,6 +182,52 @@
             </StackLayout>
         </ContentPage.Content>
     </ContentPage>
+    <!--<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="Itens"
+             x:Name="tabItensConvidado">
+        <ContentPage.Content>
+            <StackLayout Spacing="0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <StackLayout>
+                        <StackLayout Spacing="0" BackgroundColor="#3B529F" HeightRequest="50">
+                            <Label Text="Detalhes do Evento" TextColor="FloralWhite" FontSize="Title" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                        </StackLayout>
+                        <Label Text="Bebidas" HorizontalOptions="CenterAndExpand" FontSize="Subtitle"/>
+                        <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never" FlowDirection="MatchParent">
+
+                            <StackLayout Spacing="50" Padding="10">
+                                <ListView x:Name="listViewItens" HasUnevenRows="True">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
+                                                <Frame BorderColor="White" CornerRadius="10" Padding="5" Margin="0,0,0,10" BackgroundColor="White" HasShadow="True">
+                                                    <StackLayout>
+                                                        <Label Text="{Binding Nome}" TextColor="Black" FontSize="Large" HorizontalTextAlignment="Center"  VerticalTextAlignment="Center" />
+                                                        <StackLayout.GestureRecognizers>
+                                                            <TapGestureRecognizer Command="{Binding BindingContext.AcessEventoCommand, Source={x:Reference listViewItens}}" CommandParameter="{Binding ID}"/>
+                                                        </StackLayout.GestureRecognizers>
+                                                    </StackLayout>
+                                                </Frame>
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </StackLayout>
+                        </ScrollView>
+                    </StackLayout>
+                    <ImageButton Source="add.png" IsVisible="True" Command="{Binding cadItemEventoItemCommand}" 
+                            BackgroundColor="Transparent" 
+                            HeightRequest="80" WidthRequest="80" Margin="300,400,10,15" 
+                            AbsoluteLayout.LayoutFlags="PositionProportional" 
+                            AbsoluteLayout.LayoutBounds=".95,.95,80, 80"/>
+                </Grid>
+            </StackLayout>
+        </ContentPage.Content>
+    </ContentPage>-->
     <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              Title="Convites"

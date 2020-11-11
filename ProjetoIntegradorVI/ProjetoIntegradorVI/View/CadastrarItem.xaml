@@ -27,8 +27,6 @@
                            HorizontalTextAlignment="Center" VerticalOptions="EndAndExpand" TextColor="Red" />
                     <Slider x:Name="gramas" Maximum="1000" Minimum="100" HorizontalOptions="FillAndExpand" 
                             ValueChanged="gramas_ValueChanged" MaximumTrackColor="White" MinimumTrackColor="Blue" Value="{Binding getGramas}"/>-->
-                    <!--<Slider x:Name="gramas" Maximum="1000" Minimum="100" HorizontalOptions="FillAndExpand" 
-                            MaximumTrackColor="White" MinimumTrackColor="Blue" Value="{Binding getGramas}"/>-->
                     
 
                     <StackLayout Orientation="Horizontal">
