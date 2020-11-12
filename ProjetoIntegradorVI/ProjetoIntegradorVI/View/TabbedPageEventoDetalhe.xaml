@@ -149,11 +149,13 @@
                                 <ListView x:Name="listViewItens" 
                                           HasUnevenRows="True"
                                           IsRefreshing="False"
-                                          IsPullToRefreshEnabled = "True">
+                                          IsPullToRefreshEnabled = "True" IsEnabled="False">
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
                                             <ViewCell>
-                                                <Frame BorderColor="White" CornerRadius="10" Padding="5" Margin="0,0,0,10" BackgroundColor="White" HasShadow="True">
+                                                <Frame BorderColor="White" CornerRadius="10"
+                                                       Padding="5" Margin="0,0,0,10"
+                                                       HasShadow="True" BackgroundColor="White">
                                                     <StackLayout>
                                                         <Label Text="{Binding Nome}" TextColor="#212121" Margin="10,10,0,0" FontSize="Subtitle" />
                                                         <StackLayout Orientation="Horizontal">
