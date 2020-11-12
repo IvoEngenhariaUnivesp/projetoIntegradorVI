@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ProjetoIntegradorVI.View.Login"
-             Title="Crie seu Evento">
+             >
     <ContentPage.Resources>
         <ResourceDictionary>
             <Color x:Key="primary">#3ec3d5</Color>
@@ -38,9 +38,9 @@
                          x:Name="labelUserError"
                          Command="{Binding EventosCommand}"/>
 
-                    <Label  Text="Forgot password" 
+                    <!--<Label  Text="Forgot password" 
                         HorizontalOptions="Center" 
-                        TextColor="{StaticResource primary}"/>
+                        TextColor="{StaticResource primary}"/>-->
 
                     <Button Text="Cadastre-se Aqui"
                         Command="{Binding ResultCommand}"/>

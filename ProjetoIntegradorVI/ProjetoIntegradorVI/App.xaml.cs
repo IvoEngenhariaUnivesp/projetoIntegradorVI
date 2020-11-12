@@ -10,7 +10,8 @@ namespace ProjetoIntegradorVI
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new View.Login());
+            //MainPage = new NavigationPage(new View.Login());
+            MainPage = new View.Login();
         }
 
         protected override void OnStart()
