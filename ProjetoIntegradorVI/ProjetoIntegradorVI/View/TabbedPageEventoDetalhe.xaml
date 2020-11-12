@@ -182,7 +182,7 @@
             </StackLayout>
         </ContentPage.Content>
     </ContentPage>
-    <!--<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+    <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              Title="Itens"
              x:Name="tabItensConvidado">
@@ -194,21 +194,27 @@
                     </Grid.RowDefinitions>
                     <StackLayout>
                         <StackLayout Spacing="0" BackgroundColor="#3B529F" HeightRequest="50">
-                            <Label Text="Detalhes do Evento" TextColor="FloralWhite" FontSize="Title" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                            <Label Text="Itens do Evento" TextColor="FloralWhite" FontSize="Title" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
                         </StackLayout>
-                        <Label Text="Bebidas" HorizontalOptions="CenterAndExpand" FontSize="Subtitle"/>
-                        <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never" FlowDirection="MatchParent">
-
+                        <ScrollView VerticalScrollBarVisibility="Never">
                             <StackLayout Spacing="50" Padding="10">
-                                <ListView x:Name="listViewItens" HasUnevenRows="True">
+                                <ListView x:Name="listViewItensConvidado" 
+                                          HasUnevenRows="True"
+                                          IsRefreshing="False"
+                                          IsPullToRefreshEnabled = "True">
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
                                             <ViewCell>
                                                 <Frame BorderColor="White" CornerRadius="10" Padding="5" Margin="0,0,0,10" BackgroundColor="White" HasShadow="True">
                                                     <StackLayout>
-                                                        <Label Text="{Binding Nome}" TextColor="Black" FontSize="Large" HorizontalTextAlignment="Center"  VerticalTextAlignment="Center" />
+                                                        <Label Text="{Binding Nome}" TextColor="#212121" Margin="10,10,0,0" FontSize="Subtitle" />
+                                                        <StackLayout Orientation="Horizontal">
+                                                            <Label Text="{Binding QuantidadeDesejada}" TextColor="#212121" Margin="10,0,0,0" FontSize="Subtitle" />
+                                                            <Label Text="-" />
+                                                            <Label Text="{Binding TipoUnidade}" TextColor="#212121" Margin="0,0,0,0" FontSize="Subtitle" />
+                                                        </StackLayout>
                                                         <StackLayout.GestureRecognizers>
-                                                            <TapGestureRecognizer Command="{Binding BindingContext.AcessEventoCommand, Source={x:Reference listViewItens}}" CommandParameter="{Binding ID}"/>
+                                                            <TapGestureRecognizer Command="{Binding BindingContext.cadItemEventoItemUsuarioCommand, Source={x:Reference listViewItensConvidado}}" CommandParameter="{Binding ID}"/>
                                                         </StackLayout.GestureRecognizers>
                                                     </StackLayout>
                                                 </Frame>
@@ -227,7 +233,7 @@
                 </Grid>
             </StackLayout>
         </ContentPage.Content>
-    </ContentPage>-->
+    </ContentPage>
     <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              Title="Convites"
@@ -271,4 +277,47 @@
             </StackLayout>
         </ContentPage.Content>
     </ContentPage>
+    <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="Convidados"
+             x:Name="tabConvidadosEvento">
+        <ContentPage.Content>
+            <StackLayout Spacing="0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <StackLayout>
+                        <StackLayout Spacing="0" BackgroundColor="#3B529F" HeightRequest="50">
+                            <Label Text="Convidados do Evento" TextColor="FloralWhite" FontSize="Title" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                        </StackLayout>
+                        <ScrollView VerticalScrollBarVisibility="Never">
+                            <StackLayout Spacing="50" Padding="10">
+                                <ListView x:Name="listViewConvidados" 
+                                          HasUnevenRows="True"
+                                          IsRefreshing="False"
+                                          IsPullToRefreshEnabled = "True">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
+                                                <Frame BorderColor="White" CornerRadius="10" Padding="5" Margin="0,0,0,10" BackgroundColor="White" HasShadow="True">
+                                                    <StackLayout>
+                                                        <Label Text="{Binding NomeUsuario}" TextColor="#212121" Margin="10,10,0,0" FontSize="Subtitle" />
+                                                        <StackLayout.GestureRecognizers>
+                                                            <TapGestureRecognizer Command="{Binding BindingContext.AcessEventoItemUsuarioDetalhe, Source={x:Reference listViewItens}}" CommandParameter="{Binding UsuarioMembroID}"/>
+                                                        </StackLayout.GestureRecognizers>
+                                                    </StackLayout>
+                                                </Frame>
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </StackLayout>
+                        </ScrollView>
+                    </StackLayout>
+                </Grid>
+            </StackLayout>
+        </ContentPage.Content>
+    </ContentPage>
+
 </TabbedPage>

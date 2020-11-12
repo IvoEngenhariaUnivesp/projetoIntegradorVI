@@ -23,6 +23,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="View\CadastrarItemConvidado.xaml.cs">
+      <DependentUpon>CadastrarItemConvidado.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="View\EventoConvidadoDetalhe.xaml.cs">
+      <DependentUpon>EventoConvidadoDetalhe.xaml</DependentUpon>
+    </Compile>
     <Compile Update="View\EventoLocalizacao.xaml.cs">
       <DependentUpon>EventoLocalizacao.xaml</DependentUpon>
     </Compile>

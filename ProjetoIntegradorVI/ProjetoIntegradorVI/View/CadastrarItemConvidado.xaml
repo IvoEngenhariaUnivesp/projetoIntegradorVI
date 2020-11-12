@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:ProjetoIntegradorVI.ViewModel"
+             x:Class="ProjetoIntegradorVI.View.CadastrarItemConvidado">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="primary">#3ec3d5</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+  <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Spacing="0" BackgroundColor="#3B529F" HeightRequest="50">
+                <Label Text="Cadastrar Evento" TextColor="FloralWhite" FontSize="Title" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+            </StackLayout>
+            <ScrollView>
+                <StackLayout Spacing="0" Padding="15" VerticalOptions="Center">
+                    <Label Text="Digite a quantidade total para este item"/>
+                    <Entry Text="{Binding quantidadeTotal}" Placeholder="Quantidade Total" Keyboard="Numeric" />
+
+                    <Button HeightRequest="50" Margin="0,15,0,0" 
+                         TextColor="White" 
+                         Text="Cadastrar"  
+                         BackgroundColor="{StaticResource primary}"
+                         HorizontalOptions="FillAndExpand"
+                         Command="{Binding ResultadoConvidadoCommand}"/>
+
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

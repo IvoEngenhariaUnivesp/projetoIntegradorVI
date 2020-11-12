@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProjetoIntegradorVI.View.EventoConvidadoDetalhe">
+    <ContentPage.Content>
+        <StackLayout>
+            <ScrollView>
+                <StackLayout Spacing="0" Padding="15">
+                    <StackLayout>
+                        <Frame WidthRequest="90" HeightRequest="120" HasShadow="True">
+                            <StackLayout>
+                                <Label Text="Detalhes do Convidado" FontSize="21" TextColor="Black" />
+                                <Label x:Name="lblNome" FontSize="15" TextColor="#777777" />
+                                <Label x:Name="lblItensQueVaiLevar" FontSize="15" TextColor="#777777" />
+                            </StackLayout>
+                        </Frame>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

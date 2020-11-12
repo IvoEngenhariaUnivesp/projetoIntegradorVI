@@ -13,8 +13,9 @@ namespace ProjetoIntegradorVI.ViewModel
     {
         private readonly FirebaseConfig<Evento> _firebaseClient;
         public Command cadItemEventoItemCommand { get; set; }
-        public Command cadItemEventoItemUsuarioCommand { get; set; }
+        public ICommand cadItemEventoItemUsuarioCommand { get; set; }
         public ICommand AceitaConviteCommand { get; set; }
+        public ICommand AcessEventoItemUsuarioDetalhe { get; set; }
         private Usuario _usuarioLogado { get; set; }
         private long _eventoID { get; set; }
         public string NomeEvento { get; set; }
@@ -36,6 +37,8 @@ namespace ProjetoIntegradorVI.ViewModel
             // Instancia as variaveis de acesso a tela
             var eventoDetalhe = new EventoDetalhe();
             cadItemEventoItemCommand = new Command(AddItemEventoUser);
+            cadItemEventoItemUsuarioCommand = new Command(async (object obj) => await AddItemConvidado(obj));
+            AcessEventoItemUsuarioDetalhe = new Command(async (object obj) => await AcessaEventoItemUsuarioDetalhe(obj));
             _usuarioLogado = usuarioLogado;
             _firebaseClient = new FirebaseConfig<Evento>();
             _eventoID = eventoID;
@@ -55,25 +58,21 @@ namespace ProjetoIntegradorVI.ViewModel
             convidadosAceitos = eventoDetalhe.ConvitesAceitos.ToString();
             convidadosRecusados = eventoDetalhe.ConvitesRecusados.ToString();
             convidadosPendentes = eventoDetalhe.ConvitesPendentes.ToString();
-
-            //Informações dos detalhes dos itens
-            //List<EventoItem> items = new List<EventoItem>();
-            ////var items = new EventoItem();
-            //Task.Run(async () =>
-            //{
-            //    items = await _firebaseClient.GetEventoItemAsync(_eventoID);
-            //}).Wait();
-            
-            //foreach (var i in items)
-            //{
-            //    NomeItem = i.Nome;
-            //}
         }
 
         public void AddItemEventoUser()
         {
-            //App.Current.MainPage.DisplayAlert("Teste", "Testes2", "OK");
             App.Current.MainPage.Navigation.PushModalAsync(new View.CadastrarItem(_usuarioLogado, _eventoID));
+        }
+
+        public async Task AddItemConvidado(object eventoItemID)
+        {
+            await App.Current.MainPage.Navigation.PushModalAsync(new View.CadastrarItemConvidado(_usuarioLogado, _eventoID, (long)eventoItemID));
+        }
+
+        public async Task AcessaEventoItemUsuarioDetalhe(object usuarioMembroID)
+        {
+            await App.Current.MainPage.Navigation.PushModalAsync(new View.EventoConvidadoDetalhe((long)usuarioMembroID));
         }
 
         public void SetConvidadosAceitos(string valor)

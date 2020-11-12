@@ -45,7 +45,6 @@ namespace ProjetoIntegradorVI.ViewModel
 
         public void AddItemEventoUser()
         {
-            App.Current.MainPage.DisplayAlert("Teste", "Testes2", "OK");
             App.Current.MainPage.Navigation.PushModalAsync(new View.CadastrarItem(_usuarioLogado, _evento));
         }
     }

@@ -360,6 +360,51 @@ namespace ProjetoIntegradorVI.Database
             return lstConvites;
         }
 
+        public async Task<List<EventoUsuarioDetalhe>> GetConvitesAceitosByEventoIDAsync(long eventoID)
+        {
+            // Lista de Retorno dos Convites
+            List<EventoUsuarioDetalhe> lstConvites = new List<EventoUsuarioDetalhe>();
+
+
+            // Abre a conexão com o banco
+            InstaciaClient();
+
+            // Busca a lista de usuários vinculados ao evento
+            // Retorna um dictionary com <ID, Usuario>
+            var eventosByUsuarioIDRetorno =
+                await _client
+                    .Child("EventoUsuario")
+                    .OrderBy("EventoID")
+                    .EqualTo(eventoID)
+                    .OnceSingleAsync<Dictionary<long, EventoUsuario>>();
+
+            // Monta a quantidade de convites aceitos, pendentes e recusados
+            foreach (EventoUsuario eventoUsuario in eventosByUsuarioIDRetorno.Values)
+            {
+                if (eventoUsuario.StatusConvite == StatusConviteEnum.Aceito)
+                {
+                    EventoUsuarioDetalhe conviteDetalhe = new EventoUsuarioDetalhe();
+
+                    var usuario =
+                        await _client
+                            .Child("Usuarios")
+                            .OrderBy("ID")
+                            .EqualTo(eventoUsuario.UsuarioMembroID)
+                            .OnceSingleAsync<Dictionary<long, Usuario>>();
+
+                    conviteDetalhe.ID = eventoUsuario.ID;
+                    conviteDetalhe.UsuarioMembroID = usuario.Values.First().ID.Value;
+                    conviteDetalhe.NomeUsuario = usuario.Values.First().Nome;
+                    conviteDetalhe.StatusConvite = eventoUsuario.StatusConvite;
+
+                    lstConvites.Add(conviteDetalhe);
+                }
+            }
+
+            return lstConvites;
+        }
+
+
         // Muda o status de um convite
         public async Task<bool> SetStatusConvite(EventoUsuario eventoUsuario)
         {
@@ -599,7 +644,6 @@ namespace ProjetoIntegradorVI.Database
             }
             catch (Firebase.Database.FirebaseException ex)
             {
-
                 if (ex.ResponseData.StartsWith("[{") || ex.ResponseData.StartsWith("[null"))
                 {
                     var ultimoRegistro = await _client.Child("EventoItemUsuario").OrderByKey().LimitToLast(1).OnceSingleAsync<List<EventoItemUsuario>>();
@@ -609,7 +653,6 @@ namespace ProjetoIntegradorVI.Database
                     if (eventoItemUsuario.ID != null)
                         await _client.Child("EventoItemUsuario").Child(eventoItemUsuario.ID.ToString()).PutAsync(eventoItemUsuario);
                 }
-
             }
             return eventoItemUsuario;
         }

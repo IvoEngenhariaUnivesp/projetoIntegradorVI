@@ -13,18 +13,14 @@ using Xamarin.Forms.Xaml;
 namespace ProjetoIntegradorVI.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CadastrarItem : ContentPage
+    public partial class CadastrarItemConvidado : ContentPage
     {
         CadItemViewModel cadItem = null;
-        public CadastrarItem(Usuario usuario, long eventoId)
+        public CadastrarItemConvidado(Usuario usuario, long eventoId, long eventoItemID)
         {
             InitializeComponent();
-            BindingContext = new CadItemViewModel(usuario, eventoId);
-            cadItem = new CadItemViewModel(usuario, eventoId);
-
-            var tipoEnumNames = Enum.GetNames(typeof(TipoItemEnum));
-
-            picker.ItemsSource = tipoEnumNames;
+            BindingContext = new CadItemViewModel(usuario, eventoId, eventoItemID);
+            cadItem = new CadItemViewModel(usuario, eventoId, eventoItemID);
         }
     }
 }

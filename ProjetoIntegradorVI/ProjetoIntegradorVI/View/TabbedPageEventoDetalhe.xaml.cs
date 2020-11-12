@@ -72,17 +72,21 @@ namespace ProjetoIntegradorVI.View
                 Task.Run(async () =>
                 {
                     listViewItens.ItemsSource = await _clientEventoItem.GetEventoItemAsync(eventoID);
+                    listViewItensConvidado.ItemsSource = listViewItens.ItemsSource;
+
+                    listViewConvidados.ItemsSource = await _clientEvento.GetConvitesAceitosByEventoIDAsync(eventoID);
                 }).Wait();
-                //listViewItens.ItemsSource = this.lstEventoItems;
-                //lvItemEvento.ItemsSource = this.lstEventoItems;
-                //listViewItens.ItemsSource = this.eventoItem;
             }
-            
+
             // Remove a aba de convites caso o usuário logado não seja o criador do evento
             if (evento != null && (usuarioLogado.ID != evento.UsuarioCriadorID))
             {
+                this.Children.Remove(tabItens);
                 this.Children.Remove(tabConvites);
+                this.Children.Remove(tabConvidadosEvento);
             }
+            else
+                this.Children.Remove(tabItensConvidado);
         }
 
         public Evento BuscaEvento(long eventoID, FirebaseConfig<Evento> firebaseClient)
