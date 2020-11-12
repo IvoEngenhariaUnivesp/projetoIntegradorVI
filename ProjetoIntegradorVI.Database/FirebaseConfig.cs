@@ -404,6 +404,45 @@ namespace ProjetoIntegradorVI.Database
             return lstConvites;
         }
 
+        public async Task<EventoConvidadoDetalhe> GetEventoConvidadoDetalheByUsuarioIDAsync(long usuarioMembroID)
+        {
+            // Abre a conexão com o banco
+            InstaciaClient();
+
+            EventoConvidadoDetalhe eventoConvidadoDetalhe = new EventoConvidadoDetalhe();
+
+            var usuarioMembro =
+                await _client
+                    .Child("Usuarios")
+                    .OrderBy("ID")
+                    .EqualTo(usuarioMembroID)
+                    .OnceSingleAsync<Dictionary<long, Usuario>>();
+
+            eventoConvidadoDetalhe.Nome = usuarioMembro.Values.Last().Nome;
+            
+            // Recupera o ID do item cadastrado pelo criador
+            var eventoItemUsuario =
+                await _client
+                    .Child("EventoItemUsuario")
+                    .OrderBy("UsuarioID")
+                    .EqualTo(usuarioMembroID)
+                    .OnceSingleAsync<Dictionary<long, EventoItemUsuario>>();
+
+            foreach (var item in eventoItemUsuario.Values)
+            {
+                // Recupera o item cadastrado pelo criador
+                var itemConvidado =
+                    await _client
+                        .Child("EventoItem")
+                        .OrderBy("ID")
+                        .EqualTo(item.EventoItemID)
+                        .OnceSingleAsync<Dictionary<long, EventoItem>>();
+
+                eventoConvidadoDetalhe.ItemQuantidade += itemConvidado.Values.Last().Nome + " - " + eventoItemUsuario.Values.FirstOrDefault(x => x.EventoItemID == itemConvidado.Values.Last().ID).Quantidade + " \n";
+            }
+
+            return eventoConvidadoDetalhe;
+        }
 
         // Muda o status de um convite
         public async Task<bool> SetStatusConvite(EventoUsuario eventoUsuario)

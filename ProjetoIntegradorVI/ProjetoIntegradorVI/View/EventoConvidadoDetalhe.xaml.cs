@@ -1,6 +1,8 @@
 ﻿using Plugin.ExternalMaps;
+using ProjetoIntegradorVI.Database;
 using ProjetoIntegradorVI.Domain.Model;
 using ProjetoIntegradorVI.ViewModel;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -13,6 +15,16 @@ namespace ProjetoIntegradorVI.View
         {
             InitializeComponent();
 
+            FirebaseConfig<EventoItemUsuario> _client = new FirebaseConfig<EventoItemUsuario>();
+
+            Domain.Model.EventoConvidadoDetalhe eventoConvidadoDetalhe = new Domain.Model.EventoConvidadoDetalhe();
+
+            Task.Run(async () => {
+                eventoConvidadoDetalhe = await _client.GetEventoConvidadoDetalheByUsuarioIDAsync(usuarioMembroID);
+
+                lblNome.Text = "Nome:" + eventoConvidadoDetalhe.Nome;
+                lblItensQueVaiLevar.Text = eventoConvidadoDetalhe.ItemQuantidade;
+            }).Wait();
         }
     }
 }

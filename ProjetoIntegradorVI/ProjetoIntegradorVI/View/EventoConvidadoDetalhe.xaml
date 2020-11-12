@@ -10,8 +10,8 @@
                         <Frame WidthRequest="90" HeightRequest="120" HasShadow="True">
                             <StackLayout>
                                 <Label Text="Detalhes do Convidado" FontSize="21" TextColor="Black" />
-                                <Label x:Name="lblNome" FontSize="15" TextColor="#777777" />
-                                <Label x:Name="lblItensQueVaiLevar" FontSize="15" TextColor="#777777" />
+                                <Label x:Name="lblNome" FontSize="19" TextColor="#777777" />
+                                <Label x:Name="lblItensQueVaiLevar" FontSize="19" TextColor="#777777" />
                             </StackLayout>
                         </Frame>
                     </StackLayout>
