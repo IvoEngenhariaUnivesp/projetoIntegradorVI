@@ -49,6 +49,7 @@ namespace ProjetoIntegradorVI.View
             else
             {
                 this.Children.Remove(tabItens);
+                this.Children.Remove(tabItensConvidado);
                 this.Children.Remove(tabDetalhes);
             }
 
@@ -84,6 +85,7 @@ namespace ProjetoIntegradorVI.View
                 this.Children.Remove(tabItens);
                 this.Children.Remove(tabConvites);
                 this.Children.Remove(tabConvidadosEvento);
+
             }
             else
                 this.Children.Remove(tabItensConvidado);

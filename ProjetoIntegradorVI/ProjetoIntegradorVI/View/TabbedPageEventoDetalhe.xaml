@@ -227,11 +227,6 @@
                             </StackLayout>
                         </ScrollView>
                     </StackLayout>
-                    <ImageButton Source="add.png" IsVisible="True" Command="{Binding cadItemEventoItemCommand}" 
-                            BackgroundColor="Transparent" 
-                            HeightRequest="80" WidthRequest="80" Margin="300,400,10,15" 
-                            AbsoluteLayout.LayoutFlags="PositionProportional" 
-                            AbsoluteLayout.LayoutBounds=".95,.95,80, 80"/>
                 </Grid>
             </StackLayout>
         </ContentPage.Content>
