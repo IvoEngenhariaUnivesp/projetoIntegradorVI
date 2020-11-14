@@ -56,7 +56,7 @@ namespace ProjetoIntegradorVI.View
                 if (eventoResponse != null)
                     App.Current.MainPage.Navigation.PushModalAsync(new View.TabbedPageEventoDetalhe(_usuarioLogado, Int64.Parse(searchBar.Text)));
                 else
-                    App.Current.MainPage.DisplayAlert("Erro", "Não foi possível localizar o evento.", "Ok");
+                    App.Current.MainPage.DisplayAlert("Ah, que pena :(", "Não foi possível localizar o evento.", "Ok");
             }
         }
 

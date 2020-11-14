@@ -2,21 +2,66 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ProjetoIntegradorVI.View.EventoConvidadoDetalhe">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="primary">#3ec3d5</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
     <ContentPage.Content>
-        <StackLayout>
+        <FlexLayout Direction="Column">
+            <FlexLayout FlexLayout.Grow="1">
+                <ScrollView FlexLayout.Grow="1">
+                    <StackLayout Spacing="0" Padding="5">
+                        <StackLayout WidthRequest="120" BackgroundColor="#b3e5fc">
+                            <StackLayout WidthRequest="90" HeightRequest="50" BackgroundColor="#039be5">
+                                <Label Text="Detalhes do Convidado" VerticalOptions="CenterAndExpand" 
+                                        HorizontalOptions="CenterAndExpand" TextColor="White" FontSize="Title" />
+                            </StackLayout>
+                            <StackLayout Padding="10">
+                                <Label x:Name="lblNome" FontSize="19" TextColor="#212121" />
+                                <Label x:Name="lblItensQueVaiLevar" FontSize="19" TextColor="#212121" />
+                            </StackLayout>
+                        </StackLayout>
+                    </StackLayout>
+                </ScrollView>
+            </FlexLayout>
+            <Button HeightRequest="50" 
+                         TextColor="White" 
+                         Text="Fechar"  
+                         BackgroundColor="{StaticResource primary}"
+                         HorizontalOptions="FillAndExpand"
+                         VerticalOptions="EndAndExpand" Margin="0, 350, 0, 0"
+                          Clicked="Button_Clicked"/>
+        </FlexLayout>
+        <!--<StackLayout>
             <ScrollView>
                 <StackLayout Spacing="0" Padding="15">
-                    <StackLayout>
-                        <Frame WidthRequest="90" HeightRequest="120" HasShadow="True">
-                            <StackLayout>
-                                <Label Text="Detalhes do Convidado" FontSize="21" TextColor="Black" />
-                                <Label x:Name="lblNome" FontSize="19" TextColor="#777777" />
-                                <Label x:Name="lblItensQueVaiLevar" FontSize="19" TextColor="#777777" />
+                    <StackLayout Spacing="0" Padding="0">
+                        <StackLayout WidthRequest="120" BackgroundColor="#b3e5fc">
+                                <StackLayout WidthRequest="90" HeightRequest="50" BackgroundColor="#039be5">
+                                    <Label Text="Detalhes do Convidado" VerticalOptions="CenterAndExpand" 
+                                            HorizontalOptions="CenterAndExpand" TextColor="White" FontSize="Title" />
+                                </StackLayout>
+                            <StackLayout Padding="10">
+                                <Label x:Name="lblNome" FontSize="19" TextColor="#212121" />
+                                <Label x:Name="lblItensQueVaiLevar" FontSize="19" TextColor="#212121" />
                             </StackLayout>
-                        </Frame>
+                        </StackLayout>
                     </StackLayout>
+
+                    <StackLayout>
+
+                    </StackLayout>
+                    <Button HeightRequest="50" 
+                         TextColor="White" 
+                         Text="Fechar"  
+                         BackgroundColor="{StaticResource primary}"
+                         HorizontalOptions="FillAndExpand"
+                         VerticalOptions="EndAndExpand" Margin="0, 350, 0, 0"/>
                 </StackLayout>
             </ScrollView>
-        </StackLayout>
+        </StackLayout>-->
     </ContentPage.Content>
 </ContentPage>

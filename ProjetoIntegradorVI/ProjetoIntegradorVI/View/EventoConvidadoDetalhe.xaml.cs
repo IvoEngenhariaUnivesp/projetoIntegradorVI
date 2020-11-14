@@ -26,5 +26,10 @@ namespace ProjetoIntegradorVI.View
                 lblItensQueVaiLevar.Text = eventoConvidadoDetalhe.ItemQuantidade;
             }).Wait();
         }
+
+        private void Button_Clicked(object sender, System.EventArgs e)
+        {
+            App.Current.MainPage.Navigation.PopModalAsync(true);
+        }
     }
 }

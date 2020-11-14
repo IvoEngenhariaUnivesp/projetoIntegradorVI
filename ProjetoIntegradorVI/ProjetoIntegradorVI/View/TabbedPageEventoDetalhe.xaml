@@ -293,7 +293,7 @@
                                 <ListView x:Name="listViewConvidados" 
                                           HasUnevenRows="True"
                                           IsRefreshing="False"
-                                          IsPullToRefreshEnabled = "True">
+                                          IsPullToRefreshEnabled = "False">
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
                                             <ViewCell>
