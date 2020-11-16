@@ -26,7 +26,6 @@ namespace ProjetoIntegradorVI.View
 
         #region In Memory
         private Usuario _usuarioLogado;
-        private List<EventoItem> lstEventoItems;
         public long EventoID { get; set; }
         #endregion
 

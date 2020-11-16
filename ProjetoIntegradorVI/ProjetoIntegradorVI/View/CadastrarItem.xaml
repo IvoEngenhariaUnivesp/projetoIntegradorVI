@@ -12,7 +12,7 @@
   <ContentPage.Content>
         <StackLayout>
             <StackLayout Spacing="0" BackgroundColor="#3B529F" HeightRequest="50">
-                <Label Text="Cadastrar Evento" TextColor="FloralWhite" FontSize="Title" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                <Label Text="Cadastrar Item" TextColor="FloralWhite" FontSize="Title" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
             </StackLayout>
             <ScrollView>
                 <StackLayout Spacing="0" Padding="15" VerticalOptions="Center">
