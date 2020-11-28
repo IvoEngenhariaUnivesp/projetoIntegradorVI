@@ -4,14 +4,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjetoIntegradorVI.Android", "ProjetoIntegradorVI\ProjetoIntegradorVI.Android\ProjetoIntegradorVI.Android.csproj", "{7BE47AAC-0A2E-4B3C-8AFE-BA9D133529BE}"
+	ProjectSection(ProjectDependencies) = postProject
+		{AE874CA2-84A5-477B-B66D-BA57BEB7F9F3} = {AE874CA2-84A5-477B-B66D-BA57BEB7F9F3}
+		{BA08D5D3-0BB3-434C-A239-551586B6DA1E} = {BA08D5D3-0BB3-434C-A239-551586B6DA1E}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjetoIntegradorVI.iOS", "ProjetoIntegradorVI\ProjetoIntegradorVI.iOS\ProjetoIntegradorVI.iOS.csproj", "{5D0577FE-76D9-4434-A79B-766E40E68A96}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjetoIntegradorVI", "ProjetoIntegradorVI\ProjetoIntegradorVI\ProjetoIntegradorVI.csproj", "{37479F80-14C8-429C-8C2F-383C32979C83}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjetoIntegradorVI", "ProjetoIntegradorVI\ProjetoIntegradorVI\ProjetoIntegradorVI.csproj", "{37479F80-14C8-429C-8C2F-383C32979C83}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjetoIntegradorVI.Database", "ProjetoIntegradorVI.Database\ProjetoIntegradorVI.Database.csproj", "{BA08D5D3-0BB3-434C-A239-551586B6DA1E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjetoIntegradorVI.Database", "ProjetoIntegradorVI.Database\ProjetoIntegradorVI.Database.csproj", "{BA08D5D3-0BB3-434C-A239-551586B6DA1E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjetoIntegradorVI.Domain", "ProjetoIntegradorVI.Domain\ProjetoIntegradorVI.Domain.csproj", "{AE874CA2-84A5-477B-B66D-BA57BEB7F9F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjetoIntegradorVI.Domain", "ProjetoIntegradorVI.Domain\ProjetoIntegradorVI.Domain.csproj", "{AE874CA2-84A5-477B-B66D-BA57BEB7F9F3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
